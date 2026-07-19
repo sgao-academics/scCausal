@@ -1,0 +1,60 @@
+{
+  "celltype": {
+    "B": {
+      "n_cells": 453,
+      "edges": 71,
+      "string_hits": 25,
+      "string_pct": 35.2112676056338,
+      "time": 1.8555142879486084
+    },
+    "CD14+ Monocyte": {
+      "n_cells": 484,
+      "edges": 270,
+      "string_hits": 34,
+      "string_pct": 12.592592592592592,
+      "time": 6.223704099655151
+    },
+    "CD4+ T": {
+      "n_cells": 1184,
+      "edges": 53,
+      "string_hits": 19,
+      "string_pct": 35.84905660377358,
+      "time": 1.3866491317749023
+    },
+    "CD8+ T": {
+      "n_cells": 348,
+      "edges": 86,
+      "string_hits": 24,
+      "string_pct": 27.906976744186046,
+      "time": 2.2090699672698975
+    },
+    "NK": {
+      "n_cells": 168,
+      "edges": 57,
+      "string_hits": 17,
+      "string_pct": 29.82456140350877,
+      "time": 1.0155503749847412
+    }
+  },
+  "pbmc68k": {
+    "d_30": {
+      "edges": 21,
+      "string_hits": 1,
+      "string_pct": 4.761904761904762,
+      "time": 0.370180606842041
+    },
+    "d_50": {
+      "edges": 46,
+      "string_hits": 1,
+      "string_pct": 2.1739130434782608,
+      "time": 0.9922621250152588
+    }
+  },
+  "fdr": {
+    "edges": 202,
+    "n_survive_bh": 202,
+    "survival_pct": 100.0,
+    "p_values_median": 0.0,
+    "p_values_min": 0.0
+  }
+}

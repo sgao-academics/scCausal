@@ -1,0 +1,60 @@
+{
+  "sim30_d30": {
+    "nb_f1_mean": 0.2148,
+    "nb_f1_std": 0.0763,
+    "nb_prec_mean": 0.1844,
+    "nb_rec_mean": 0.2617,
+    "fz_f1_mean": 0.2371,
+    "fz_f1_std": 0.0894,
+    "fz_prec_mean": 0.2319,
+    "fz_rec_mean": 0.2483,
+    "nb_wins": 6,
+    "fz_wins": 24,
+    "ties": 0,
+    "seeds": 30
+  },
+  "sim30_d50": {
+    "nb_f1_mean": 0.2738,
+    "nb_f1_std": 0.0734,
+    "nb_prec_mean": 0.2534,
+    "nb_rec_mean": 0.3,
+    "fz_f1_mean": 0.2813,
+    "fz_f1_std": 0.0754,
+    "fz_prec_mean": 0.2713,
+    "fz_rec_mean": 0.2944,
+    "nb_wins": 4,
+    "fz_wins": 25,
+    "ties": 1,
+    "seeds": 30
+  },
+  "string_thresh_400": {
+    "hits": 59,
+    "total": 201,
+    "pct": 29.4
+  },
+  "string_thresh_500": {
+    "hits": 49,
+    "total": 201,
+    "pct": 24.4
+  },
+  "string_thresh_600": {
+    "hits": 37,
+    "total": 201,
+    "pct": 18.4
+  },
+  "string_thresh_700": {
+    "hits": 32,
+    "total": 201,
+    "pct": 15.9
+  },
+  "string_thresh_800": {
+    "hits": 31,
+    "total": 201,
+    "pct": 15.4
+  },
+  "string_thresh_900": {
+    "hits": 30,
+    "total": 201,
+    "pct": 14.9
+  }
+}
