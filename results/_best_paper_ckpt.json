@@ -1,0 +1,199 @@
+{
+  "genie3": {
+    "edges": 44,
+    "string_hits": 32,
+    "string_pct": 72.72727272727273,
+    "time": 24.305551528930664,
+    "top_pairs": [
+      [
+        "S100A6",
+        "S100A4"
+      ],
+      [
+        "HLA-DRB1",
+        "HLA-DPA1"
+      ],
+      [
+        "HLA-DRB1",
+        "HLA-DPB1"
+      ],
+      [
+        "HLA-DRB1",
+        "HLA-DRA"
+      ],
+      [
+        "HLA-DPA1",
+        "HLA-DRB1"
+      ],
+      [
+        "HLA-DPA1",
+        "HLA-DPB1"
+      ],
+      [
+        "HLA-DPA1",
+        "CD74"
+      ],
+      [
+        "GNLY",
+        "NKG7"
+      ],
+      [
+        "NKG7",
+        "GNLY"
+      ],
+      [
+        "HLA-DPB1",
+        "HLA-DRB1"
+      ]
+    ]
+  },
+  "genie3_ct": {
+    "B": {
+      "n_cells": 453,
+      "edges": 44,
+      "string_hits": 24,
+      "string_pct": 54.54545454545454
+    },
+    "CD14+ Monocyte": {
+      "n_cells": 484,
+      "edges": 44,
+      "string_hits": 27,
+      "string_pct": 61.36363636363637
+    },
+    "CD4+ T": {
+      "n_cells": 1184,
+      "edges": 44,
+      "string_hits": 19,
+      "string_pct": 43.18181818181818
+    },
+    "CD8+ T": {
+      "n_cells": 348,
+      "edges": 44,
+      "string_hits": 25,
+      "string_pct": 56.81818181818182
+    },
+    "NK": {
+      "n_cells": 168,
+      "edges": 44,
+      "string_hits": 19,
+      "string_pct": 43.18181818181818
+    }
+  },
+  "alpha_sweep": {
+    "0.01": {
+      "nb_edges": 163,
+      "nb_string_pct": 19.018404907975462,
+      "fz_edges": 263,
+      "fz_string_pct": 12.927756653992395
+    },
+    "0.03": {
+      "nb_edges": 176,
+      "nb_string_pct": 17.613636363636363,
+      "fz_edges": 264,
+      "fz_string_pct": 12.878787878787879
+    },
+    "0.05": {
+      "nb_edges": 183,
+      "nb_string_pct": 17.48633879781421,
+      "fz_edges": 264,
+      "fz_string_pct": 12.878787878787879
+    },
+    "0.07": {
+      "nb_edges": 184,
+      "nb_string_pct": 17.391304347826086,
+      "fz_edges": 264,
+      "fz_string_pct": 12.878787878787879
+    },
+    "0.1": {
+      "nb_edges": 186,
+      "nb_string_pct": 17.741935483870968,
+      "fz_edges": 264,
+      "fz_string_pct": 12.878787878787879
+    }
+  },
+  "tau_sweep": {
+    "0.05": {
+      "edges": 216,
+      "string_pct": 14.814814814814813,
+      "string_hits": 32
+    },
+    "0.1": {
+      "edges": 192,
+      "string_pct": 16.666666666666664,
+      "string_hits": 32
+    },
+    "0.15": {
+      "edges": 183,
+      "string_pct": 17.48633879781421,
+      "string_hits": 32
+    },
+    "0.2": {
+      "edges": 172,
+      "string_pct": 18.6046511627907,
+      "string_hits": 32
+    }
+  },
+  "go_enrich": {
+    "Immune Response": {
+      "total_in_cat": 9,
+      "found": 2,
+      "pct": 8.695652173913043,
+      "genes": [
+        "GNLY",
+        "NKG7"
+      ]
+    },
+    "HLA / MHC": {
+      "total_in_cat": 8,
+      "found": 6,
+      "pct": 26.08695652173913,
+      "genes": [
+        "B2M",
+        "CD74",
+        "HLA-DPA1",
+        "HLA-DPB1",
+        "HLA-DRA",
+        "HLA-DRB1"
+      ]
+    },
+    "Ribosomal": {
+      "total_in_cat": 9,
+      "found": 6,
+      "pct": 26.08695652173913,
+      "genes": [
+        "RPL13",
+        "RPL8",
+        "RPS27A",
+        "RPS3A",
+        "RPS4X",
+        "RPS5"
+      ]
+    },
+    "S100 / Calcium": {
+      "total_in_cat": 6,
+      "found": 4,
+      "pct": 17.391304347826086,
+      "genes": [
+        "S100A4",
+        "S100A6",
+        "S100A8",
+        "S100A9"
+      ]
+    },
+    "Mitochondrial": {
+      "total_in_cat": 6,
+      "found": 2,
+      "pct": 8.695652173913043,
+      "genes": [
+        "MT-CO1",
+        "MT-CO2"
+      ]
+    }
+  },
+  "kmax2": {
+    "edges": 183,
+    "string_pct": 17.48633879781421,
+    "string_hits": 32,
+    "time": 26.897374868392944
+  }
+}

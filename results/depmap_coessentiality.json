@@ -1,0 +1,91 @@
+{
+  "n_cell_lines": 1208,
+  "n_genes_depmap": 18531,
+  "scCausal_edges_tested": 11,
+  "scCausal_significant": 4,
+  "scCausal_mean_abs_corr": 0.055157802981202056,
+  "background_mean_abs_corr": NaN,
+  "background_n_samples": 10000,
+  "mann_whitney_p": NaN,
+  "fisher_OR": Infinity,
+  "fisher_p": 7.889975539292387e-13,
+  "key_predictions": {
+    "HLA-DPA1-HLA-DRA": {
+      "correlation": 0.04216152018815861,
+      "p_value": 0.14305400615537123,
+      "significant": false
+    },
+    "GNLY-NKG7": {
+      "correlation": -0.04362278334936558,
+      "p_value": 0.12969188823670244,
+      "significant": false
+    },
+    "GZMB-CCL5": {
+      "correlation": -0.005508106372641996,
+      "p_value": 0.8483339426919202,
+      "significant": false
+    },
+    "S100A8-S100A9": {
+      "correlation": 0.09955545925434839,
+      "p_value": 0.0005298207814039312,
+      "significant": true
+    }
+  },
+  "all_edges": [
+    {
+      "pair": "HLA-DPA1-HLA-DRA",
+      "correlation": 0.04216152018815861,
+      "p_value": 0.14305400615537123
+    },
+    {
+      "pair": "HLA-DPA1-CD74",
+      "correlation": -0.04224839129783532,
+      "p_value": 0.14223122863822785
+    },
+    {
+      "pair": "HLA-DRA-CD74",
+      "correlation": 0.02369362602244351,
+      "p_value": 0.41064130210332256
+    },
+    {
+      "pair": "GNLY-NKG7",
+      "correlation": -0.04362278334936558,
+      "p_value": 0.12969188823670244
+    },
+    {
+      "pair": "GZMB-CCL5",
+      "correlation": -0.005508106372641996,
+      "p_value": 0.8483339426919202
+    },
+    {
+      "pair": "CCL5-GNLY",
+      "correlation": -0.010061748131551097,
+      "p_value": 0.726822149550891
+    },
+    {
+      "pair": "CCL5-NKG7",
+      "correlation": 0.03643811138265606,
+      "p_value": 0.2056696187971086
+    },
+    {
+      "pair": "RPL8-RPS27A",
+      "correlation": 0.11763828119802124,
+      "p_value": 4.155189663749921e-05
+    },
+    {
+      "pair": "S100A6-S100A11",
+      "correlation": 0.06835357432886661,
+      "p_value": 0.017499718152483107
+    },
+    {
+      "pair": "S100A8-S100A9",
+      "correlation": 0.09955545925434839,
+      "p_value": 0.0005298207814039312
+    },
+    {
+      "pair": "ACTB-ARPC1B",
+      "correlation": 0.1174542312673342,
+      "p_value": 4.272641787716153e-05
+    }
+  ]
+}

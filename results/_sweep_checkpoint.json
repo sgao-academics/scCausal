@@ -1,0 +1,374 @@
+{
+  "d_30": {
+    "d": 30,
+    "edges": 216,
+    "string_validated": 32,
+    "string_precision": 14.814814814814813,
+    "trrust_validated": 0,
+    "trrust_precision": 0.0,
+    "time_s": 18.65321946144104,
+    "sparsity": 26.746913580246915,
+    "string_mapped": 29,
+    "top_string_edges": [
+      [
+        "S100A6",
+        "S100A8"
+      ],
+      [
+        "S100A6",
+        "S100A4"
+      ],
+      [
+        "HLA-DRB1",
+        "HLA-DPA1"
+      ],
+      [
+        "HLA-DRB1",
+        "HLA-DPB1"
+      ],
+      [
+        "HLA-DRB1",
+        "HLA-DRA"
+      ],
+      [
+        "HLA-DRB1",
+        "CD74"
+      ],
+      [
+        "HLA-DPA1",
+        "HLA-DPB1"
+      ],
+      [
+        "HLA-DPA1",
+        "HLA-DRA"
+      ],
+      [
+        "HLA-DPA1",
+        "CD74"
+      ],
+      [
+        "GNLY",
+        "NKG7"
+      ],
+      [
+        "HLA-DPB1",
+        "HLA-DRA"
+      ],
+      [
+        "HLA-DPB1",
+        "CD74"
+      ],
+      [
+        "RPL8",
+        "RPS5"
+      ],
+      [
+        "RPL8",
+        "RPS27A"
+      ],
+      [
+        "RPL8",
+        "RPS3A"
+      ],
+      [
+        "RPL8",
+        "RPS4X"
+      ],
+      [
+        "RPL8",
+        "RPL13"
+      ],
+      [
+        "MT-CO2",
+        "MT-CO1"
+      ],
+      [
+        "RPS5",
+        "RPS27A"
+      ],
+      [
+        "RPS5",
+        "RPS3A"
+      ]
+    ]
+  },
+  "d_50": {
+    "d": 50,
+    "edges": 778,
+    "string_validated": 62,
+    "string_precision": 7.969151670951156,
+    "trrust_validated": 0,
+    "trrust_precision": 0.0,
+    "time_s": 79.19952607154846,
+    "sparsity": 36.605185185185185,
+    "string_mapped": 49,
+    "top_string_edges": [
+      [
+        "UBB",
+        "RPL8"
+      ],
+      [
+        "UBB",
+        "RPS27A"
+      ],
+      [
+        "ARPC1B",
+        "ACTB"
+      ],
+      [
+        "SRGN",
+        "GZMB"
+      ],
+      [
+        "GZMB",
+        "CCL5"
+      ],
+      [
+        "GZMB",
+        "GNLY"
+      ],
+      [
+        "GZMB",
+        "NKG7"
+      ],
+      [
+        "IL32",
+        "CCL5"
+      ],
+      [
+        "S100A11",
+        "S100A6"
+      ],
+      [
+        "CTSS",
+        "HLA-DPA1"
+      ],
+      [
+        "CTSS",
+        "TYROBP"
+      ],
+      [
+        "CTSS",
+        "CST3"
+      ],
+      [
+        "CTSS",
+        "HLA-DRA"
+      ],
+      [
+        "CTSS",
+        "CD74"
+      ],
+      [
+        "MT-CYB",
+        "MT-CO2"
+      ],
+      [
+        "MT-CYB",
+        "MT-CO1"
+      ],
+      [
+        "FCER1G",
+        "AIF1"
+      ],
+      [
+        "FCER1G",
+        "TYROBP"
+      ],
+      [
+        "H3F3B",
+        "ACTB"
+      ],
+      [
+        "AIF1",
+        "LST1"
+      ]
+    ]
+  },
+  "d_100": {
+    "d": 100,
+    "edges": 2571,
+    "string_validated": 118,
+    "string_precision": 4.589653831194088,
+    "trrust_validated": 0,
+    "trrust_precision": 0.0,
+    "time_s": 355.01058530807495,
+    "sparsity": 48.94962962962963,
+    "string_mapped": 98,
+    "top_string_edges": [
+      [
+        "CTSW",
+        "PRF1"
+      ],
+      [
+        "CTSW",
+        "GNLY"
+      ],
+      [
+        "CTSW",
+        "NKG7"
+      ],
+      [
+        "PRF1",
+        "FCGR3A"
+      ],
+      [
+        "PRF1",
+        "SRGN"
+      ],
+      [
+        "PRF1",
+        "GZMB"
+      ],
+      [
+        "PRF1",
+        "CCL5"
+      ],
+      [
+        "PRF1",
+        "GNLY"
+      ],
+      [
+        "PRF1",
+        "NKG7"
+      ],
+      [
+        "HLA-DMA",
+        "HLA-DQB1"
+      ],
+      [
+        "HLA-DMA",
+        "HLA-DQA1"
+      ],
+      [
+        "HLA-DMA",
+        "CTSS"
+      ],
+      [
+        "HLA-DMA",
+        "HLA-DRB1"
+      ],
+      [
+        "HLA-DMA",
+        "HLA-DPA1"
+      ],
+      [
+        "HLA-DMA",
+        "HLA-DPB1"
+      ],
+      [
+        "HLA-DMA",
+        "HLA-DRA"
+      ],
+      [
+        "HLA-DMA",
+        "CD74"
+      ],
+      [
+        "CST7",
+        "NKG7"
+      ],
+      [
+        "CCL3",
+        "CCL4"
+      ],
+      [
+        "UBE2D3",
+        "UBB"
+      ]
+    ]
+  },
+  "d_200": {
+    "d": 200,
+    "edges": 6499,
+    "string_validated": 227,
+    "string_precision": 3.4928450530850896,
+    "trrust_validated": 0,
+    "trrust_precision": 0.0,
+    "time_s": 1345.8860268592834,
+    "sparsity": 62.257407407407406,
+    "string_mapped": 197,
+    "top_string_edges": [
+      [
+        "RPN2",
+        "UBB"
+      ],
+      [
+        "NSA2",
+        "RPL8"
+      ],
+      [
+        "NSA2",
+        "RPS5"
+      ],
+      [
+        "NSA2",
+        "RPS27A"
+      ],
+      [
+        "NSA2",
+        "RPS3A"
+      ],
+      [
+        "NSA2",
+        "RPS4X"
+      ],
+      [
+        "NSA2",
+        "RPL13"
+      ],
+      [
+        "TCL1A",
+        "CD79A"
+      ],
+      [
+        "EIF5",
+        "CD74"
+      ],
+      [
+        "ATP5C1",
+        "NDUFB10"
+      ],
+      [
+        "ATP5C1",
+        "ATP5H"
+      ],
+      [
+        "ATP5C1",
+        "ATP5A1"
+      ],
+      [
+        "ATP5C1",
+        "SDHB"
+      ],
+      [
+        "ATP5C1",
+        "NDUFA2"
+      ],
+      [
+        "ATP5C1",
+        "ATP5D"
+      ],
+      [
+        "ATP5C1",
+        "MT-ATP6"
+      ],
+      [
+        "ATP5C1",
+        "RPL8"
+      ],
+      [
+        "ATP5C1",
+        "RPS5"
+      ],
+      [
+        "ATP5C1",
+        "CD74"
+      ],
+      [
+        "DNAJA1",
+        "HSP90AA1"
+      ]
+    ]
+  }
+}

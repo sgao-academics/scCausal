@@ -1,0 +1,90 @@
+{
+  "ct_fisherz": {
+    "B": {
+      "n_cells": 453,
+      "edges": 143,
+      "string_hits": 31,
+      "string_pct": 21.678321678321677,
+      "time": 0.06126117706298828
+    },
+    "CD14+ Monocyte": {
+      "n_cells": 484,
+      "edges": 379,
+      "string_hits": 36,
+      "string_pct": 9.498680738786279,
+      "time": 0.17825078964233398
+    },
+    "CD4+ T": {
+      "n_cells": 1184,
+      "edges": 83,
+      "string_hits": 20,
+      "string_pct": 24.096385542168676,
+      "time": 0.03771805763244629
+    },
+    "CD8+ T": {
+      "n_cells": 348,
+      "edges": 258,
+      "string_hits": 44,
+      "string_pct": 17.05426356589147,
+      "time": 0.11604952812194824
+    },
+    "NK": {
+      "n_cells": 168,
+      "edges": 333,
+      "string_hits": 42,
+      "string_pct": 12.612612612612612,
+      "time": 0.14720702171325684
+    }
+  },
+  "ct_d50": {
+    "B": {
+      "n_cells": 453,
+      "edges": 118,
+      "string_hits": 41,
+      "string_pct": 34.74576271186441,
+      "time": 3.0880134105682373
+    },
+    "CD14+ Monocyte": {
+      "n_cells": 484,
+      "edges": 586,
+      "string_hits": 58,
+      "string_pct": 9.897610921501707,
+      "time": 13.515090942382812
+    },
+    "CD4+ T": {
+      "n_cells": 1184,
+      "edges": 84,
+      "string_hits": 22,
+      "string_pct": 26.190476190476193,
+      "time": 2.2201461791992188
+    },
+    "CD8+ T": {
+      "n_cells": 348,
+      "edges": 101,
+      "string_hits": 27,
+      "string_pct": 26.732673267326735,
+      "time": 2.7623212337493896
+    },
+    "NK": {
+      "n_cells": 168,
+      "edges": 100,
+      "string_hits": 21,
+      "string_pct": 21.0,
+      "time": 1.9191374778747559
+    }
+  },
+  "notears_d30_50": {
+    "d_30": {
+      "edges": 0,
+      "string_hits": 0,
+      "string_pct": 0.0,
+      "time": 3.3714706897735596
+    },
+    "d_50": {
+      "edges": 0,
+      "string_hits": 0,
+      "string_pct": 0.0,
+      "time": 2.166963815689087
+    }
+  }
+}

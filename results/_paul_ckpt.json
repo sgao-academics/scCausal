@@ -1,0 +1,26 @@
+{
+  "d30": {
+    "nb_edges": 270,
+    "nb_string_pct": 14.4,
+    "nb_string_hits": 39,
+    "fz_edges": 389,
+    "fz_string_pct": 10.5,
+    "fz_string_hits": 41,
+    "time_s": 14,
+    "tissue": "bone_marrow_hematopoietic",
+    "cells": 2730,
+    "genes_total": 3451
+  },
+  "d50": {
+    "nb_edges": 818,
+    "nb_string_pct": 13.3,
+    "nb_string_hits": 109,
+    "fz_edges": 1114,
+    "fz_string_pct": 10.6,
+    "fz_string_hits": 118,
+    "time_s": 42,
+    "tissue": "bone_marrow_hematopoietic",
+    "cells": 2730,
+    "genes_total": 3451
+  }
+}

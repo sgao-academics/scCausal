@@ -1,0 +1,8 @@
+manuscript.*
+cover_letter.*
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
