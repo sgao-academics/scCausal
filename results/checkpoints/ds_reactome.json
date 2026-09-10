@@ -1,0 +1,222 @@
+{
+  "n_pathways": 2570,
+  "n_co_member_pairs": 16209703,
+  "by_d": {
+    "30": {
+      "n_edges": 34,
+      "n_genes": 23,
+      "co_member_edges": 30,
+      "edge_pct": 88.2,
+      "bg_pct": 60.9,
+      "odds_ratio": 4.821,
+      "fisher_p": 0.0009034667831668299,
+      "n_bg_pairs": 253,
+      "examples": [
+        {
+          "pair": [
+            "RPS3A",
+            "RPS4X"
+          ],
+          "pathways": [
+            "Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S",
+            "Antimicrobial mechanism of IFN-stimulated genes",
+            "Axon guidance"
+          ],
+          "n_pathways": 56
+        },
+        {
+          "pair": [
+            "RPS27A",
+            "RPS4X"
+          ],
+          "pathways": [
+            "Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S",
+            "Antimicrobial mechanism of IFN-stimulated genes",
+            "Axon guidance"
+          ],
+          "n_pathways": 56
+        },
+        {
+          "pair": [
+            "RPS4X",
+            "RPS5"
+          ],
+          "pathways": [
+            "Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S",
+            "Antimicrobial mechanism of IFN-stimulated genes",
+            "Axon guidance"
+          ],
+          "n_pathways": 56
+        },
+        {
+          "pair": [
+            "RPS27A",
+            "RPS3A"
+          ],
+          "pathways": [
+            "Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S",
+            "Antimicrobial mechanism of IFN-stimulated genes",
+            "Axon guidance"
+          ],
+          "n_pathways": 56
+        },
+        {
+          "pair": [
+            "RPS3A",
+            "RPS5"
+          ],
+          "pathways": [
+            "Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S",
+            "Antimicrobial mechanism of IFN-stimulated genes",
+            "Axon guidance"
+          ],
+          "n_pathways": 56
+        },
+        {
+          "pair": [
+            "RPS27A",
+            "RPS5"
+          ],
+          "pathways": [
+            "Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S",
+            "Antimicrobial mechanism of IFN-stimulated genes",
+            "Axon guidance"
+          ],
+          "n_pathways": 56
+        },
+        {
+          "pair": [
+            "RPL8",
+            "RPS27A"
+          ],
+          "pathways": [
+            "Axon guidance",
+            "Cap-dependent Translation Initiation",
+            "Cellular response to starvation"
+          ],
+          "n_pathways": 42
+        },
+        {
+          "pair": [
+            "RPL13",
+            "RPS27A"
+          ],
+          "pathways": [
+            "Axon guidance",
+            "Cap-dependent Translation Initiation",
+            "Cellular response to starvation"
+          ],
+          "n_pathways": 41
+        }
+      ]
+    },
+    "50": {
+      "n_edges": 60,
+      "n_genes": 40,
+      "co_member_edges": 44,
+      "edge_pct": 73.3,
+      "bg_pct": 53.2,
+      "odds_ratio": 2.419,
+      "fisher_p": 0.0016470392972126268,
+      "n_bg_pairs": 780,
+      "examples": [
+        {
+          "pair": [
+            "RPS3A",
+            "RPS4X"
+          ],
+          "pathways": [
+            "Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S",
+            "Antimicrobial mechanism of IFN-stimulated genes",
+            "Axon guidance"
+          ],
+          "n_pathways": 56
+        },
+        {
+          "pair": [
+            "RPS27A",
+            "RPS4X"
+          ],
+          "pathways": [
+            "Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S",
+            "Antimicrobial mechanism of IFN-stimulated genes",
+            "Axon guidance"
+          ],
+          "n_pathways": 56
+        },
+        {
+          "pair": [
+            "RPS4X",
+            "RPS5"
+          ],
+          "pathways": [
+            "Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S",
+            "Antimicrobial mechanism of IFN-stimulated genes",
+            "Axon guidance"
+          ],
+          "n_pathways": 56
+        },
+        {
+          "pair": [
+            "RPS27A",
+            "RPS3A"
+          ],
+          "pathways": [
+            "Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S",
+            "Antimicrobial mechanism of IFN-stimulated genes",
+            "Axon guidance"
+          ],
+          "n_pathways": 56
+        },
+        {
+          "pair": [
+            "RPS3A",
+            "RPS5"
+          ],
+          "pathways": [
+            "Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S",
+            "Antimicrobial mechanism of IFN-stimulated genes",
+            "Axon guidance"
+          ],
+          "n_pathways": 56
+        },
+        {
+          "pair": [
+            "RPS27A",
+            "RPS5"
+          ],
+          "pathways": [
+            "Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S",
+            "Antimicrobial mechanism of IFN-stimulated genes",
+            "Axon guidance"
+          ],
+          "n_pathways": 56
+        },
+        {
+          "pair": [
+            "RPL8",
+            "RPS27A"
+          ],
+          "pathways": [
+            "Axon guidance",
+            "Cap-dependent Translation Initiation",
+            "Cellular response to starvation"
+          ],
+          "n_pathways": 42
+        },
+        {
+          "pair": [
+            "RPL13",
+            "RPS27A"
+          ],
+          "pathways": [
+            "Axon guidance",
+            "Cap-dependent Translation Initiation",
+            "Cellular response to starvation"
+          ],
+          "n_pathways": 41
+        }
+      ]
+    }
+  }
+}

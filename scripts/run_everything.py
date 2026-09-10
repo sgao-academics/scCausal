@@ -1,6 +1,6 @@
 import config  # scCausal data path configuration
 """EVERYTHING: Full-scale sweep of all experiments at maximum limits.
-Checkpoint-based resume — safe to interrupt and restart.
+Checkpoint-based resume -- safe to interrupt and restart.
 
 Experiments:
 A. PBMC 3K: d=[30,50,100,200,300] x (NB-LR + Fisher raw + Fisher log1p)
@@ -18,8 +18,8 @@ import statsmodels.api as sm
 import scanpy as sc
 
 CKPT = os.path.join(os.path.dirname(__file__), '..', 'results', '_everything_ckpt.json')
-ALIAS = r'config.get_path("string_aliases")'
-PPI = r'config.get_path("string_ppi")'
+ALIAS = config.resolve('string_aliases', 'SC_CAUSAL_STRING_ALIASES')
+PPI = config.resolve('string_ppi', 'SC_CAUSAL_STRING_PPI')
 
 ckpt = json.load(open(CKPT)) if os.path.exists(CKPT) else {}
 
@@ -53,13 +53,27 @@ def validate(edges, genes, s2s, ppi):
         if s1 and s2 and ((s1, s2) in ppi or (s2, s1) in ppi): hits += 1
     return hits
 
-def nb_lr(X, i, j, cond, libsize=None):
+def estimate_alpha_moment(X):
+    """NB2 dispersion via the method of moments: Var = mu + alpha*mu^2.
+
+    Closed-form and O(d): alpha_hat(g) = (s^2_g - xbar_g) / xbar_g^2 for each
+    expressed gene, and the global dispersion is the median over genes. This
+    adapts the NB-LR test to the observed overdispersion instead of fixing the
+    statsmodels default alpha = 1.0.
+    """
+    mu = X.mean(axis=0); var = X.var(axis=0)
+    valid = mu > 0
+    alphas = (var[valid] - mu[valid]) / np.maximum(mu[valid] ** 2, 1e-8)
+    alphas = np.clip(alphas, 1e-4, None)
+    return float(np.median(alphas))
+
+def nb_lr(X, i, j, cond, libsize=None, alpha=None):
     y = X[:, j]
     Xc = X[:, list(cond)] if len(cond) > 0 else None
     Xn = sm.add_constant(Xc) if Xc is not None and Xc.shape[1] > 0 else np.ones((len(y), 1))
     off = libsize if libsize is not None else None
     try:
-        fam = NegativeBinomial()
+        fam = NegativeBinomial(alpha=alpha) if alpha is not None else NegativeBinomial()
         m0 = sm.GLM(y, Xn, family=fam, offset=off).fit(maxiter=50, disp=0)
         if m0.llf is None: return 1.0
         Xa = np.column_stack([Xn, X[:, i]]) if Xn.shape[1] > 0 else sm.add_constant(X[:, i].reshape(-1,1))
@@ -68,12 +82,16 @@ def nb_lr(X, i, j, cond, libsize=None):
         return 1 - chi2.cdf(max(2*(m1.llf-m0.llf), 0), 1)
     except: return 1.0
 
-def pc_nb(X, genes, d, alpha=0.05, tau=0.10, max_k=1):
+def pc_nb(X, genes, d, alpha=0.05, tau=0.10, max_k=1, use_moment=True):
+    if use_moment:
+        alpha_est = estimate_alpha_moment(X[:, :d])
+    else:
+        alpha_est = None
     corr = np.corrcoef(np.log1p(X).T)
     edges = {(i, j) for i in range(d) for j in range(i+1, d) if abs(corr[i, j]) > tau}
     new_e = set()
     for (i, j) in edges:
-        if nb_lr(X, i, j, []) < alpha: new_e.add((i, j))
+        if nb_lr(X, i, j, [], alpha=alpha_est) < alpha: new_e.add((i, j))
     edges = new_e
     if max_k >= 1:
         removed = set()
@@ -85,7 +103,7 @@ def pc_nb(X, genes, d, alpha=0.05, tau=0.10, max_k=1):
                 if a == j and b != i: nb_j.add(b)
                 elif b == j and a != i: nb_j.add(a)
             for k in list(nb_i & nb_j)[:5]:
-                if nb_lr(X, i, j, [k]) >= alpha:
+                if nb_lr(X, i, j, [k], alpha=alpha_est) >= alpha:
                     removed.add((i, j)); break
         edges -= removed
     return sorted(edges)
@@ -149,7 +167,7 @@ G_pb = list(pb.var_names.astype(str))
 V_pb = X_pb.var(axis=0); R_pb = np.argsort(V_pb)[::-1]
 print(f"PBMC: {X_pb.shape[0]}x{X_pb.shape[1]}")
 
-pa = sc.read_h5ad(r'config.get_path("paul15")')
+pa = sc.read_h5ad(config.resolve('paul15', 'SC_CAUSAL_PAUL15'))
 X_pa = pa.X.toarray() if hasattr(pa.X, 'toarray') else np.array(pa.X, dtype=np.float32)
 G_pa = list(pa.var_names.astype(str))
 V_pa = X_pa.var(axis=0); R_pa = np.argsort(V_pa)[::-1]

@@ -181,8 +181,8 @@ def load_string(alias_path, ppi_path, gene_names):
     print(f'  STRING HC edges: {len(ppi_set)}')
     return gene2string, ppi_set
 
-string_alias = r'config.get_path("string_aliases")'
-string_ppi = r'config.get_path("string_ppi")'
+string_alias = config.resolve('string_aliases', 'SC_CAUSAL_STRING_ALIASES')
+string_ppi = config.resolve('string_ppi', 'SC_CAUSAL_STRING_PPI')
 
 if os.path.exists(string_ppi):
     gene2s, ppi = load_string(string_alias, string_ppi, gene_names)
@@ -191,7 +191,7 @@ else:
 
 # TRRUST
 trrust_pairs = set()
-trrust_path = r'config.get_path("trrust")'
+trrust_path = config.resolve('trrust', 'SC_CAUSAL_TRRUST')
 if os.path.exists(trrust_path):
     with open(trrust_path) as f:
         for line in f:

@@ -112,7 +112,7 @@ def fisher_z_pc(X, genes, d, tau):
         for k in list(common)[:5]:  # Limit conditioning sets
             n_tested_first += 1
             p, _ = fisher_z_test(X, i, j, [k])
-            if p > ALPHA:  # Independent given k → remove edge
+            if p > ALPHA:  # Independent given k -> remove edge
                 adj.discard((i, j))
                 removed += 1
                 break
@@ -130,7 +130,7 @@ def fisher_z_pc(X, genes, d, tau):
 # 3. PERMUTED NEGATIVE CONTROL
 # ============================================================
 def permuted_control(X, genes, d):
-    """Permute each gene's counts independently → should find 0 edges."""
+    """Permute each gene's counts independently -> should find 0 edges."""
     X_perm = X.copy()
     for col in range(X.shape[1]):
         np.random.shuffle(X_perm[:, col])
@@ -149,7 +149,7 @@ def permuted_control(X, genes, d):
 # 5. STRING VALIDATION
 # ============================================================
 def load_string_mapping():
-    """Load ENSP ID → Gene Symbol mapping + high-confidence PPI pairs."""
+    """Load ENSP ID -> Gene Symbol mapping + high-confidence PPI pairs."""
     alias_path = config.get_path('string_aliases')
     ppi_path = config.get_path('string_ppi')
     
@@ -179,11 +179,13 @@ def load_string_mapping():
                 except (ValueError, IndexError):
                     continue
     
-    print(f"  Loaded {len(gene_to_ensp)} gene→ENSP mappings, {len(ppi)} high-conf PPI pairs")
+    print(f"  Loaded {len(gene_to_ensp)} gene->ENSP mappings, {len(ppi)} high-conf PPI pairs")
     return gene_to_ensp, ppi
 
 def validate_edges(edges, gene_to_ensp, ppi):
-    """Count STRING-validated edges."""
+    """Count STRING-validated edges. Returns (0, 0.0, []) if STRING unavailable."""
+    if gene_to_ensp is None or ppi is None:
+        return 0, 0.0, []
     n_valid = 0
     validated = []
     for e in edges:
@@ -211,9 +213,17 @@ def main():
     else:
         ckpt = {}
     
-    # Load STRING once
+    # Load STRING once (graceful fallback if not available)
     print("=== Loading STRING database ===")
-    g2e, ppi = load_string_mapping()
+    try:
+        g2e, ppi = load_string_mapping()
+        string_available = True
+    except (FileNotFoundError, OSError) as e:
+        print(f"  STRING data not found ({e}). Validation skipped.")
+        print(f"  To enable: download STRING v11 to your SC_CAUSAL_DATA directory.")
+        print(f"  Run 'python run_all.py --download' for instructions.")
+        g2e, ppi = None, None
+        string_available = False
     
     results = {}
     t_start = time.time()
@@ -282,7 +292,7 @@ def main():
                 ckpt[key_perm] = perm_result
                 with open(CKPT_PATH, 'w') as f:
                     json.dump(ckpt, f, indent=2)
-                print(f"    Permuted: {n_perm_edges} edges → {perm_result['conclusion']}")
+                print(f"    Permuted: {n_perm_edges} edges -> {perm_result['conclusion']}")
         
         results[f'd_{d}'] = result_d
     
@@ -319,7 +329,7 @@ def main():
     # Permuted result
     if 'd_30' in results:
         perm = results['d_30'].get('permuted', {})
-        print(f"\n  Permuted control (d=30): {perm.get('edges', '?')} edges → {perm.get('conclusion', '?')}")
+        print(f"\n  Permuted control (d=30): {perm.get('edges', '?')} edges -> {perm.get('conclusion', '?')}")
     
     # Save full results
     full_path = os.path.join(RESULT_DIR, 'baseline_results.json')

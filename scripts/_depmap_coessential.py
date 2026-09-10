@@ -1,6 +1,6 @@
 import config  # scCausal data path configuration
 """
-scCausal × DepMap CRISPR Co-Essentiality Validation
+scCausal x DepMap CRISPR Co-Essentiality Validation
 =====================================================
 Tests whether scCausal-predicted causal edges show significant
 CRISPR co-essentiality in DepMap 23Q4 data (>1000 cancer cell lines).
@@ -8,7 +8,7 @@ CRISPR co-essentiality in DepMap 23Q4 data (>1000 cancer cell lines).
 Co-essentiality = Pearson correlation of CRISPR gene effect scores
 across cell lines. If gene A and gene B are causally linked (A->B),
 perturbing A should affect B's dependency profile across diverse
-genetic backgrounds — producing correlated CRISPR scores.
+genetic backgrounds -- producing correlated CRISPR scores.
 
 This is COMPLETELY INDEPENDENT of STRING and transcriptomic co-expression.
 """
@@ -17,7 +17,7 @@ import numpy as np
 from scipy.stats import pearsonr, fisher_exact, mannwhitneyu
 import json, os, time
 
-DEPMAP = r"os.path.dirname(config.get_path("depmap_crispr"))"
+DEPMAP = config.resolve('depmap_crispr', 'SC_CAUSAL_DEPMAP_CRISPR')
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "results")
 os.makedirs(OUT_DIR, exist_ok=True)
 
@@ -52,7 +52,7 @@ scCausal_predictions = [
     ('ACTB','ARPC1B'),
 ]
 
-# Testable predictions from Discussion §4.4
+# Testable predictions from Discussion Sec.4.4
 key_predictions = [
     ('GZMB','CCL5'),
     ('S100A8','S100A9'),

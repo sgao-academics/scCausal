@@ -1,0 +1,200 @@
+{
+  "30": {
+    "NB_moment": {
+      "400": {
+        "hits": 64,
+        "edges": 241,
+        "precision": 26.56
+      },
+      "500": {
+        "hits": 51,
+        "edges": 241,
+        "precision": 21.16
+      },
+      "600": {
+        "hits": 39,
+        "edges": 241,
+        "precision": 16.18
+      },
+      "700": {
+        "hits": 34,
+        "edges": 241,
+        "precision": 14.11
+      },
+      "800": {
+        "hits": 32,
+        "edges": 241,
+        "precision": 13.28
+      },
+      "900": {
+        "hits": 31,
+        "edges": 241,
+        "precision": 12.86
+      }
+    },
+    "Fisher_z": {
+      "400": {
+        "hits": 67,
+        "edges": 246,
+        "precision": 27.24
+      },
+      "500": {
+        "hits": 52,
+        "edges": 246,
+        "precision": 21.14
+      },
+      "600": {
+        "hits": 42,
+        "edges": 246,
+        "precision": 17.07
+      },
+      "700": {
+        "hits": 34,
+        "edges": 246,
+        "precision": 13.82
+      },
+      "800": {
+        "hits": 32,
+        "edges": 246,
+        "precision": 13.01
+      },
+      "900": {
+        "hits": 31,
+        "edges": 246,
+        "precision": 12.6
+      }
+    }
+  },
+  "50": {
+    "NB_moment": {
+      "400": {
+        "hits": 131,
+        "edges": 596,
+        "precision": 21.98
+      },
+      "500": {
+        "hits": 106,
+        "edges": 596,
+        "precision": 17.79
+      },
+      "600": {
+        "hits": 78,
+        "edges": 596,
+        "precision": 13.09
+      },
+      "700": {
+        "hits": 60,
+        "edges": 596,
+        "precision": 10.07
+      },
+      "800": {
+        "hits": 48,
+        "edges": 596,
+        "precision": 8.05
+      },
+      "900": {
+        "hits": 42,
+        "edges": 596,
+        "precision": 7.05
+      }
+    },
+    "Fisher_z": {
+      "400": {
+        "hits": 153,
+        "edges": 670,
+        "precision": 22.84
+      },
+      "500": {
+        "hits": 121,
+        "edges": 670,
+        "precision": 18.06
+      },
+      "600": {
+        "hits": 87,
+        "edges": 670,
+        "precision": 12.99
+      },
+      "700": {
+        "hits": 63,
+        "edges": 670,
+        "precision": 9.4
+      },
+      "800": {
+        "hits": 49,
+        "edges": 670,
+        "precision": 7.31
+      },
+      "900": {
+        "hits": 42,
+        "edges": 670,
+        "precision": 6.27
+      }
+    }
+  },
+  "100": {
+    "NB_moment": {
+      "400": {
+        "hits": 271,
+        "edges": 1379,
+        "precision": 19.65
+      },
+      "500": {
+        "hits": 199,
+        "edges": 1379,
+        "precision": 14.43
+      },
+      "600": {
+        "hits": 143,
+        "edges": 1379,
+        "precision": 10.37
+      },
+      "700": {
+        "hits": 103,
+        "edges": 1379,
+        "precision": 7.47
+      },
+      "800": {
+        "hits": 85,
+        "edges": 1379,
+        "precision": 6.16
+      },
+      "900": {
+        "hits": 71,
+        "edges": 1379,
+        "precision": 5.15
+      }
+    },
+    "Fisher_z": {
+      "400": {
+        "hits": 334,
+        "edges": 2084,
+        "precision": 16.03
+      },
+      "500": {
+        "hits": 247,
+        "edges": 2084,
+        "precision": 11.85
+      },
+      "600": {
+        "hits": 175,
+        "edges": 2084,
+        "precision": 8.4
+      },
+      "700": {
+        "hits": 124,
+        "edges": 2084,
+        "precision": 5.95
+      },
+      "800": {
+        "hits": 96,
+        "edges": 2084,
+        "precision": 4.61
+      },
+      "900": {
+        "hits": 79,
+        "edges": 2084,
+        "precision": 3.79
+      }
+    }
+  }
+}

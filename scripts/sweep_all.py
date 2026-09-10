@@ -36,8 +36,8 @@ ranked_idx = np.argsort(variances)[::-1]  # descending
 # ============================================================
 # STRING/TRRUST loader (once)
 # ============================================================
-alias_path = r'config.get_path("string_aliases")'
-ppi_path = r'config.get_path("string_ppi")'
+alias_path = config.resolve('string_aliases', 'SC_CAUSAL_STRING_ALIASES')
+ppi_path = config.resolve('string_ppi', 'SC_CAUSAL_STRING_PPI')
 
 symbol2string = {}
 with gzip.open(alias_path, 'rt', encoding='utf-8', errors='ignore') as f:
@@ -61,7 +61,7 @@ with gzip.open(ppi_path, 'rt', encoding='utf-8', errors='ignore') as f:
 print(f'STRING: {len(ppi_set)//1000}K HC pairs loaded')
 
 trrust_pairs = set()
-with open(r'config.get_path("trrust")') as f:
+with open(config.resolve('trrust', 'SC_CAUSAL_TRRUST')) as f:
     for line in f:
         p = line.strip().split('\t')
         if len(p) >= 2:

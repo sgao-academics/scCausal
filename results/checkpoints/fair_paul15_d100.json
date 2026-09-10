@@ -1,0 +1,33 @@
+{
+  "NB_moment": {
+    "edges": 3432,
+    "hits": 261,
+    "precision": 7.6,
+    "time_s": 161.2
+  },
+  "NB_fixed": {
+    "edges": 3297,
+    "hits": 258,
+    "precision": 7.83,
+    "time_s": 189.5
+  },
+  "Fisher_z": {
+    "edges": 3885,
+    "hits": 286,
+    "precision": 7.36,
+    "time_s": 8.6
+  },
+  "meta": {
+    "d": 100,
+    "n": 2730,
+    "alpha_hat": 0.6481,
+    "tau": 0.1,
+    "fair": true,
+    "name": "Paul15",
+    "string_fp": {
+      "path": "10090.string_ppi_full.txt.gz",
+      "size": 70223084,
+      "mtime": 1788678221
+    }
+  }
+}

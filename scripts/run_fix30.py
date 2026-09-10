@@ -149,8 +149,8 @@ print("\n" + "=" * 60)
 print("EXPERIMENT 2: STRING multi-threshold validation")
 print("=" * 60)
 
-ALIAS = r'config.get_path("string_aliases")'
-PPI = r'config.get_path("string_ppi")'
+ALIAS = config.resolve('string_aliases', 'SC_CAUSAL_STRING_ALIASES')
+PPI = config.resolve('string_ppi', 'SC_CAUSAL_STRING_PPI')
 
 # Load existing NB-LR edge results from a working checkpoint
 # Use the _libsize_main_ckpt.json (it has d=30 results with gene list)

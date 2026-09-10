@@ -1,0 +1,24 @@
+{
+  "dispersion": {
+    "median": 1.0,
+    "q1": 1.0,
+    "q3": 1.0,
+    "n_genes": 30
+  },
+  "sim30_d30": {
+    "nb_f1_mean": 0.252,
+    "nb_f1_std": 0.058,
+    "fz_f1_mean": 0.318,
+    "fz_f1_std": 0.123,
+    "nb_wins": 7,
+    "total_seeds": 30
+  },
+  "sim30_d50": {
+    "nb_f1_mean": 0.306,
+    "nb_f1_std": 0.071,
+    "fz_f1_mean": 0.354,
+    "fz_f1_std": 0.099,
+    "nb_wins": 6,
+    "total_seeds": 30
+  }
+}

@@ -1,8 +1,8 @@
 """
 scCausal two-stage: MSE discovers skeleton, NB refines edge weights.
 Novel contribution: two-stage causal discovery for count data.
-Stage 1: MSE + matrix_exp → find which edges exist
-Stage 2: NB loss → adjust edge weights to match count distribution
+Stage 1: MSE + matrix_exp -> find which edges exist
+Stage 2: NB loss -> adjust edge weights to match count distribution
 """
 import torch
 import torch.nn as nn

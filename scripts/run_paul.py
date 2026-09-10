@@ -1,5 +1,5 @@
 import config  # scCausal data path configuration
-"""Paul15 hematopoietic differentiation data — cross-tissue validation."""
+"""Paul15 hematopoietic differentiation data -- cross-tissue validation."""
 import sys, os, json, time, gzip, numpy as np
 import scanpy as sc
 from scipy.stats import chi2
@@ -7,8 +7,8 @@ from statsmodels.genmod.families import NegativeBinomial
 import statsmodels.api as sm
 
 CKPT = os.path.join(os.path.dirname(__file__), '..', 'results', '_paul_ckpt.json')
-ALIAS = r'config.get_path("string_aliases")'
-PPI = r'config.get_path("string_ppi")'
+ALIAS = config.resolve('string_aliases', 'SC_CAUSAL_STRING_ALIASES')
+PPI = config.resolve('string_ppi', 'SC_CAUSAL_STRING_PPI')
 
 def load_string():
     s2s = {}
@@ -38,28 +38,38 @@ def validate(edges, genes, s2s, ppi):
             hits += 1
     return hits
 
-def nb_lr(X, i, j, cond):
+def estimate_alpha_moment(X):
+    """NB2 dispersion via the method of moments: Var = mu + alpha*mu^2."""
+    mu = X.mean(axis=0); var = X.var(axis=0)
+    valid = mu > 0
+    alphas = (var[valid] - mu[valid]) / np.maximum(mu[valid] ** 2, 1e-8)
+    alphas = np.clip(alphas, 1e-4, None)
+    return float(np.median(alphas))
+
+def nb_lr(X, i, j, cond, alpha=None):
     y = X[:, j]
     Xc = X[:, list(cond)] if len(cond) > 0 else None
     Xn = sm.add_constant(Xc) if Xc is not None and Xc.shape[1] > 0 else np.ones((len(y), 1))
     try:
-        m0 = sm.GLM(y, Xn, family=NegativeBinomial()).fit(maxiter=50, disp=0)
+        fam = NegativeBinomial(alpha=alpha) if alpha is not None else NegativeBinomial()
+        m0 = sm.GLM(y, Xn, family=fam).fit(maxiter=50, disp=0)
         ll0 = m0.llf if m0.llf is not None else -1e9
     except: return 1.0
     Xa = np.column_stack([Xn, X[:, i]]) if Xc is not None else np.column_stack([np.ones((len(y), 1)), X[:, i]])
     try:
-        m1 = sm.GLM(y, Xa, family=NegativeBinomial()).fit(maxiter=50, disp=0)
+        m1 = sm.GLM(y, Xa, family=fam).fit(maxiter=50, disp=0)
         ll1 = m1.llf if m1.llf is not None else -1e9
     except: return 1.0
     return 1 - chi2.cdf(max(2*(ll1-ll0), 0), 1)
 
-def pc_skeleton(X, genes, d, alpha=0.05, tau=0.10):
+def pc_skeleton(X, genes, d, alpha=0.05, tau=0.10, use_moment=True):
+    alpha_est = estimate_alpha_moment(X[:, :d]) if use_moment else None
     corr = np.corrcoef(np.log1p(X).T)
     edges = {(i, j) for i in range(d) for j in range(i+1, d) if abs(corr[i, j]) > tau}
     # Marginal
     new_e = set()
     for (i, j) in edges:
-        if nb_lr(X, i, j, []) < alpha: new_e.add((i, j))
+        if nb_lr(X, i, j, [], alpha=alpha_est) < alpha: new_e.add((i, j))
     edges = new_e
     # 1st-order
     removed = set()
@@ -71,12 +81,12 @@ def pc_skeleton(X, genes, d, alpha=0.05, tau=0.10):
             if a == j and b != i: nb_j.add(b)
             elif b == j and a != i: nb_j.add(a)
         for k in list(nb_i & nb_j)[:5]:
-            if nb_lr(X, i, j, [k]) >= alpha:
+            if nb_lr(X, i, j, [k], alpha=alpha_est) >= alpha:
                 removed.add((i, j)); break
     return sorted(edges - removed)
 
 print("Loading Paul15 (hematopoietic differentiation)...")
-adata = sc.read_h5ad(r'config.get_path("paul15")')
+adata = sc.read_h5ad(config.resolve('paul15', 'SC_CAUSAL_PAUL15'))
 X_all = adata.X.toarray() if hasattr(adata.X, 'toarray') else np.array(adata.X, dtype=np.float32)
 all_genes = list(adata.var_names.astype(str))
 print(f"  {X_all.shape[0]} cells x {X_all.shape[1]} genes")

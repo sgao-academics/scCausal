@@ -1,0 +1,85 @@
+{
+  "universe_size": 30,
+  "validated_genes": [
+    "ACTB",
+    "B2M",
+    "CD74",
+    "FTH1",
+    "FTL",
+    "GNLY",
+    "HLA-DPA1",
+    "HLA-DPB1",
+    "HLA-DRA",
+    "HLA-DRB1",
+    "MT-CO1",
+    "MT-CO2",
+    "NKG7",
+    "RPL13",
+    "RPL8",
+    "RPS27A",
+    "RPS3A",
+    "RPS4X",
+    "RPS5",
+    "S100A4",
+    "S100A6",
+    "S100A8",
+    "S100A9"
+  ],
+  "categories": {
+    "HLA / MHC-II": {
+      "total_in_cat": 6,
+      "found": 6,
+      "found_genes": [
+        "B2M",
+        "CD74",
+        "HLA-DRA",
+        "HLA-DPB1",
+        "HLA-DPA1",
+        "HLA-DRB1"
+      ],
+      "pct": 100.0
+    },
+    "Ribosomal": {
+      "total_in_cat": 6,
+      "found": 6,
+      "found_genes": [
+        "RPL13",
+        "RPS4X",
+        "RPS3A",
+        "RPS27A",
+        "RPS5",
+        "RPL8"
+      ],
+      "pct": 100.0
+    },
+    "S100 / Calcium": {
+      "total_in_cat": 4,
+      "found": 4,
+      "found_genes": [
+        "S100A9",
+        "S100A4",
+        "S100A8",
+        "S100A6"
+      ],
+      "pct": 100.0
+    },
+    "Mitochondrial": {
+      "total_in_cat": 2,
+      "found": 2,
+      "found_genes": [
+        "MT-CO1",
+        "MT-CO2"
+      ],
+      "pct": 100.0
+    },
+    "Immune effectors": {
+      "total_in_cat": 4,
+      "found": 2,
+      "found_genes": [
+        "NKG7",
+        "GNLY"
+      ],
+      "pct": 50.0
+    }
+  }
+}

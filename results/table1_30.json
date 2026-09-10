@@ -1,0 +1,28 @@
+{
+  "scCausal_NBLR_moment": {
+    "edges": 241,
+    "string_hits": 34,
+    "precision": 14.11,
+    "time_s": 16.5
+  },
+  "scCausal_NBLR_fixed": {
+    "edges": 255,
+    "string_hits": 34,
+    "precision": 13.33,
+    "time_s": 17.0
+  },
+  "Fisher_z": {
+    "edges": 246,
+    "string_hits": 34,
+    "precision": 13.82,
+    "time_s": 0.4
+  },
+  "meta": {
+    "d": 30,
+    "n": 2700,
+    "zero_pct": 26.7,
+    "alpha_hat": 2.3967,
+    "tau": 0.1,
+    "fair": true
+  }
+}

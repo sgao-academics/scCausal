@@ -1,0 +1,12 @@
+{
+  "alpha_sig": 0.1,
+  "tau": 0.1,
+  "d": 30,
+  "nb_edges": 246,
+  "nb_hits": 34,
+  "nb_precision": 13.82,
+  "fz_edges": 258,
+  "fz_hits": 34,
+  "fz_precision": 13.18,
+  "time_s": 16.6
+}

@@ -1,4 +1,4 @@
-"""Fig 1: Pipeline schematic — TikZ compilation + PNG conversion."""
+"""Fig 1: Pipeline schematic -- TikZ compilation + PNG conversion."""
 import subprocess, os, sys
 
 FIG_DIR = os.path.join(os.path.dirname(__file__), '..', '..', 'figures')
@@ -12,24 +12,36 @@ for _ in range(2):
         capture_output=True, cwd=FIG_DIR
     )
 
-# Convert PDF -> PNG via pdf2image (fallback: skip)
-try:
-    from pdf2image import convert_from_path
-    images = convert_from_path(
-        os.path.join(FIG_DIR, 'fig1_pipeline.pdf'), dpi=300
-    )
-    images[0].save(os.path.join(FIG_DIR, 'fig1_pipeline.png'), 'PNG')
-    print("PNG converted (pdf2image)")
-except ImportError:
+# Convert PDF -> PNG for the PNG preview only; the manuscript embeds the PDF.
+PDF = os.path.join(FIG_DIR, 'fig1_pipeline.pdf')
+PNG = os.path.join(FIG_DIR, 'fig1_pipeline.png')
+
+
+def pdf_to_png():
+    """Try PyMuPDF, then pdf2image/poppler, then ghostscript."""
     try:
-        subprocess.run([
-            'gswin64c', '-dNOPAUSE', '-dBATCH', '-sDEVICE=png16m',
-            '-r300', f'-sOutputFile={os.path.join(FIG_DIR, "fig1_pipeline.png")}',
-            os.path.join(FIG_DIR, 'fig1_pipeline.pdf')
-        ], capture_output=True, timeout=30)
-        print("PNG converted (ghostscript)")
+        import fitz
+        doc = fitz.open(PDF)
+        doc[0].get_pixmap(dpi=300).save(PNG)
+        doc.close()
+        return 'pymupdf'
     except Exception:
-        print("PNG not converted (install pdf2image or ghostscript)")
+        pass
+    try:
+        from pdf2image import convert_from_path
+        convert_from_path(PDF, dpi=300)[0].save(PNG, 'PNG')
+        return 'pdf2image'
+    except Exception as exc:
+        try:
+            subprocess.run(['gswin64c', '-dNOPAUSE', '-dBATCH', '-sDEVICE=png16m',
+                            '-r300', '-sOutputFile=%s' % PNG, PDF],
+                           capture_output=True, timeout=60)
+            return 'ghostscript'
+        except Exception:
+            return 'skipped (%s)' % exc
+
+
+print("PNG:", pdf_to_png())
 
 # Clean aux files
 for ext in ['.aux', '.log']:
@@ -37,4 +49,4 @@ for ext in ['.aux', '.log']:
     if os.path.exists(f):
         os.remove(f)
 
-print("Fig 1 done — TikZ pipeline schematic")
+print("Fig 1 done -- TikZ pipeline schematic")

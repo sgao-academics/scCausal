@@ -1,0 +1,459 @@
+{
+  "n_cell_lines": 1208,
+  "n_genes_depmap": 18531,
+  "edges_tested": 49,
+  "n_significant": 15,
+  "sig_pct": 30.6,
+  "background_rate_pct": 27.12,
+  "fisher_OR": 1.18558042686101,
+  "fisher_p": 0.3417844265287739,
+  "missing_genes": [
+    "H3F3B",
+    "MT-CO1",
+    "MT-CO2",
+    "MT-CYB"
+  ],
+  "all_edges": [
+    {
+      "pair": [
+        "RPL13",
+        "RPL8"
+      ],
+      "r": 0.1827,
+      "p": 1.569523467266976e-10,
+      "significant": true
+    },
+    {
+      "pair": [
+        "RPS27A",
+        "RPL8"
+      ],
+      "r": 0.1176,
+      "p": 4.155189663749921e-05,
+      "significant": true
+    },
+    {
+      "pair": [
+        "ACTB",
+        "ARPC1B"
+      ],
+      "r": 0.1175,
+      "p": 4.272641787716153e-05,
+      "significant": true
+    },
+    {
+      "pair": [
+        "RPL13",
+        "RPS5"
+      ],
+      "r": 0.1175,
+      "p": 4.2729488363763705e-05,
+      "significant": true
+    },
+    {
+      "pair": [
+        "GNLY",
+        "GZMB"
+      ],
+      "r": 0.1142,
+      "p": 6.911925834291717e-05,
+      "significant": true
+    },
+    {
+      "pair": [
+        "TYROBP",
+        "LST1"
+      ],
+      "r": 0.1054,
+      "p": 0.0002411770525441619,
+      "significant": true
+    },
+    {
+      "pair": [
+        "RPS4X",
+        "RPS27A"
+      ],
+      "r": 0.1022,
+      "p": 0.00037531798965267487,
+      "significant": true
+    },
+    {
+      "pair": [
+        "S100A9",
+        "S100A8"
+      ],
+      "r": 0.0996,
+      "p": 0.0005298207814039312,
+      "significant": true
+    },
+    {
+      "pair": [
+        "RPS27A",
+        "RPS5"
+      ],
+      "r": 0.099,
+      "p": 0.0005696843998230278,
+      "significant": true
+    },
+    {
+      "pair": [
+        "LST1",
+        "AIF1"
+      ],
+      "r": 0.0908,
+      "p": 0.0015873308243658105,
+      "significant": true
+    },
+    {
+      "pair": [
+        "AIF1",
+        "FCER1G"
+      ],
+      "r": 0.0863,
+      "p": 0.002678289410542646,
+      "significant": true
+    },
+    {
+      "pair": [
+        "S100A4",
+        "S100A6"
+      ],
+      "r": 0.0839,
+      "p": 0.0035049594534908,
+      "significant": true
+    },
+    {
+      "pair": [
+        "RPS5",
+        "RPL8"
+      ],
+      "r": 0.0729,
+      "p": 0.011236376567286164,
+      "significant": true
+    },
+    {
+      "pair": [
+        "RPL13",
+        "RPS27A"
+      ],
+      "r": 0.0726,
+      "p": 0.011591820165724458,
+      "significant": true
+    },
+    {
+      "pair": [
+        "S100A6",
+        "S100A11"
+      ],
+      "r": 0.0684,
+      "p": 0.017499718152483107,
+      "significant": true
+    },
+    {
+      "pair": [
+        "CST3",
+        "CTSS"
+      ],
+      "r": -0.0524,
+      "p": 0.06856553078530066,
+      "significant": false
+    },
+    {
+      "pair": [
+        "TYROBP",
+        "AIF1"
+      ],
+      "r": -0.0481,
+      "p": 0.0949587595575724,
+      "significant": false
+    },
+    {
+      "pair": [
+        "HLA-DPB1",
+        "HLA-DPA1"
+      ],
+      "r": 0.0467,
+      "p": 0.10446505531333121,
+      "significant": false
+    },
+    {
+      "pair": [
+        "CD74",
+        "CCL5"
+      ],
+      "r": -0.0462,
+      "p": 0.10845223039467405,
+      "significant": false
+    },
+    {
+      "pair": [
+        "CD74",
+        "HLA-DRB1"
+      ],
+      "r": 0.0446,
+      "p": 0.12112413125956581,
+      "significant": false
+    },
+    {
+      "pair": [
+        "CD74",
+        "RPS5"
+      ],
+      "r": 0.0444,
+      "p": 0.1228009217628829,
+      "significant": false
+    },
+    {
+      "pair": [
+        "NKG7",
+        "GNLY"
+      ],
+      "r": -0.0436,
+      "p": 0.12969188823670244,
+      "significant": false
+    },
+    {
+      "pair": [
+        "CD74",
+        "HLA-DPA1"
+      ],
+      "r": -0.0422,
+      "p": 0.14223122863822785,
+      "significant": false
+    },
+    {
+      "pair": [
+        "HLA-DRA",
+        "HLA-DPA1"
+      ],
+      "r": 0.0422,
+      "p": 0.14305400615537123,
+      "significant": false
+    },
+    {
+      "pair": [
+        "NKG7",
+        "CCL5"
+      ],
+      "r": 0.0364,
+      "p": 0.2056696187971086,
+      "significant": false
+    },
+    {
+      "pair": [
+        "S100A8",
+        "S100A6"
+      ],
+      "r": 0.0361,
+      "p": 0.20972592360465162,
+      "significant": false
+    },
+    {
+      "pair": [
+        "HLA-DRA",
+        "CTSS"
+      ],
+      "r": 0.0323,
+      "p": 0.26174945517567977,
+      "significant": false
+    },
+    {
+      "pair": [
+        "RPS4X",
+        "RPS5"
+      ],
+      "r": 0.0309,
+      "p": 0.28333223049987966,
+      "significant": false
+    },
+    {
+      "pair": [
+        "CD74",
+        "RPL8"
+      ],
+      "r": 0.0288,
+      "p": 0.3175134244384867,
+      "significant": false
+    },
+    {
+      "pair": [
+        "B2M",
+        "ACTB"
+      ],
+      "r": -0.0264,
+      "p": 0.35921091900696617,
+      "significant": false
+    },
+    {
+      "pair": [
+        "S100A4",
+        "LGALS1"
+      ],
+      "r": 0.0239,
+      "p": 0.4066885369574996,
+      "significant": false
+    },
+    {
+      "pair": [
+        "HLA-DPB1",
+        "HLA-DRB1"
+      ],
+      "r": 0.0238,
+      "p": 0.408515175645118,
+      "significant": false
+    },
+    {
+      "pair": [
+        "CD74",
+        "HLA-DRA"
+      ],
+      "r": 0.0237,
+      "p": 0.41064130210332256,
+      "significant": false
+    },
+    {
+      "pair": [
+        "CD74",
+        "HLA-DPB1"
+      ],
+      "r": -0.0237,
+      "p": 0.4113891961749614,
+      "significant": false
+    },
+    {
+      "pair": [
+        "GZMB",
+        "SRGN"
+      ],
+      "r": -0.0207,
+      "p": 0.4731961481643036,
+      "significant": false
+    },
+    {
+      "pair": [
+        "HLA-DRA",
+        "HLA-DPB1"
+      ],
+      "r": 0.0198,
+      "p": 0.49187530858583006,
+      "significant": false
+    },
+    {
+      "pair": [
+        "CCL5",
+        "PPBP"
+      ],
+      "r": 0.0195,
+      "p": 0.4975261322753354,
+      "significant": false
+    },
+    {
+      "pair": [
+        "TYROBP",
+        "FCER1G"
+      ],
+      "r": -0.0195,
+      "p": 0.499295203855921,
+      "significant": false
+    },
+    {
+      "pair": [
+        "CCL5",
+        "IL32"
+      ],
+      "r": -0.019,
+      "p": 0.5087936934364121,
+      "significant": false
+    },
+    {
+      "pair": [
+        "TYROBP",
+        "CTSS"
+      ],
+      "r": 0.0188,
+      "p": 0.5140519539411709,
+      "significant": false
+    },
+    {
+      "pair": [
+        "RPL13",
+        "RPS4X"
+      ],
+      "r": 0.0132,
+      "p": 0.6475647891630185,
+      "significant": false
+    },
+    {
+      "pair": [
+        "NKG7",
+        "GZMB"
+      ],
+      "r": 0.0129,
+      "p": 0.6544224649296432,
+      "significant": false
+    },
+    {
+      "pair": [
+        "GNLY",
+        "CCL5"
+      ],
+      "r": -0.0101,
+      "p": 0.726822149550891,
+      "significant": false
+    },
+    {
+      "pair": [
+        "CD74",
+        "CTSS"
+      ],
+      "r": -0.0098,
+      "p": 0.7344843535772965,
+      "significant": false
+    },
+    {
+      "pair": [
+        "HLA-DPA1",
+        "HLA-DRB1"
+      ],
+      "r": 0.0057,
+      "p": 0.8428095243833678,
+      "significant": false
+    },
+    {
+      "pair": [
+        "CCL5",
+        "GZMB"
+      ],
+      "r": -0.0055,
+      "p": 0.8483339426919202,
+      "significant": false
+    },
+    {
+      "pair": [
+        "HLA-DRA",
+        "HLA-DRB1"
+      ],
+      "r": -0.0054,
+      "p": 0.8509135912224642,
+      "significant": false
+    },
+    {
+      "pair": [
+        "RPS4X",
+        "RPL8"
+      ],
+      "r": 0.0037,
+      "p": 0.8977596478584314,
+      "significant": false
+    },
+    {
+      "pair": [
+        "ACTB",
+        "AIF1"
+      ],
+      "r": 0.0003,
+      "p": 0.9929504871163692,
+      "significant": false
+    }
+  ]
+}

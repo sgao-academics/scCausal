@@ -1,0 +1,30 @@
+{
+  "30": {
+    "edges": 226,
+    "string_hits": 27,
+    "string_pct": 11.9,
+    "time_s": 16,
+    "with_libsize_offset": true
+  },
+  "50": {
+    "edges": 579,
+    "string_hits": 51,
+    "string_pct": 8.8,
+    "time_s": 42,
+    "with_libsize_offset": true
+  },
+  "100": {
+    "edges": 1372,
+    "string_hits": 88,
+    "string_pct": 6.4,
+    "time_s": 104,
+    "with_libsize_offset": true
+  },
+  "200": {
+    "edges": 2376,
+    "string_hits": 140,
+    "string_pct": 5.9,
+    "time_s": 199,
+    "with_libsize_offset": true
+  }
+}

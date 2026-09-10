@@ -16,8 +16,8 @@ X_raw = np.array(adata.X.todense() if hasattr(adata.X,'todense') else adata.X, d
 all_genes = list(adata.var_names.astype(str))
 
 # STRING + TRRUST
-alias_path = r'config.get_path("string_aliases")'
-ppi_path = r'config.get_path("string_ppi")'
+alias_path = config.resolve('string_aliases', 'SC_CAUSAL_STRING_ALIASES')
+ppi_path = config.resolve('string_ppi', 'SC_CAUSAL_STRING_PPI')
 sym2str = {}
 with gzip.open(alias_path,'rt',encoding='utf-8',errors='ignore') as f:
     for l in f:
@@ -34,7 +34,7 @@ with gzip.open(ppi_path,'rt',encoding='utf-8',errors='ignore') as f:
         except:pass
 
 trrust_pairs = set()
-trrust_path = r'config.get_path("trrust")'
+trrust_path = config.resolve('trrust', 'SC_CAUSAL_TRRUST')
 with open(trrust_path) as f:
     for line in f:
         p=line.strip().split('\t')

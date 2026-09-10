@@ -1,0 +1,317 @@
+{
+  "d_list": [
+    30
+  ],
+  "tau": 0.1,
+  "min_cells": 60,
+  "types": {
+    "10GMP": {
+      "n_cells": 153,
+      "d30": {
+        "alpha_hat": 0.3627,
+        "NB_moment": {
+          "edges": 124,
+          "hits": 19,
+          "precision": 15.32
+        },
+        "NB_fixed": {
+          "edges": 37,
+          "hits": 6,
+          "precision": 16.22
+        },
+        "Fisher_z": {
+          "edges": 222,
+          "hits": 24,
+          "precision": 10.81
+        },
+        "delta_moment_fisher": 4.51
+      }
+    },
+    "12Baso": {
+      "n_cells": 69,
+      "d30": {
+        "alpha_hat": 0.3946,
+        "NB_moment": {
+          "edges": 49,
+          "hits": 8,
+          "precision": 16.33
+        },
+        "NB_fixed": {
+          "edges": 18,
+          "hits": 3,
+          "precision": 16.67
+        },
+        "Fisher_z": {
+          "edges": 113,
+          "hits": 17,
+          "precision": 15.04
+        },
+        "delta_moment_fisher": 1.29
+      }
+    },
+    "13Baso": {
+      "n_cells": 300,
+      "d30": {
+        "alpha_hat": 0.2874,
+        "NB_moment": {
+          "edges": 274,
+          "hits": 33,
+          "precision": 12.04
+        },
+        "NB_fixed": {
+          "edges": 179,
+          "hits": 29,
+          "precision": 16.2
+        },
+        "Fisher_z": {
+          "edges": 321,
+          "hits": 36,
+          "precision": 11.21
+        },
+        "delta_moment_fisher": 0.83
+      }
+    },
+    "14Mo": {
+      "n_cells": 373,
+      "d30": {
+        "alpha_hat": 0.2388,
+        "NB_moment": {
+          "edges": 268,
+          "hits": 34,
+          "precision": 12.69
+        },
+        "NB_fixed": {
+          "edges": 119,
+          "hits": 19,
+          "precision": 15.97
+        },
+        "Fisher_z": {
+          "edges": 308,
+          "hits": 35,
+          "precision": 11.36
+        },
+        "delta_moment_fisher": 1.33
+      }
+    },
+    "15Mo": {
+      "n_cells": 186,
+      "d30": {
+        "alpha_hat": 0.2305,
+        "NB_moment": {
+          "edges": 199,
+          "hits": 27,
+          "precision": 13.57
+        },
+        "NB_fixed": {
+          "edges": 39,
+          "hits": 9,
+          "precision": 23.08
+        },
+        "Fisher_z": {
+          "edges": 257,
+          "hits": 33,
+          "precision": 12.84
+        },
+        "delta_moment_fisher": 0.73
+      }
+    },
+    "16Neu": {
+      "n_cells": 164,
+      "d30": {
+        "alpha_hat": 0.1362,
+        "NB_moment": {
+          "edges": 166,
+          "hits": 27,
+          "precision": 16.27
+        },
+        "NB_fixed": {
+          "edges": 29,
+          "hits": 4,
+          "precision": 13.79
+        },
+        "Fisher_z": {
+          "edges": 158,
+          "hits": 25,
+          "precision": 15.82
+        },
+        "delta_moment_fisher": 0.45
+      }
+    },
+    "2Ery": {
+      "n_cells": 329,
+      "d30": {
+        "alpha_hat": 0.1424,
+        "NB_moment": {
+          "edges": 317,
+          "hits": 31,
+          "precision": 9.78
+        },
+        "NB_fixed": {
+          "edges": 109,
+          "hits": 22,
+          "precision": 20.18
+        },
+        "Fisher_z": {
+          "edges": 310,
+          "hits": 30,
+          "precision": 9.68
+        },
+        "delta_moment_fisher": 0.1
+      }
+    },
+    "3Ery": {
+      "n_cells": 246,
+      "d30": {
+        "alpha_hat": 0.2225,
+        "NB_moment": {
+          "edges": 303,
+          "hits": 31,
+          "precision": 10.23
+        },
+        "NB_fixed": {
+          "edges": 230,
+          "hits": 30,
+          "precision": 13.04
+        },
+        "Fisher_z": {
+          "edges": 334,
+          "hits": 31,
+          "precision": 9.28
+        },
+        "delta_moment_fisher": 0.95
+      }
+    },
+    "4Ery": {
+      "n_cells": 124,
+      "d30": {
+        "alpha_hat": 0.1561,
+        "NB_moment": {
+          "edges": 201,
+          "hits": 27,
+          "precision": 13.43
+        },
+        "NB_fixed": {
+          "edges": 6,
+          "hits": 2,
+          "precision": 33.33
+        },
+        "Fisher_z": {
+          "edges": 261,
+          "hits": 28,
+          "precision": 10.73
+        },
+        "delta_moment_fisher": 2.7
+      }
+    },
+    "5Ery": {
+      "n_cells": 180,
+      "d30": {
+        "alpha_hat": 0.2289,
+        "NB_moment": {
+          "edges": 235,
+          "hits": 27,
+          "precision": 11.49
+        },
+        "NB_fixed": {
+          "edges": 42,
+          "hits": 6,
+          "precision": 14.29
+        },
+        "Fisher_z": {
+          "edges": 276,
+          "hits": 28,
+          "precision": 10.14
+        },
+        "delta_moment_fisher": 1.35
+      }
+    },
+    "6Ery": {
+      "n_cells": 173,
+      "d30": {
+        "alpha_hat": 0.4326,
+        "NB_moment": {
+          "edges": 117,
+          "hits": 19,
+          "precision": 16.24
+        },
+        "NB_fixed": {
+          "edges": 46,
+          "hits": 8,
+          "precision": 17.39
+        },
+        "Fisher_z": {
+          "edges": 249,
+          "hits": 28,
+          "precision": 11.24
+        },
+        "delta_moment_fisher": 5.0
+      }
+    },
+    "7MEP": {
+      "n_cells": 167,
+      "d30": {
+        "alpha_hat": 0.3601,
+        "NB_moment": {
+          "edges": 71,
+          "hits": 17,
+          "precision": 23.94
+        },
+        "NB_fixed": {
+          "edges": 17,
+          "hits": 3,
+          "precision": 17.65
+        },
+        "Fisher_z": {
+          "edges": 116,
+          "hits": 16,
+          "precision": 13.79
+        },
+        "delta_moment_fisher": 10.15
+      }
+    },
+    "8Mk": {
+      "n_cells": 68,
+      "d30": {
+        "alpha_hat": 0.531,
+        "NB_moment": {
+          "edges": 32,
+          "hits": 5,
+          "precision": 15.62
+        },
+        "NB_fixed": {
+          "edges": 7,
+          "hits": 2,
+          "precision": 28.57
+        },
+        "Fisher_z": {
+          "edges": 92,
+          "hits": 10,
+          "precision": 10.87
+        },
+        "delta_moment_fisher": 4.75
+      }
+    },
+    "9GMP": {
+      "n_cells": 63,
+      "d30": {
+        "alpha_hat": 0.3899,
+        "NB_moment": {
+          "edges": 43,
+          "hits": 7,
+          "precision": 16.28
+        },
+        "NB_fixed": {
+          "edges": 4,
+          "hits": 1,
+          "precision": 25.0
+        },
+        "Fisher_z": {
+          "edges": 109,
+          "hits": 19,
+          "precision": 17.43
+        },
+        "delta_moment_fisher": -1.15
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "alpha_hat": 0.9434,
+  "NB_moment": {
+    "edges": 1100,
+    "hits": 84,
+    "precision": 7.64
+  },
+  "NB_fixed": {
+    "edges": 1080,
+    "hits": 83,
+    "precision": 7.69
+  },
+  "Fisher_z": {
+    "edges": 1556,
+    "hits": 100,
+    "precision": 6.43
+  },
+  "delta_moment_fisher": 1.21
+}

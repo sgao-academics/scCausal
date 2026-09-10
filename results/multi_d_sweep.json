@@ -1,0 +1,94 @@
+{
+  "d_100": {
+    "d": 100,
+    "rank": 16,
+    "sparsity": 48.949629629629634,
+    "n_genes": 100,
+    "scCausal": {
+      "edges": 258,
+      "time": 15.747322082519531,
+      "STRING": 43,
+      "STRING%": 16.666666666666664,
+      "TRRUST": 0,
+      "TRRUST%": 0.0
+    },
+    "NOTEARS": {
+      "edges": 246,
+      "time": 12.634636878967285,
+      "STRING": 47,
+      "STRING%": 19.10569105691057,
+      "TRRUST": 0,
+      "TRRUST%": 0.0
+    },
+    "delta_STRING": -4
+  },
+  "d_200": {
+    "d": 200,
+    "rank": 16,
+    "sparsity": 62.257407407407406,
+    "n_genes": 200,
+    "scCausal": {
+      "edges": 387,
+      "time": 11.687503099441528,
+      "STRING": 46,
+      "STRING%": 11.886304909560723,
+      "TRRUST": 0,
+      "TRRUST%": 0.0
+    },
+    "NOTEARS": {
+      "edges": 418,
+      "time": 12.116630792617798,
+      "STRING": 56,
+      "STRING%": 13.397129186602871,
+      "TRRUST": 0,
+      "TRRUST%": 0.0
+    },
+    "delta_STRING": -10
+  },
+  "d_300": {
+    "d": 300,
+    "rank": 16,
+    "sparsity": 69.25024691358026,
+    "n_genes": 300,
+    "scCausal": {
+      "edges": 479,
+      "time": 13.578158140182495,
+      "STRING": 43,
+      "STRING%": 8.977035490605429,
+      "TRRUST": 0,
+      "TRRUST%": 0.0
+    },
+    "NOTEARS": {
+      "edges": 522,
+      "time": 13.53974461555481,
+      "STRING": 56,
+      "STRING%": 10.727969348659004,
+      "TRRUST": 0,
+      "TRRUST%": 0.0
+    },
+    "delta_STRING": -13
+  },
+  "d_500": {
+    "d": 500,
+    "rank": 16,
+    "sparsity": 77.23214814814816,
+    "n_genes": 500,
+    "scCausal": {
+      "edges": 644,
+      "time": 18.6744966506958,
+      "STRING": 47,
+      "STRING%": 7.298136645962733,
+      "TRRUST": 0,
+      "TRRUST%": 0.0
+    },
+    "NOTEARS": {
+      "edges": 624,
+      "time": 18.075356006622314,
+      "STRING": 58,
+      "STRING%": 9.294871794871796,
+      "TRRUST": 0,
+      "TRRUST%": 0.0
+    },
+    "delta_STRING": -11
+  }
+}

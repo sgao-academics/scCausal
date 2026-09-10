@@ -1,7 +1,20 @@
 """
-Fig 4: Validation & Robustness — 2x2 panel composite.
-All panels contain results NOT duplicated in Fig 2.
+Fig 4: Validation & Robustness -- 2x2 panel composite.
 Colorblind-friendly palette (Paul Tol "bright").
+
+Every panel is read from the FAIR-protocol result files (the same run that
+produces Table 1); nothing is hardcoded.
+
+DATA PROVENANCE
+  (a) functional composition of the STRING-validated d=30 gene set
+      -> results/fair_downstream.json  (key: go_d30)
+  (b) STRING precision vs combined-score threshold (400-900)
+      -> results/fair_downstream.json  (key: threshold)
+  (c) library-size GLM offset ablation
+      -> results/fair_supplementary.json (keys: offset_d*)
+         baseline  -> results/checkpoints/fair_pbmc_d*.json (NB_moment)
+  (d) cross-tissue NB-LR precision, PBMC vs Paul15
+      -> results/checkpoints/fair_{pbmc,paul15}_d*.json (NB_moment)
 """
 import os, json, matplotlib
 matplotlib.use('Agg')
@@ -11,13 +24,11 @@ import numpy as np
 
 FIG_DIR = os.path.join(os.path.dirname(__file__), '..', '..', 'figures')
 RES_DIR = os.path.join(os.path.dirname(__file__), '..', '..', 'results')
+CKPT_DIR = os.path.join(RES_DIR, 'checkpoints')
 os.makedirs(FIG_DIR, exist_ok=True)
 
-# Colorblind-friendly palette
-C = {
-    'nb': '#EE7733', 'fz': '#0077BB', 'pau': '#EE3377', 'gn': '#009988',
-    'bg': '#FFFFFF', 'grid': '#E8E8E8', 'grey': '#BBBBBB',
-}
+C = {'nb': '#EE7733', 'fz': '#0077BB', 'pau': '#EE3377', 'gn': '#009988',
+     'bg': '#FFFFFF', 'grid': '#E8E8E8', 'grey': '#BBBBBB'}
 
 plt.style.use(['science', 'no-latex', 'bright'])
 plt.rcParams.update({
@@ -28,101 +39,132 @@ plt.rcParams.update({
     'axes.edgecolor': '#BDBDBD', 'axes.linewidth': 0.8,
 })
 
-# === LOAD DATA ===
-bp = json.load(open(os.path.join(RES_DIR, '_best_paper_ckpt.json')))
-ek = json.load(open(os.path.join(RES_DIR, '_everything_ckpt.json')))
 
-go_data = bp.get('go_enrich', {})
+def _j(p):
+    with open(os.path.join(RES_DIR, p), encoding='utf-8') as fh:
+        return json.load(fh)
 
-# STRING multi-threshold from _everything_ckpt
-string_thresholds = {}
-for k, v in ek.items():
-    if k.startswith('G_string_'):
-        parts = k.split('_')
-        d_str = parts[2]  # 'd30'
-        t_str = parts[3]  # 't400'
-        d = int(d_str[1:])
-        t = int(t_str[1:])
-        if d not in string_thresholds: string_thresholds[d] = {}
-        string_thresholds[d][t] = v.get('pct', v.get('string_pct', 0))
+
+def _ck(p):
+    with open(os.path.join(CKPT_DIR, p), encoding='utf-8') as fh:
+        return json.load(fh)
+
+
+D = [30, 50, 100, 200]
+ds = _j('fair_downstream.json')
+supp = _j('fair_supplementary.json')
+pbmc = {d: _ck('fair_pbmc_d%d.json' % d) for d in D}
+paul = {d: _ck('fair_paul15_d%d.json' % d) for d in D}
 
 # === FIGURE ===
 fig, axes = plt.subplots(2, 2, figsize=(14, 11))
 fig.patch.set_facecolor(C['bg'])
 
-# (a) GO Functional Enrichment
+# ---- (a) Reactome pathway co-membership enrichment ----
+# Literature-curated, independent of STRING's co-expression channel.
 ax = axes[0, 0]
-go_keys = sorted(go_data.keys(), key=lambda c: go_data[c]['found'], reverse=True)
-found_vals = [go_data[c]['found'] for c in go_keys]
-total_vals = [go_data[c]['total_in_cat'] for c in go_keys]
-pct_vals = [100*go_data[c]['found']/go_data[c]['total_in_cat'] for c in go_keys]
-x = np.arange(len(go_keys))
-ax.bar(x, total_vals, 0.55, color=C['grey'], edgecolor='white', lw=0.5, alpha=0.5, label='Total genes')
-ax.bar(x, found_vals, 0.55, color=C['nb'], edgecolor='white', lw=0.5, label='Found by scCausal')
-for i in range(len(go_keys)):
-    ax.text(i, total_vals[i]+0.12, f'{found_vals[i]}/{total_vals[i]}\n{pct_vals[i]:.0f}%',
+r30, r50 = ds['reactome']['by_d']['30'], ds['reactome']['by_d']['50']
+groups = [f"$d=30$\n({r30['n_edges']} edges,\n{r30['n_genes']} genes)",
+          f"$d=50$\n({r50['n_edges']} edges,\n{r50['n_genes']} genes)"]
+edge_pct = [r30['edge_pct'], r50['edge_pct']]
+bg_pct = [r30['bg_pct'], r50['bg_pct']]
+xg = np.arange(2); wg = 0.34
+ax.bar(xg - wg / 2, edge_pct, wg, color=C['nb'], edgecolor='white', lw=0.5,
+       label='STRING-validated edges')
+ax.bar(xg + wg / 2, bg_pct, wg, color=C['grey'], edgecolor='white', lw=0.5,
+       label='Background (all gene pairs)')
+for i, r in enumerate([r30, r50]):
+    ax.text(i - wg / 2, edge_pct[i] + 1.2, f"{r['edge_pct']:.1f}%",
             ha='center', fontsize=7, fontweight='bold', color=C['nb'])
-short_names = [n.replace('MHC class II','MHC-II').replace('immune effector','immune')[:15] for n in go_keys]
-ax.set_xticks(x); ax.set_xticklabels(short_names, fontsize=7, rotation=20, ha='right')
-ax.set_ylabel('Gene Count'); ax.set_title('(a) GO Enrichment ($d{=}30$, PBMC)', fontweight='bold')
-ax.legend(fontsize=7, framealpha=0.85); ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
+    ax.text(i + wg / 2, bg_pct[i] + 1.2, f"{r['bg_pct']:.1f}%",
+            ha='center', fontsize=7, fontweight='bold', color='#616161')
+    ax.text(i - wg / 2, edge_pct[i] * 0.5,
+            f"OR$\\,={r['odds_ratio']:.2f}$\n$p={r['fisher_p']:.1e}$",
+            ha='center', va='center', fontsize=7.4, fontweight='bold', color='white')
+ax.set_xticks(xg); ax.set_xticklabels(groups, fontsize=7)
+ax.set_ylabel('Pathway co-membership of edge (%)')
+ax.set_title('(a) Reactome co-membership (PBMC)', fontweight='bold')
+ax.legend(fontsize=6.8, framealpha=0.9, loc='upper right')
+ax.set_ylim(0, 122)
+ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
 
-# (b) STRING Multi-Threshold Precision
+# ---- (b) STRING precision vs combined-score threshold ----
 ax = axes[0, 1]
-for d, tdata in sorted(string_thresholds.items()):
-    if d > 100: continue  # d=200+ not in threshold data
-    ts = sorted(tdata.keys())
-    pcts = [tdata[t] for t in ts]
-    marker = 'o' if d==30 else 's' if d==50 else 'D'
-    ms = 8 if d==30 else 7
-    color = C['nb'] if d==30 else C['fz'] if d==50 else C['pau']
-    ax.plot(ts, pcts, marker=marker, color=color, lw=2, ms=ms, label=f'd={d}')
-ax.set_xlabel('STRING Combined Score Threshold'); ax.set_ylabel('Validation Precision (%)')
-ax.set_title('(b) STRING Multi-Threshold (PBMC)', fontweight='bold')
-ax.legend(fontsize=7, framealpha=0.85, title='Dimension', title_fontsize=7)
-ax.invert_xaxis(); ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
-ax.set_ylim(0, 35)
+thr_axis = [400, 500, 600, 700, 800, 900]
+cmap = {30: C['nb'], 50: C['fz'], 100: C['pau']}
+for d in [30, 50, 100]:
+    if str(d) not in ds['threshold']:
+        continue
+    rec = ds['threshold'][str(d)]
+    nb = [rec['NB_moment'][str(t)]['precision'] for t in thr_axis]
+    fz = [rec['Fisher_z'][str(t)]['precision'] for t in thr_axis]
+    ax.plot(thr_axis, nb, 'o-', color=cmap[d], lw=2, ms=6, label=f'NB-LR, $d={d}$')
+    ax.plot(thr_axis, fz, 's--', color=cmap[d], lw=1.6, ms=5, mfc='white',
+            label=r"Fisher's $z$, $d=%d$" % d)
+ax.set_xlabel('STRING combined-score threshold')
+ax.set_ylabel('Validation precision (%)')
+ax.set_title('(b) STRING threshold sensitivity ($d{=}30,50,100$)', fontweight='bold')
+ax.legend(fontsize=6, framealpha=0.9, ncol=2)
+ax.invert_xaxis()
+ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
 
-# (c) Library Size Offset Ablation
+# ---- (c) library-size GLM offset ablation ----
 ax = axes[1, 0]
-D_lib = ['$d{=}30$', '$d{=}50$', '$d{=}100$', '$d{=}200$']
-no_off = [14.8, 8.0, 4.6, 3.5]   # NB-LR without offset
-with_off = [11.9, 8.8, 6.4, 5.9]  # NB-LR with library size offset
-x_lib = np.arange(len(D_lib)); w_lib = 0.35
-ax.bar(x_lib - w_lib/2, no_off, w_lib, color=C['fz'], edgecolor='white', lw=0.5, label='No offset')
-ax.bar(x_lib + w_lib/2, with_off, w_lib, color=C['nb'], edgecolor='white', lw=0.5, label='With GLM offset')
-for i in range(len(D_lib)):
-    delta = with_off[i] - no_off[i]
-    clr = '#EE3377' if delta > 0 else '#0077BB'
-    ax.text(i, max(no_off[i], with_off[i])+0.6, f'{delta:+.1f}pp',
-            ha='center', fontsize=7.5, fontweight='bold', color=clr)
-ax.set_xticks(x_lib); ax.set_xticklabels(D_lib)
-ax.set_ylabel('STRING Precision (%)'); ax.set_title('(c) Library Size Offset (PBMC)', fontweight='bold')
-ax.legend(fontsize=7, framealpha=0.85); ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
+no_off = [pbmc[d]['NB_moment']['precision'] for d in D]
+with_off = [supp['offset_d%d' % d]['precision'] for d in D]
+xl = np.arange(len(D)); wl = 0.36
+ax.bar(xl - wl / 2, no_off, wl, color=C['fz'], edgecolor='white', lw=0.5,
+       label=r'NB-LR, no offset')
+ax.bar(xl + wl / 2, with_off, wl, color=C['nb'], edgecolor='white', lw=0.5,
+       label=r'NB-LR, $+$ log(library size) offset')
+for i in range(len(D)):
+    dl = with_off[i] - no_off[i]
+    clr = C['pau'] if dl > 0 else C['fz']
+    ax.text(i, max(no_off[i], with_off[i]) + 0.4, f'{dl:+.2f}pp',
+            ha='center', fontsize=7.2, fontweight='bold', color=clr)
+ax.set_xticks(xl); ax.set_xticklabels([f'$d={d}$' for d in D])
+ax.set_ylabel('STRING precision (%)')
+ax.set_title('(c) Library-size offset (PBMC)', fontweight='bold')
+ax.legend(fontsize=7, framealpha=0.9, loc='upper right')
 ax.set_ylim(0, 18)
+ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
 
-# (d) Cross-Tissue Precision (PBMC vs Paul15)
+# ---- (d) cross-tissue NB-LR precision, PBMC vs Paul15 ----
 ax = axes[1, 1]
-D4 = [30, 50, 100, 200]
-pb_nb = [14.8, 8.0, 4.6, 3.5]
-pa_nb = [14.4, 13.3, 8.5, 5.6]
-x4 = np.arange(len(D4)); w4 = 0.35
-ax.bar(x4 - w4/2, pb_nb, w4, color=C['fz'], edgecolor='white', lw=0.5, label='PBMC (peripheral blood)')
-ax.bar(x4 + w4/2, pa_nb, w4, color=C['pau'], edgecolor='white', lw=0.5, label='Paul15 (bone marrow)')
-for i, d in enumerate(D4):
-    delta = pa_nb[i] - pb_nb[i]
-    clr = '#EE3377' if delta > 0 else '#0077BB'
-    ax.text(i, max(pb_nb[i], pa_nb[i])+0.6, f'{delta:+.1f}pp',
-            ha='center', fontsize=7.5, fontweight='bold', color=clr)
-    ax.text(i, 0.8, str(d), ha='center', fontsize=7, color='grey')
-ax.set_xticks(x4); ax.set_xticklabels([f'$d={d}$' for d in D4])
-ax.set_ylabel('NB-LR STRING Precision (%)'); ax.set_title('(d) Cross-Tissue Precision', fontweight='bold')
-ax.legend(fontsize=7, framealpha=0.85); ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
+pb = [pbmc[d]['NB_moment']['precision'] for d in D]
+pa = [paul[d]['NB_moment']['precision'] for d in D]
+x4 = np.arange(len(D)); w4 = 0.36
+ax.bar(x4 - w4 / 2, pb, w4, color=C['fz'], edgecolor='white', lw=0.5,
+       label='PBMC (peripheral blood)')
+ax.bar(x4 + w4 / 2, pa, w4, color=C['pau'], edgecolor='white', lw=0.5,
+       label='Paul15 (bone marrow)')
+for i in range(len(D)):
+    dd = pa[i] - pb[i]
+    ax.text(i, max(pb[i], pa[i]) + 0.4, f'{dd:+.2f}pp', ha='center',
+            fontsize=7.2, fontweight='bold', color=C['pau'] if dd > 0 else C['fz'])
+ax.set_xticks(x4); ax.set_xticklabels([f'$d={d}$' for d in D])
+ax.set_ylabel('NB-LR STRING precision (%)')
+ax.set_title('(d) Cross-tissue NB-LR precision', fontweight='bold')
+ax.legend(fontsize=7, framealpha=0.9, loc='upper right')
 ax.set_ylim(0, 18)
+ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
 
 plt.tight_layout(pad=2.5, h_pad=2.2, w_pad=2.2)
 for fmt in ['pdf', 'png']:
     plt.savefig(os.path.join(FIG_DIR, f'fig4_validation.{fmt}'), dpi=300,
                 bbox_inches='tight', facecolor=C['bg'], edgecolor='none')
 plt.close()
-print("Fig 4 done — 2x2 validation & robustness")
+
+print('Fig 4 done. Source values:')
+print('  (a) reactome d=30 / d=50      :',
+      (r30['edge_pct'], r30['bg_pct'], r30['odds_ratio'], r30['fisher_p']),
+      (r50['edge_pct'], r50['bg_pct'], r50['odds_ratio'], r50['fisher_p']))
+print('      validated genes in universe: %d / %d'
+      % (len(ds['go_d30']['validated_genes']), ds['go_d30']['universe_size']))
+print('  (b) thresholds                :', thr_axis)
+print('  (c) no-offset                 :', no_off)
+print('      with-offset               :', with_off)
+print('  (d) PBMC  / Paul15 NB precision:', pb, pa)
+for fmt in ['pdf', 'png']:
+    p = os.path.join(FIG_DIR, f'fig4_validation.{fmt}')
+    print('  file %-4s %8d bytes' % (fmt, os.path.getsize(p)))

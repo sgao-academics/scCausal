@@ -1,12 +1,12 @@
 """
-scCausal — Independent causal validation pipeline.
+scCausal -- Independent causal validation pipeline.
 Downloads Reactome pathway data (GMT format, gene symbols) and computes
 pathway co-membership enrichment of scCausal causal skeleton edges.
 
 Strategy: If edges discovered by scCausal represent true causal regulatory 
 relationships, they should be enriched for Reactome pathway co-membership
 relative to random expectation. Reactome pathways are curated from 
-experimental literature — completely independent of expression data and STRING.
+experimental literature -- completely independent of expression data and STRING.
 """
 import json, os, io, zipfile, requests
 from scipy.stats import fisher_exact

@@ -1,0 +1,19 @@
+{
+  "cross_tissue": {},
+  "perturbseq_real": {
+    "error": "unexpected end of data"
+  },
+  "pbmc_nb_d30": {
+    "edges": 255,
+    "string_hits": 34,
+    "string_pct": 13.3,
+    "time_s": 18
+  },
+  "pbmc_nb_d50": {
+    "edges": 693,
+    "string_hits": 62,
+    "string_pct": 8.9,
+    "time_s": 49
+  },
+  "zinb_note": "ZINB Likelihood Ratio Test uses two-component mixture. statsmodels NegativeBinomial with logit ZI parameter."
+}

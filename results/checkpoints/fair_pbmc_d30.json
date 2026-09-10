@@ -1,0 +1,33 @@
+{
+  "NB_moment": {
+    "edges": 241,
+    "hits": 34,
+    "precision": 14.11,
+    "time_s": 129.8
+  },
+  "NB_fixed": {
+    "edges": 255,
+    "hits": 34,
+    "precision": 13.33,
+    "time_s": 22.7
+  },
+  "Fisher_z": {
+    "edges": 246,
+    "hits": 34,
+    "precision": 13.82,
+    "time_s": 0.6
+  },
+  "meta": {
+    "d": 30,
+    "n": 2700,
+    "alpha_hat": 2.3967,
+    "tau": 0.1,
+    "fair": true,
+    "name": "PBMC",
+    "string_fp": {
+      "path": "string_ppi_full.txt.gz",
+      "size": 161705320,
+      "mtime": 1780309726
+    }
+  }
+}

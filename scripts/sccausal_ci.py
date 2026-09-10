@@ -6,7 +6,7 @@ ratio test, which is the correct distribution for scRNA-seq count data.
 
 Algorithm:
   1. Start with fully connected undirected graph
-  2. For each edge (i,j): test X_i ⟂ X_j | S for conditioning sets S of size 0,1,2,...
+  2. For each edge (i,j): test X_i _||_ X_j | S for conditioning sets S of size 0,1,2,...
   3. CI test: fit NB(X_j ~ S) vs NB(X_j ~ S + X_i), compute LR = 2*(LL1 - LL0)
   4. If LR < chi2_critical (df=1, alpha=0.05), remove edge
   5. Orient edges using standard PC rules
@@ -77,7 +77,7 @@ def fit_nb_ll(X, y):
 def nb_ci_test(X_data, i, j, condition_set, alpha=0.05):
     """NB likelihood ratio CI test.
     
-    H0: gene_i ⟂ gene_j | condition_set
+    H0: gene_i _||_ gene_j | condition_set
     Returns: (independent: bool, p_value: float, LR: float)
     """
     n = X_data.shape[0]

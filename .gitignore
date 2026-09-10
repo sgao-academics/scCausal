@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Private convenience file: maps dataset keys to local absolute paths.
+# Never commit it -- config.py falls back to SC_CAUSAL_DATA / external_data/.
+scripts/local_paths.json
+
+# External datasets and heavyweight caches
+external_data/
+results/cache/
+*.log
+*.log.err
+
+# Build products
+*.aux
+*.synctex.gz

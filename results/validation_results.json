@@ -1,0 +1,48 @@
+{
+  "Abl_Gaussian_LR": {
+    "n_edges": 478,
+    "time_s": 31.658947467803955,
+    "string_precision": 9.205020920502092,
+    "string_validated": 44,
+    "trrust_precision": 0.0,
+    "trrust_validated": 0
+  },
+  "Abl_NB_LR": {
+    "n_edges": 620,
+    "time_s": 28.392141819000244,
+    "string_precision": 6.935483870967742,
+    "string_validated": 43,
+    "trrust_precision": 0.0,
+    "trrust_validated": 0
+  },
+  "Abl_ZINB_Full": {
+    "n_edges": 854,
+    "time_s": 25.24170756340027,
+    "string_precision": 7.142857142857142,
+    "string_validated": 61,
+    "trrust_precision": 0.0,
+    "trrust_validated": 0
+  },
+  "Baseline_NOTEARS": {
+    "n_edges": 480,
+    "time_s": 31.467148303985596,
+    "string_precision": 8.75,
+    "string_validated": 42,
+    "trrust_precision": 0.0,
+    "trrust_validated": 0
+  },
+  "scCausal_ZINB_LR": {
+    "n_edges": 617,
+    "time_s": 26.747419357299805,
+    "string_precision": 7.6175040518638575,
+    "string_validated": 47,
+    "trrust_precision": 0.0,
+    "trrust_validated": 0
+  },
+  "immune_markers_found": 1,
+  "immune_markers_total": 11,
+  "meta": {
+    "n_genes": 500,
+    "string_mapped": 488
+  }
+}

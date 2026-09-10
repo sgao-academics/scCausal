@@ -1,0 +1,38 @@
+{
+  "ALPHA": 0.05,
+  "results": [
+    {
+      "n": 2700,
+      "pi0": 0.9,
+      "theta": 2.0,
+      "alpha": 0.05,
+      "R": 60,
+      "B": 200,
+      "valid": 60,
+      "type1_asymptotic": 0.3,
+      "type1_calibrated": 0.1
+    },
+    {
+      "n": 2700,
+      "pi0": 0.7,
+      "theta": 2.0,
+      "alpha": 0.05,
+      "R": 60,
+      "B": 200,
+      "valid": 60,
+      "type1_asymptotic": 0.15,
+      "type1_calibrated": 0.016666666666666666
+    },
+    {
+      "n": 500,
+      "pi0": 0.9,
+      "theta": 2.0,
+      "alpha": 0.05,
+      "R": 60,
+      "B": 200,
+      "valid": 60,
+      "type1_asymptotic": 0.21666666666666667,
+      "type1_calibrated": 0.05
+    }
+  ]
+}

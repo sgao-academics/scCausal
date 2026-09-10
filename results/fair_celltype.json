@@ -1,0 +1,309 @@
+{
+  "d_list": [
+    30,
+    50,
+    100,
+    200
+  ],
+  "tau": 0.1,
+  "min_cells": 200,
+  "types": {
+    "B": {
+      "n_cells": 453,
+      "d30": {
+        "alpha_hat": 0.5278,
+        "NB_moment": {
+          "edges": 87,
+          "hits": 26,
+          "precision": 29.89
+        },
+        "NB_fixed": {
+          "edges": 69,
+          "hits": 23,
+          "precision": 33.33
+        },
+        "Fisher_z": {
+          "edges": 122,
+          "hits": 30,
+          "precision": 24.59
+        },
+        "delta_moment_fisher": 5.3
+      },
+      "d50": {
+        "alpha_hat": 0.8171,
+        "NB_moment": {
+          "edges": 176,
+          "hits": 36,
+          "precision": 20.45
+        },
+        "NB_fixed": {
+          "edges": 160,
+          "hits": 34,
+          "precision": 21.25
+        },
+        "Fisher_z": {
+          "edges": 249,
+          "hits": 45,
+          "precision": 18.07
+        },
+        "delta_moment_fisher": 2.38
+      },
+      "d100": {
+        "alpha_hat": 1.1458,
+        "NB_moment": {
+          "edges": 388,
+          "hits": 54,
+          "precision": 13.92
+        },
+        "NB_fixed": {
+          "edges": 410,
+          "hits": 58,
+          "precision": 14.15
+        },
+        "Fisher_z": {
+          "edges": 628,
+          "hits": 79,
+          "precision": 12.58
+        },
+        "delta_moment_fisher": 1.34
+      },
+      "d200": {
+        "alpha_hat": 1.1938,
+        "NB_moment": {
+          "edges": 892,
+          "hits": 85,
+          "precision": 9.53
+        },
+        "NB_fixed": {
+          "edges": 945,
+          "hits": 91,
+          "precision": 9.63
+        },
+        "Fisher_z": {
+          "edges": 1484,
+          "hits": 123,
+          "precision": 8.29
+        },
+        "delta_moment_fisher": 1.24
+      }
+    },
+    "CD14+ Monocyte": {
+      "n_cells": 484,
+      "d30": {
+        "alpha_hat": 0.5963,
+        "NB_moment": {
+          "edges": 234,
+          "hits": 41,
+          "precision": 17.52
+        },
+        "NB_fixed": {
+          "edges": 215,
+          "hits": 41,
+          "precision": 19.07
+        },
+        "Fisher_z": {
+          "edges": 258,
+          "hits": 43,
+          "precision": 16.67
+        },
+        "delta_moment_fisher": 0.85
+      },
+      "d50": {
+        "alpha_hat": 0.7197,
+        "NB_moment": {
+          "edges": 500,
+          "hits": 61,
+          "precision": 12.2
+        },
+        "NB_fixed": {
+          "edges": 437,
+          "hits": 58,
+          "precision": 13.27
+        },
+        "Fisher_z": {
+          "edges": 612,
+          "hits": 66,
+          "precision": 10.78
+        },
+        "delta_moment_fisher": 1.42
+      },
+      "d100": {
+        "alpha_hat": 0.9434,
+        "NB_moment": {
+          "edges": 1100,
+          "hits": 84,
+          "precision": 7.64
+        },
+        "NB_fixed": {
+          "edges": 1080,
+          "hits": 83,
+          "precision": 7.69
+        },
+        "Fisher_z": {
+          "edges": 1556,
+          "hits": 100,
+          "precision": 6.43
+        },
+        "delta_moment_fisher": 1.21
+      },
+      "d200": {
+        "alpha_hat": 1.2,
+        "NB_moment": {
+          "edges": 2073,
+          "hits": 114,
+          "precision": 5.5
+        },
+        "NB_fixed": {
+          "edges": 2244,
+          "hits": 119,
+          "precision": 5.3
+        },
+        "Fisher_z": {
+          "edges": 3248,
+          "hits": 152,
+          "precision": 4.68
+        },
+        "delta_moment_fisher": 0.82
+      }
+    },
+    "CD4+ T": {
+      "n_cells": 1184,
+      "d30": {
+        "alpha_hat": 0.4967,
+        "NB_moment": {
+          "edges": 113,
+          "hits": 31,
+          "precision": 27.43
+        },
+        "NB_fixed": {
+          "edges": 87,
+          "hits": 29,
+          "precision": 33.33
+        },
+        "Fisher_z": {
+          "edges": 127,
+          "hits": 31,
+          "precision": 24.41
+        },
+        "delta_moment_fisher": 3.02
+      },
+      "d50": {
+        "alpha_hat": 0.7388,
+        "NB_moment": {
+          "edges": 216,
+          "hits": 39,
+          "precision": 18.06
+        },
+        "NB_fixed": {
+          "edges": 193,
+          "hits": 37,
+          "precision": 19.17
+        },
+        "Fisher_z": {
+          "edges": 286,
+          "hits": 42,
+          "precision": 14.69
+        },
+        "delta_moment_fisher": 3.37
+      },
+      "d100": {
+        "alpha_hat": 1.1124,
+        "NB_moment": {
+          "edges": 396,
+          "hits": 58,
+          "precision": 14.65
+        },
+        "NB_fixed": {
+          "edges": 413,
+          "hits": 58,
+          "precision": 14.04
+        },
+        "Fisher_z": {
+          "edges": 644,
+          "hits": 70,
+          "precision": 10.87
+        },
+        "delta_moment_fisher": 3.78
+      },
+      "d200": {
+        "alpha_hat": 2.7626,
+        "NB_moment": {
+          "edges": 547,
+          "hits": 72,
+          "precision": 13.16
+        },
+        "NB_fixed": {
+          "edges": 800,
+          "hits": 78,
+          "precision": 9.75
+        },
+        "Fisher_z": {
+          "edges": 1251,
+          "hits": 96,
+          "precision": 7.67
+        },
+        "delta_moment_fisher": 5.49
+      }
+    },
+    "CD8+ T": {
+      "n_cells": 348,
+      "d30": {
+        "alpha_hat": 0.4428,
+        "NB_moment": {
+          "edges": 146,
+          "hits": 32,
+          "precision": 21.92
+        },
+        "NB_fixed": {
+          "edges": 88,
+          "hits": 29,
+          "precision": 32.95
+        },
+        "Fisher_z": {
+          "edges": 205,
+          "hits": 42,
+          "precision": 20.49
+        },
+        "delta_moment_fisher": 1.43
+      },
+      "d50": {
+        "alpha_hat": 0.461,
+        "NB_moment": {
+          "edges": 246,
+          "hits": 42,
+          "precision": 17.07
+        },
+        "NB_fixed": {
+          "edges": 158,
+          "hits": 38,
+          "precision": 24.05
+        },
+        "Fisher_z": {
+          "edges": 351,
+          "hits": 51,
+          "precision": 14.53
+        },
+        "delta_moment_fisher": 2.54
+      },
+      "d100": {
+        "alpha_hat": 0.6239,
+        "NB_moment": {
+          "edges": 508,
+          "hits": 60,
+          "precision": 11.81
+        },
+        "NB_fixed": {
+          "edges": 378,
+          "hits": 54,
+          "precision": 14.29
+        },
+        "Fisher_z": {
+          "edges": 840,
+          "hits": 80,
+          "precision": 9.52
+        },
+        "delta_moment_fisher": 2.29
+      }
+    }
+  }
+}

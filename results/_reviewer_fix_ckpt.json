@@ -1,0 +1,68 @@
+{
+  "fz_log1p_sweep": {
+    "d_30": {
+      "edges": 398,
+      "string_hits": 31,
+      "string_pct": 7.788944723618091
+    },
+    "d_50": {
+      "edges": 1015,
+      "string_hits": 58,
+      "string_pct": 5.714285714285714
+    },
+    "d_100": {
+      "edges": 2423,
+      "string_hits": 128,
+      "string_pct": 5.282707387536113
+    },
+    "d_200": {
+      "edges": 3507,
+      "string_hits": 177,
+      "string_pct": 5.0470487596236095
+    }
+  },
+  "notears_log1p": {
+    "d_30": {
+      "edges": 0,
+      "string_hits": 0,
+      "string_pct": 0.0
+    },
+    "d_50": {
+      "edges": 0,
+      "string_hits": 0,
+      "string_pct": 0.0
+    }
+  },
+  "fz_log1p_ct": {
+    "B": {
+      "n_cells": 453,
+      "edges": 275,
+      "string_hits": 56,
+      "string_pct": 20.363636363636363
+    },
+    "CD14+ Monocyte": {
+      "n_cells": 484,
+      "edges": 362,
+      "string_hits": 33,
+      "string_pct": 9.116022099447514
+    },
+    "CD4+ T": {
+      "n_cells": 1184,
+      "edges": 169,
+      "string_hits": 23,
+      "string_pct": 13.609467455621301
+    },
+    "CD8+ T": {
+      "n_cells": 348,
+      "edges": 284,
+      "string_hits": 30,
+      "string_pct": 10.56338028169014
+    },
+    "NK": {
+      "n_cells": 168,
+      "edges": 242,
+      "string_hits": 17,
+      "string_pct": 7.024793388429752
+    }
+  }
+}

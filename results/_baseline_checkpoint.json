@@ -1,0 +1,289 @@
+{
+  "d_30_fisherz": {
+    "edges": 315,
+    "string_validated": 38,
+    "string_precision": 12.063492063492063,
+    "time_s": 0.21064305305480957,
+    "marginal_tests": 323,
+    "first_order_tests": 1592,
+    "top_edges": [
+      [
+        "CST3",
+        "B2M"
+      ],
+      [
+        "RPL8",
+        "RPS4X"
+      ],
+      [
+        "RPL8",
+        "RPS5"
+      ],
+      [
+        "RPL8",
+        "CD74"
+      ],
+      [
+        "HLA-DRB1",
+        "B2M"
+      ],
+      [
+        "FTH1",
+        "FTL"
+      ],
+      [
+        "RPL8",
+        "RPS3A"
+      ],
+      [
+        "HLA-DRB1",
+        "CD74"
+      ],
+      [
+        "HLA-DPB1",
+        "HLA-DRA"
+      ],
+      [
+        "S100A8",
+        "S100A9"
+      ],
+      [
+        "ACTB",
+        "B2M"
+      ],
+      [
+        "RPS4X",
+        "RPL13"
+      ],
+      [
+        "RPS3A",
+        "RPS4X"
+      ],
+      [
+        "HLA-DPA1",
+        "HLA-DRA"
+      ],
+      [
+        "S100A6",
+        "S100A8"
+      ]
+    ]
+  },
+  "permuted_d30": {
+    "edges": 0,
+    "time_s": 0.009065389633178711,
+    "marginal_tests": 0,
+    "first_order_tests": 0,
+    "conclusion": "PASS"
+  },
+  "d_50_fisherz": {
+    "edges": 746,
+    "string_validated": 54,
+    "string_precision": 7.238605898123325,
+    "time_s": 0.506176233291626,
+    "marginal_tests": 750,
+    "first_order_tests": 3715,
+    "top_edges": [
+      [
+        "LGALS1",
+        "S100A4"
+      ],
+      [
+        "HLA-DPB1",
+        "CD74"
+      ],
+      [
+        "HLA-DRA",
+        "CD74"
+      ],
+      [
+        "HLA-DRB1",
+        "B2M"
+      ],
+      [
+        "FTH1",
+        "FTL"
+      ],
+      [
+        "S100A8",
+        "S100A9"
+      ],
+      [
+        "RPS3A",
+        "RPL13"
+      ],
+      [
+        "IL32",
+        "CCL5"
+      ],
+      [
+        "HLA-DPB1",
+        "HLA-DRA"
+      ],
+      [
+        "RPS5",
+        "CD74"
+      ],
+      [
+        "HLA-DPA1",
+        "B2M"
+      ],
+      [
+        "RPS5",
+        "RPS3A"
+      ],
+      [
+        "HLA-DPA1",
+        "CD74"
+      ],
+      [
+        "GZMB",
+        "NKG7"
+      ],
+      [
+        "UBB",
+        "RPL8"
+      ]
+    ]
+  },
+  "d_100_fisherz": {
+    "edges": 1329,
+    "string_validated": 88,
+    "string_precision": 6.621519939804364,
+    "time_s": 1.0035383701324463,
+    "marginal_tests": 1343,
+    "first_order_tests": 6541,
+    "top_edges": [
+      [
+        "CTSS",
+        "HLA-DRA"
+      ],
+      [
+        "HLA-DMA",
+        "HLA-DQB1"
+      ],
+      [
+        "RPL8",
+        "RPL13"
+      ],
+      [
+        "RPS5",
+        "RPL13"
+      ],
+      [
+        "HLA-DRB1",
+        "HLA-DPA1"
+      ],
+      [
+        "GZMB",
+        "CCL5"
+      ],
+      [
+        "HLA-DPB1",
+        "CD74"
+      ],
+      [
+        "CCL4",
+        "GZMB"
+      ],
+      [
+        "CD79A",
+        "IGJ"
+      ],
+      [
+        "CTSS",
+        "HLA-DPB1"
+      ],
+      [
+        "RPL8",
+        "RPS5"
+      ],
+      [
+        "LGALS1",
+        "S100A4"
+      ],
+      [
+        "IL32",
+        "CCL5"
+      ],
+      [
+        "MT-ATP6",
+        "MT-CYB"
+      ],
+      [
+        "HLA-DPB1",
+        "HLA-DRA"
+      ]
+    ]
+  },
+  "d_200_fisherz": {
+    "edges": 1311,
+    "string_validated": 104,
+    "string_precision": 7.9328756674294425,
+    "time_s": 1.159754991531372,
+    "marginal_tests": 1314,
+    "first_order_tests": 6248,
+    "top_edges": [
+      [
+        "PF4",
+        "PPBP"
+      ],
+      [
+        "GZMH",
+        "FGFBP2"
+      ],
+      [
+        "MT-ND5",
+        "MT-CO1"
+      ],
+      [
+        "RPL8",
+        "CD74"
+      ],
+      [
+        "HSP90AA1",
+        "ACTB"
+      ],
+      [
+        "CTSS",
+        "HLA-DRA"
+      ],
+      [
+        "HLA-DMA",
+        "HLA-DQB1"
+      ],
+      [
+        "RPS5",
+        "RPL13"
+      ],
+      [
+        "TCL1A",
+        "CD79A"
+      ],
+      [
+        "GZMB",
+        "CCL5"
+      ],
+      [
+        "CCL4",
+        "GZMB"
+      ],
+      [
+        "CD79A",
+        "IGJ"
+      ],
+      [
+        "RPS27A",
+        "RPS3A"
+      ],
+      [
+        "RPL8",
+        "RPL13"
+      ],
+      [
+        "CTSS",
+        "HLA-DPB1"
+      ]
+    ]
+  }
+}

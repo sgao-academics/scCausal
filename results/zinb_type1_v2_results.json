@@ -1,0 +1,166 @@
+{
+  "alpha": 0.05,
+  "R": 200,
+  "results": [
+    {
+      "n": 2700,
+      "mechanism": "nb",
+      "theta": 2.0,
+      "pi_zero": 0.0,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.005
+    },
+    {
+      "n": 2700,
+      "mechanism": "nb",
+      "theta": 5.0,
+      "pi_zero": 0.0,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.0
+    },
+    {
+      "n": 500,
+      "mechanism": "nb",
+      "theta": 2.0,
+      "pi_zero": 0.0,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.005
+    },
+    {
+      "n": 500,
+      "mechanism": "nb",
+      "theta": 5.0,
+      "pi_zero": 0.0,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.01
+    },
+    {
+      "n": 2700,
+      "mechanism": "zinb",
+      "theta": 2.0,
+      "pi_zero": 0.5,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.13
+    },
+    {
+      "n": 2700,
+      "mechanism": "zinb",
+      "theta": 2.0,
+      "pi_zero": 0.7,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.14
+    },
+    {
+      "n": 2700,
+      "mechanism": "zinb",
+      "theta": 2.0,
+      "pi_zero": 0.9,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.29
+    },
+    {
+      "n": 2700,
+      "mechanism": "zinb",
+      "theta": 5.0,
+      "pi_zero": 0.5,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.095
+    },
+    {
+      "n": 2700,
+      "mechanism": "zinb",
+      "theta": 5.0,
+      "pi_zero": 0.7,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.175
+    },
+    {
+      "n": 2700,
+      "mechanism": "zinb",
+      "theta": 5.0,
+      "pi_zero": 0.9,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.205
+    },
+    {
+      "n": 500,
+      "mechanism": "zinb",
+      "theta": 2.0,
+      "pi_zero": 0.5,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.15
+    },
+    {
+      "n": 500,
+      "mechanism": "zinb",
+      "theta": 2.0,
+      "pi_zero": 0.7,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.175
+    },
+    {
+      "n": 500,
+      "mechanism": "zinb",
+      "theta": 2.0,
+      "pi_zero": 0.9,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.24
+    },
+    {
+      "n": 500,
+      "mechanism": "zinb",
+      "theta": 5.0,
+      "pi_zero": 0.5,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.095
+    },
+    {
+      "n": 500,
+      "mechanism": "zinb",
+      "theta": 5.0,
+      "pi_zero": 0.7,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.115
+    },
+    {
+      "n": 500,
+      "mechanism": "zinb",
+      "theta": 5.0,
+      "pi_zero": 0.9,
+      "alpha": 0.05,
+      "R": 200,
+      "valid": 200,
+      "empirical_type1": 0.255
+    }
+  ]
+}
