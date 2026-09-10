@@ -1,150 +1,170 @@
-"""Fig 5: Type-I error of the NB-LR test under zero-inflation.
-
-Panel (a): asymptotic chi-square Type-I error vs the zero-inflation rate pi0,
-           for n=2700 and theta=2.0.
-Panel (b): asymptotic vs permutation-calibrated Type-I error (Monte-Carlo null,
-           B=200) at the three configurations where calibration was run.
-
-Both panels are read from the experiment outputs rather than hardcoded:
-    ../zinb_type1_v2_results.json    -> panel (a)
-    ../zinb_calib_v2_results.json    -> panel (b)
-
-Usage:
-    python gen_fig5.py                 # write into ../../figures/
-    python gen_fig5.py --outdir DIR    # write somewhere else (safe preview)
 """
-import argparse
-import json
-import os
+Fig 5: Validation & Robustness -- 2x2 panel composite.
+Colorblind-friendly palette (Paul Tol "bright").
 
-import matplotlib
-matplotlib.use("Agg")
+Every panel is read from the FAIR-protocol result files (the same run that
+produces Table 1); nothing is hardcoded.
+
+DATA PROVENANCE
+  (a) functional composition of the STRING-validated d=30 gene set
+      -> results/fair_downstream.json  (key: go_d30)
+  (b) STRING precision vs combined-score threshold (400-900)
+      -> results/fair_downstream.json  (key: threshold)
+  (c) library-size GLM offset ablation
+      -> results/fair_supplementary.json (keys: offset_d*)
+         baseline  -> results/checkpoints/fair_pbmc_d*.json (NB_moment)
+  (d) cross-tissue NB-LR precision, PBMC vs Paul15
+      -> results/checkpoints/fair_{pbmc,paul15}_d*.json (NB_moment)
+"""
+import os, json, matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from matplotlib.ticker import MultipleLocator
+import scienceplots  # noqa: F401
 import numpy as np
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
-FIG_DIR = os.path.join(ROOT, "figures")
+FIG_DIR = os.path.join(os.path.dirname(__file__), '..', '..', 'figures')
+RES_DIR = os.path.join(os.path.dirname(__file__), '..', '..', 'results')
+CKPT_DIR = os.path.join(RES_DIR, 'checkpoints')
+os.makedirs(FIG_DIR, exist_ok=True)
 
+C = {'nb': '#EE7733', 'fz': '#0077BB', 'pau': '#EE3377', 'gn': '#009988',
+     'bg': '#FFFFFF', 'grid': '#E8E8E8', 'grey': '#BBBBBB'}
 
-def _find(name):
-    """Locate a result file in results/, falling back to the scripts/ copy."""
-    for d in (os.path.join(ROOT, "results"), os.path.join(ROOT, "scripts")):
-        p = os.path.join(d, name)
-        if os.path.exists(p):
-            return p
-    raise SystemExit("cannot find %s in results/ or scripts/" % name)
-
-
-TYPE1_JSON = _find("zinb_type1_v2_results.json")
-CALIB_JSON = _find("zinb_calib_v2_results.json")
-
-ALPHA = 0.05
-PANEL_A_N = 2700
-PANEL_A_THETA = 2.0
-
+plt.style.use(['science', 'no-latex', 'bright'])
 plt.rcParams.update({
-    "font.family": "DejaVu Sans",
-    "font.size": 9,
-    "axes.linewidth": 0.8,
-    "axes.labelsize": 9.5,
-    "xtick.labelsize": 8.5,
-    "ytick.labelsize": 8.5,
-    "legend.fontsize": 8,
-    "savefig.dpi": 300,
+    'font.size': 9, 'axes.titlesize': 10.5, 'axes.labelsize': 8.5,
+    'xtick.labelsize': 7.5, 'ytick.labelsize': 7.5, 'legend.fontsize': 7,
+    'font.family': 'sans-serif',
+    'axes.spines.top': False, 'axes.spines.right': False,
+    'axes.edgecolor': '#BDBDBD', 'axes.linewidth': 0.8,
 })
 
 
-def load_panel_a():
-    """(pi0, empirical type-I) for the n=2700, theta=2 sweep."""
-    with open(TYPE1_JSON, encoding="utf-8") as fh:
-        payload = json.load(fh)
-    rows = [r for r in payload["results"]
-            if r["n"] == PANEL_A_N and abs(r["theta"] - PANEL_A_THETA) < 1e-9]
-    rows.sort(key=lambda r: r["pi_zero"])
-    return [r["pi_zero"] for r in rows], [r["empirical_type1"] for r in rows]
+def _j(p):
+    with open(os.path.join(RES_DIR, p), encoding='utf-8') as fh:
+        return json.load(fh)
 
 
-def load_panel_b():
-    """(label, asymptotic, calibrated) at the calibrated configurations.
-
-    The calibrated rates come from finite simulation counts (60 replicates,
-    B=200), so they are stored as raw fractions (13/60 = 0.21666...). The
-    published figure plots them at three decimals; the display rounding is
-    applied here so that the regenerated figure matches it exactly.
-    """
-    with open(CALIB_JSON, encoding="utf-8") as fh:
-        payload = json.load(fh)
-    rows = sorted(payload["results"], key=lambda r: -r["n"])
-    # 'n=%d,' padded to 8 characters keeps the pi0 fields aligned under the
-    # x-axis rotation, as in the published figure.
-    labels = [("n=%d," % r["n"]).ljust(8) + "pi0=%.1f" % r["pi0"] for r in rows]
-    asym = [round(r["type1_asymptotic"], 3) for r in rows]
-    cal = [round(r["type1_calibrated"], 3) for r in rows]
-    return labels, asym, cal
+def _ck(p):
+    with open(os.path.join(CKPT_DIR, p), encoding='utf-8') as fh:
+        return json.load(fh)
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--outdir", default=FIG_DIR,
-                    help="output directory (default: ../../figures)")
-    args = ap.parse_args()
-    outdir = os.path.abspath(args.outdir)
-    os.makedirs(outdir, exist_ok=True)
+D = [30, 50, 100, 200]
+ds = _j('fair_downstream.json')
+supp = _j('fair_supplementary.json')
+pbmc = {d: _ck('fair_pbmc_d%d.json' % d) for d in D}
+paul = {d: _ck('fair_paul15_d%d.json' % d) for d in D}
 
-    pi0_a, type1_a = load_panel_a()
-    labels, asym, cal = load_panel_b()
-    print("panel (a): %d points" % len(pi0_a))
-    print("panel (b): %d configurations" % len(labels))
+# === FIGURE ===
+fig, axes = plt.subplots(2, 2, figsize=(14, 11))
+fig.patch.set_facecolor(C['bg'])
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(6.6, 3.0))
+# ---- (a) Reactome pathway co-membership enrichment ----
+# Literature-curated, independent of STRING's co-expression channel.
+ax = axes[0, 0]
+r30, r50 = ds['reactome']['by_d']['30'], ds['reactome']['by_d']['50']
+groups = [f"$d=30$\n({r30['n_edges']} edges,\n{r30['n_genes']} genes)",
+          f"$d=50$\n({r50['n_edges']} edges,\n{r50['n_genes']} genes)"]
+edge_pct = [r30['edge_pct'], r50['edge_pct']]
+bg_pct = [r30['bg_pct'], r50['bg_pct']]
+xg = np.arange(2); wg = 0.34
+ax.bar(xg - wg / 2, edge_pct, wg, color=C['nb'], edgecolor='white', lw=0.5,
+       label='STRING-validated edges')
+ax.bar(xg + wg / 2, bg_pct, wg, color=C['grey'], edgecolor='white', lw=0.5,
+       label='Background (all gene pairs)')
+for i, r in enumerate([r30, r50]):
+    ax.text(i - wg / 2, edge_pct[i] + 1.2, f"{r['edge_pct']:.1f}%",
+            ha='center', fontsize=7, fontweight='bold', color=C['nb'])
+    ax.text(i + wg / 2, bg_pct[i] + 1.2, f"{r['bg_pct']:.1f}%",
+            ha='center', fontsize=7, fontweight='bold', color='#616161')
+    ax.text(i - wg / 2, edge_pct[i] * 0.5,
+            f"OR$\\,={r['odds_ratio']:.2f}$\n$p={r['fisher_p']:.1e}$",
+            ha='center', va='center', fontsize=7.4, fontweight='bold', color='white')
+ax.set_xticks(xg); ax.set_xticklabels(groups, fontsize=7)
+ax.set_ylabel('Pathway co-membership of edge (%)')
+ax.set_title('(a) Reactome co-membership (PBMC)', fontweight='bold')
+ax.legend(fontsize=6.8, framealpha=0.9, loc='upper right')
+ax.set_ylim(0, 122)
+ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
 
-    # ---------- Panel (a) ----------
-    x = np.arange(len(pi0_a))
-    ax1.bar(x, type1_a, width=0.62, color="#4c72b0", edgecolor="black",
-            linewidth=0.6, label="Asymptotic $\\chi^2_1$")
-    ax1.axhline(ALPHA, color="crimson", linestyle="--", linewidth=1.2,
-                label="Nominal $\\alpha=0.05$")
-    ax1.set_xticks(x)
-    ax1.set_xticklabels(["$%.1f$" % p for p in pi0_a])
-    ax1.set_xlabel("Zero-inflation rate $\\pi_0$")
-    ax1.set_ylabel("Empirical type-I error")
-    ax1.set_ylim(0, 0.35)
-    ax1.yaxis.set_major_locator(MultipleLocator(0.05))
-    ax1.set_title("(a) Asymptotic $\\chi^2$ null", fontsize=9.5)
-    ax1.legend(frameon=False, loc="upper left", handlelength=1.4)
-    for xi, yi in zip(x, type1_a):
-        ax1.text(xi, yi + 0.008, "%.2f" % yi, ha="center", fontsize=7.5)
+# ---- (b) STRING precision vs combined-score threshold ----
+ax = axes[0, 1]
+thr_axis = [400, 500, 600, 700, 800, 900]
+cmap = {30: C['nb'], 50: C['fz'], 100: C['pau']}
+for d in [30, 50, 100]:
+    if str(d) not in ds['threshold']:
+        continue
+    rec = ds['threshold'][str(d)]
+    nb = [rec['NB_moment'][str(t)]['precision'] for t in thr_axis]
+    fz = [rec['Fisher_z'][str(t)]['precision'] for t in thr_axis]
+    ax.plot(thr_axis, nb, 'o-', color=cmap[d], lw=2, ms=6, label=f'NB-LR, $d={d}$')
+    ax.plot(thr_axis, fz, 's--', color=cmap[d], lw=1.6, ms=5, mfc='white',
+            label=r"Fisher's $z$, $d=%d$" % d)
+ax.set_xlabel('STRING combined-score threshold')
+ax.set_ylabel('Validation precision (%)')
+ax.set_title('(b) STRING threshold sensitivity ($d{=}30,50,100$)', fontweight='bold')
+ax.legend(fontsize=6, framealpha=0.9, ncol=2)
+ax.invert_xaxis()
+ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
 
-    # ---------- Panel (b) ----------
-    x2 = np.arange(len(labels))
-    w = 0.36
-    ax2.bar(x2 - w / 2, asym, width=w, color="#c44e52", edgecolor="black",
-            linewidth=0.6, label="Asymptotic $\\chi^2_1$")
-    ax2.bar(x2 + w / 2, cal, width=w, color="#55a868", edgecolor="black",
-            linewidth=0.6, label="Permutation-calibrated")
-    ax2.axhline(ALPHA, color="crimson", linestyle="--", linewidth=1.2,
-                label="Nominal $\\alpha$")
-    ax2.set_xticks(x2)
-    ax2.set_xticklabels(labels, rotation=12, ha="right", fontsize=7.2)
-    ax2.set_xlabel("Configuration")
-    ax2.set_ylabel("Empirical type-I error")
-    ax2.set_ylim(0, 0.35)
-    ax2.yaxis.set_major_locator(MultipleLocator(0.05))
-    ax2.set_title("(b) Monte-Carlo null calibration", fontsize=9.5)
-    ax2.legend(frameon=False, loc="upper right", handlelength=1.4, fontsize=7.2)
-    for xi, (a, c) in enumerate(zip(asym, cal)):
-        ax2.text(xi - w / 2, a + 0.008, "%.2f" % a, ha="center", fontsize=7)
-        ax2.text(xi + w / 2, c + 0.008, "%.2f" % c, ha="center", fontsize=7)
+# ---- (c) library-size GLM offset ablation ----
+ax = axes[1, 0]
+no_off = [pbmc[d]['NB_moment']['precision'] for d in D]
+with_off = [supp['offset_d%d' % d]['precision'] for d in D]
+xl = np.arange(len(D)); wl = 0.36
+ax.bar(xl - wl / 2, no_off, wl, color=C['fz'], edgecolor='white', lw=0.5,
+       label=r'NB-LR, no offset')
+ax.bar(xl + wl / 2, with_off, wl, color=C['nb'], edgecolor='white', lw=0.5,
+       label=r'NB-LR, $+$ log(library size) offset')
+for i in range(len(D)):
+    dl = with_off[i] - no_off[i]
+    clr = C['pau'] if dl > 0 else C['fz']
+    ax.text(i, max(no_off[i], with_off[i]) + 0.4, f'{dl:+.2f}pp',
+            ha='center', fontsize=7.2, fontweight='bold', color=clr)
+ax.set_xticks(xl); ax.set_xticklabels([f'$d={d}$' for d in D])
+ax.set_ylabel('STRING precision (%)')
+ax.set_title('(c) Library-size offset (PBMC)', fontweight='bold')
+ax.legend(fontsize=7, framealpha=0.9, loc='upper right')
+ax.set_ylim(0, 18)
+ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
 
-    fig.tight_layout()
-    out_pdf = os.path.join(outdir, "fig5_type1_zinb.pdf")
-    out_png = os.path.join(outdir, "fig5_type1_zinb.png")
-    fig.savefig(out_pdf, bbox_inches="tight")
-    fig.savefig(out_png, bbox_inches="tight")
-    print("SAVED", out_pdf, out_png)
+# ---- (d) cross-tissue NB-LR precision, PBMC vs Paul15 ----
+ax = axes[1, 1]
+pb = [pbmc[d]['NB_moment']['precision'] for d in D]
+pa = [paul[d]['NB_moment']['precision'] for d in D]
+x4 = np.arange(len(D)); w4 = 0.36
+ax.bar(x4 - w4 / 2, pb, w4, color=C['fz'], edgecolor='white', lw=0.5,
+       label='PBMC (peripheral blood)')
+ax.bar(x4 + w4 / 2, pa, w4, color=C['pau'], edgecolor='white', lw=0.5,
+       label='Paul15 (bone marrow)')
+for i in range(len(D)):
+    dd = pa[i] - pb[i]
+    ax.text(i, max(pb[i], pa[i]) + 0.4, f'{dd:+.2f}pp', ha='center',
+            fontsize=7.2, fontweight='bold', color=C['pau'] if dd > 0 else C['fz'])
+ax.set_xticks(x4); ax.set_xticklabels([f'$d={d}$' for d in D])
+ax.set_ylabel('NB-LR STRING precision (%)')
+ax.set_title('(d) Cross-tissue NB-LR precision', fontweight='bold')
+ax.legend(fontsize=7, framealpha=0.9, loc='upper right')
+ax.set_ylim(0, 18)
+ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
 
+plt.tight_layout(pad=2.5, h_pad=2.2, w_pad=2.2)
+for fmt in ['pdf', 'png']:
+    plt.savefig(os.path.join(FIG_DIR, f'fig5_validation.{fmt}'), dpi=300,
+                bbox_inches='tight', facecolor=C['bg'], edgecolor='none')
+plt.close()
 
-if __name__ == "__main__":
-    main()
+print('Fig 5 done. Source values:')
+print('  (a) reactome d=30 / d=50      :',
+      (r30['edge_pct'], r30['bg_pct'], r30['odds_ratio'], r30['fisher_p']),
+      (r50['edge_pct'], r50['bg_pct'], r50['odds_ratio'], r50['fisher_p']))
+print('      validated genes in universe: %d / %d'
+      % (len(ds['go_d30']['validated_genes']), ds['go_d30']['universe_size']))
+print('  (b) thresholds                :', thr_axis)
+print('  (c) no-offset                 :', no_off)
+print('      with-offset               :', with_off)
+print('  (d) PBMC  / Paul15 NB precision:', pb, pa)
+for fmt in ['pdf', 'png']:
+    p = os.path.join(FIG_DIR, f'fig5_validation.{fmt}')
+    print('  file %-4s %8d bytes' % (fmt, os.path.getsize(p)))

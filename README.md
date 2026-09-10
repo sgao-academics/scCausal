@@ -114,11 +114,11 @@ and scoring it against human STRING yields zero hits.
 │   ├── pbmc3k_preprocessed.npz       # cached top-500 gene matrix
 │   └── ReactomePathways.gmt          # Reactome pathways (1.0 MB)
 ├── figures/                          # pre-generated, vector PDF + PNG preview
-│   ├── fig1_pipeline.pdf/png         #   pipeline overview (TikZ)
-│   ├── fig2_benchmark.pdf/png        #   benchmark, 9 panels
-│   ├── fig3_network.pdf/png          #   causal skeleton network (TikZ)
-│   ├── fig4_validation.pdf/png       #   validation and robustness, 4 panels
-│   ├── fig5_type1_zinb.pdf/png       #   type-I error under zero-inflation
+│   ├── fig1_pipeline.pdf/png         #   Figure 1: pipeline overview (TikZ)
+│   ├── fig2_benchmark.pdf/png        #   Figure 2: benchmark, 9 panels
+│   ├── fig3_type1_zinb.pdf/png       #   Figure 3: type-I error under zero-inflation
+│   ├── fig4_network.pdf/png          #   Figure 4: causal skeleton network (TikZ)
+│   ├── fig5_validation.pdf/png       #   Figure 5: validation and robustness, 4 panels
 │   └── graphical_abstract.png
 ├── results/                          # every number in the manuscript
 │   ├── fair_pbmc.json                #   PBMC benchmark, d = 30/50/100/200
@@ -129,8 +129,8 @@ and scoring it against human STRING yields zero hits.
 │   ├── fair_supplementary.json       #   edge tables, alpha_sig / tau sweeps, offset
 │   ├── fair_downstream.json          #   STRING thresholds, Reactome, DepMap
 │   ├── table1_fair_all.json          #   Table 1 assembly
-│   ├── zinb_type1_v2_results.json    #   type-I error grid (Fig 5a)
-│   ├── zinb_calib_v2_results.json    #   Monte-Carlo calibration (Fig 5b)
+│   ├── zinb_type1_v2_results.json    #   type-I error grid (Figure 3a)
+│   ├── zinb_calib_v2_results.json    #   Monte-Carlo calibration (Figure 3b)
 │   └── ...                           #   supporting checkpoints
 └── scripts/
     ├── config.py                     # dataset path resolution
@@ -152,29 +152,33 @@ and scoring it against human STRING yields zero hits.
     ├── _download_reactome.py
     └── gen_figures/
         ├── fig1_pipeline.tex         # hand-written TikZ source, Figure 1
-        ├── gen_fig1.py               # compiles it into figures/
-        ├── gen_fig2.py               # 9-panel benchmark composite
-        ├── gen_fig3.py               # TikZ circular network layout
-        ├── gen_fig4.py               # 4-panel validation composite
-        ├── gen_fig5.py               # type-I error under zero-inflation
+        ├── gen_fig1.py               # Figure 1: compiles it into figures/
+        ├── gen_fig2.py               # Figure 2: 9-panel benchmark composite
+        ├── gen_fig3.py               # Figure 3: type-I error under zero-inflation
+        ├── gen_fig4.py               # Figure 4: TikZ circular network layout
+        ├── gen_fig5.py               # Figure 5: 4-panel validation composite
         └── gen_graphical_abstract.py
 ```
 
-One figure, one script: `scripts/gen_figures/fig1_pipeline.tex` is
-hand-written TikZ and sits next to the script that compiles it, while
-`gen_fig3.py` builds its TikZ source programmatically at run time
-(`fig3_network.tex` is therefore generated, not tracked).  Both write the
-rendered PDF/PNG into `figures/`.
+One figure, one script, and `gen_figN.py` always produces `figN_*`: the script
+index is the figure number in the manuscript, so `gen_fig3.py` writes
+`figures/fig3_type1_zinb.pdf/png`, `gen_fig4.py` writes
+`figures/fig4_network.pdf/png`, and so on.
+
+`scripts/gen_figures/fig1_pipeline.tex` is hand-written TikZ and sits next to
+the script that compiles it, while `gen_fig4.py` builds its TikZ source
+programmatically at run time (`fig4_network.tex` is therefore generated, not
+tracked).  Both write the rendered PDF/PNG into `figures/`.
 
 Every figure script is deterministic and reads its numbers from `results/`;
-`gen_fig5.py` regenerates the published Figure 5 byte-for-byte.
+`gen_fig3.py` regenerates the published Figure 3 byte-for-byte.
 
 ## Requirements
 
 - Python >= 3.9
 - numpy, scipy, pandas, matplotlib, networkx, scanpy, statsmodels,
   scikit-learn, torch, tqdm, scienceplots
-- LaTeX (with TikZ) only for Figures 1 and 3, which are TikZ sources
+- LaTeX (with TikZ) only for Figures 1 and 4, which are TikZ sources
 
 ## Citation
 

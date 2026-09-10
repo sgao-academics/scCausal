@@ -1,211 +1,150 @@
-"""
-Fig 3: Causal skeleton network -- TikZ circular module layout.
+"""Fig 3: Type-I error of the NB-LR test under zero-inflation.
 
-Data source (FAIR protocol, same run as Table 1):
-    results/fair_supplementary.json  ->  edges_d50.nb_validated
-    (60 STRING-validated NB-LR edges at d = 50, spanning 40 genes)
+Panel (a): asymptotic chi-square Type-I error vs the zero-inflation rate pi0,
+           for n=2700 and theta=2.0.
+Panel (b): asymptotic vs permutation-calibrated Type-I error (Monte-Carlo null,
+           B=200) at the three configurations where calibration was run.
 
-HLA- and MT- prefixes are dropped from the on-figure labels for legibility;
-the caption states this.
+Both panels are read from the experiment outputs rather than hardcoded:
+    ../zinb_type1_v2_results.json    -> panel (a)
+    ../zinb_calib_v2_results.json    -> panel (b)
+
+Usage:
+    python gen_fig3.py                 # write into ../../figures/
+    python gen_fig3.py --outdir DIR    # write somewhere else (safe preview)
 """
-import os, json, subprocess, math
+import argparse
+import json
+import os
+
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from matplotlib.ticker import MultipleLocator
+import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
-FIG_DIR = os.path.join(ROOT, 'figures')
-RES_DIR = os.path.join(ROOT, 'results')
-os.makedirs(FIG_DIR, exist_ok=True)
-
-supp = json.load(open(os.path.join(RES_DIR, 'fair_supplementary.json'), encoding='utf-8'))
-top_edges = [tuple(p) for p in supp['edges_d50']['nb_validated']]
-D_LABEL = 50
-
-# ---- functional modules -------------------------------------------------
-GROUPS = {
-    'I': ['HLA-DPA1', 'HLA-DRA', 'HLA-DPB1', 'HLA-DRB1', 'CD74', 'B2M', 'CTSS'],
-    'E': ['GNLY', 'NKG7', 'GZMB', 'CCL5', 'SRGN', 'IL32', 'PPBP'],
-    'R': ['RPL8', 'RPL13', 'RPS3A', 'RPS4X', 'RPS5', 'RPS27A'],
-    'S': ['S100A4', 'S100A6', 'S100A8', 'S100A9', 'S100A11', 'LGALS1'],
-    'M': ['MT-CO1', 'MT-CO2', 'MT-CYB'],
-    'O': ['ACTB', 'ARPC1B', 'AIF1', 'CST3', 'FCER1G', 'H3F3B', 'LST1',
-          'TYROBP', 'UBB', 'FTL', 'FTH1'],
-}
-CAT = {g: k for k, v in GROUPS.items() for g in v}
-MODS = ['I', 'E', 'R', 'S', 'M', 'O']
-COL_HEX = {'I': 'EE7733', 'E': '882255', 'R': '0077BB',
-           'S': 'EE3377', 'M': '33BBEE', 'O': 'BBBBBB'}
-MOD_NAMES = {'I': 'Immune/HLA', 'E': 'Effectors', 'R': 'Ribosomal',
-             'S': 'S100/Ca', 'M': 'Mitochondrial', 'O': 'Other'}
+ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
+FIG_DIR = os.path.join(ROOT, "figures")
 
 
-def short(g):
-    for pre in ('HLA-', 'MT-'):
-        if g.startswith(pre):
-            return g[len(pre):]
-    return g
+def _find(name):
+    """Locate a result file in results/, falling back to the scripts/ copy."""
+    for d in (os.path.join(ROOT, "results"), os.path.join(ROOT, "scripts")):
+        p = os.path.join(d, name)
+        if os.path.exists(p):
+            return p
+    raise SystemExit("cannot find %s in results/ or scripts/" % name)
 
 
-# ---- gather nodes actually present in the validated edge set ------------
-genes_all = set()
-for g1, g2 in top_edges:
-    genes_all.add(g1); genes_all.add(g2)
-unknown = sorted(g for g in genes_all if g not in CAT)
-if unknown:
-    print('WARNING: genes without a module assignment:', unknown)
-    for g in unknown:
-        CAT[g] = 'O'
-    GROUPS['O'] = GROUPS['O'] + unknown
+TYPE1_JSON = _find("zinb_type1_v2_results.json")
+CALIB_JSON = _find("zinb_calib_v2_results.json")
 
-modules = {m: sorted([g for g in genes_all if CAT.get(g) == m]) for m in MODS}
-modules = {m: v for m, v in modules.items() if v}
+ALPHA = 0.05
+PANEL_A_N = 2700
+PANEL_A_THETA = 2.0
 
-# === LAYOUT: modules grouped with gaps ===
-NODE_R = 8.5      # node circle radius (cm)
-LABEL_R = 9.9     # label circle radius (cm)
-GAP_DEG = 7.0     # gap between modules (degrees); wide enough that the last
-                  # label of one module cannot collide with the first of the next
-
-mod_weights = {m: len(modules[m]) for m in modules}
-total_nodes = sum(mod_weights.values())
-total_gap = len(modules) * GAP_DEG
-usable_deg = 360.0 - total_gap
-
-positions = {}
-all_nodes_ordered = []
-ang_cur = 0.0
-for m in MODS:
-    if m not in modules:
-        continue
-    genes = modules[m]
-    n = len(genes)
-    mod_deg = (n / total_nodes) * usable_deg
-    step = mod_deg / (n - 1) if n > 1 else 0
-    for i, g in enumerate(genes):
-        ang = ang_cur + (i * step if n > 1 else mod_deg / 2)
-        rad = math.radians(ang - 90)          # start from the top
-        positions[g] = (NODE_R * math.cos(rad), NODE_R * math.sin(rad),
-                        LABEL_R * math.cos(rad), LABEL_R * math.sin(rad),
-                        ang, rad)
-        all_nodes_ordered.append(g)
-    ang_cur += mod_deg + GAP_DEG
-
-# === GENERATE TIKZ ===
-L = []
-L.append(r'\documentclass[tikz,border=4pt]{standalone}')
-L.append(r'\usepackage[T1]{fontenc}\usepackage{lmodern}\usepackage{xcolor}')
-L.append(r'\usepackage{tikz}')
-L.append('')
-for m in MODS:
-    if m in modules:
-        L.append(r'\definecolor{c%s}{HTML}{%s}' % (m, COL_HEX[m]))
-L.append(r'\definecolor{eg}{HTML}{BDBDBD}')
-L.append('')
-L.append(r'\begin{document}')
-L.append(r'\begin{tikzpicture}[scale=1.0]')
-L.append('')
-
-L.append(r'\node[font=\sffamily\bfseries\Large,align=center] at (0,11.2)')
-L.append(r'  {scCausal causal skeleton \textemdash\ PBMC 3K ($d{=}%d$, STRING ${\geq}700$)};' % D_LABEL)
-L.append(r'\node[font=\sffamily\itshape\footnotesize,text=gray] at (0,10.5)')
-L.append(r'  {%d STRING-validated edges, %d genes in %d functional modules};'
-         % (len(top_edges), len(genes_all), len(modules)))
-L.append('')
-
-# radial connector lines
-for g in all_nodes_ordered:
-    xn, yn, xl, yl, ang_deg, rad = positions[g]
-    m = CAT.get(g, 'O')
-    L.append(r'\draw[c%s,line width=0.3pt,opacity=0.25] (%.3f,%.3f) -- (%.3f,%.3f);'
-             % (m, xn, yn, xl, yl))
-L.append('')
-
-# edges as Bezier curves
-for g1, g2 in top_edges:
-    xn1, yn1 = positions[g1][0], positions[g1][1]
-    xn2, yn2 = positions[g2][0], positions[g2][1]
-    mx = (xn1 + xn2) / 2; my = (yn1 + yn2) / 2
-    dd = math.sqrt((xn1 - xn2) ** 2 + (yn1 - yn2) ** 2)
-    push = 1.8 if dd > 12 else 0.7
-    if abs(mx) > 0.01:
-        mx += push * (mx / abs(mx))
-    if abs(my) > 0.01:
-        my += push * (my / abs(my))
-    L.append(r'\draw[eg,line width=0.65pt,opacity=0.32] (%.3f,%.3f) .. controls (%.3f,%.3f) .. (%.3f,%.3f);'
-             % (xn1, yn1, mx, my, xn2, yn2))
-L.append('')
-
-# nodes
-for g in all_nodes_ordered:
-    xn, yn = positions[g][0], positions[g][1]
-    m = CAT.get(g, 'O')
-    sz = '7pt' if m == 'I' else '5pt'
-    L.append(r'\fill[c%s,draw=white,line width=1.1pt] (%.3f,%.3f) circle (%s);'
-             % (m, xn, yn, sz))
-L.append('')
-
-# labels
-for g in all_nodes_ordered:
-    xl, yl, rad = positions[g][2], positions[g][3], positions[g][5]
-    m = CAT.get(g, 'O')
-    lbl = short(g)
-    fs = r'\small' if len(lbl) <= 3 else (r'\footnotesize' if len(lbl) <= 5
-                                          else r'\fontsize{6.6}{7.6}\selectfont')
-    anchor = 'west' if abs(rad) < math.pi / 2 else 'east'
-    L.append(r'\node[font=\sffamily\bfseries%s,text=c%s,anchor=%s,inner sep=0.8pt] at (%.3f,%.3f) {%s};'
-             % (fs, m, anchor, xl, yl, lbl))
-L.append('')
-
-# legend (top-left)
-lx0, ly0 = -11.5, 11.2
-for m in MODS:
-    if m in modules:
-        L.append(r'\fill[c%s,draw=white,line width=0.5pt] (%.1f,%.1f) circle (4pt);'
-                 % (m, lx0, ly0))
-        L.append(r'\node[font=\sffamily\footnotesize,anchor=west] at (%.1f,%.1f) {%s (%d)};'
-                 % (lx0 + 0.75, ly0, MOD_NAMES[m], len(modules[m])))
-        ly0 -= 0.65
-
-L.append(r'\end{tikzpicture}')
-L.append(r'\end{document}')
-
-# one figure, one script: the TikZ source lives beside this file, the rendered
-# PDF/PNG land in figures/
-tex = os.path.join(HERE, 'fig3_network.tex')
-with open(tex, 'w', encoding='utf-8') as f:
-    f.write('\n'.join(L) + '\n')
-
-for _ in range(2):
-    subprocess.run(['pdflatex', '-interaction=nonstopmode', '-output-directory', FIG_DIR, tex],
-                   capture_output=True, cwd=HERE)
-
-def _pdf_to_png(pdf_path, png_path, dpi=300):
-    """Render the TikZ PDF to a preview PNG without needing poppler."""
-    try:                                    # PyMuPDF (self-contained)
-        import fitz
-        d = fitz.open(pdf_path)
-        d[0].get_pixmap(dpi=dpi).save(png_path)
-        d.close()
-        return 'pymupdf'
-    except Exception:
-        pass
-    try:                                    # pdf2image + poppler, if present
-        from pdf2image import convert_from_path
-        convert_from_path(pdf_path, dpi=dpi)[0].save(png_path, 'PNG')
-        return 'pdf2image'
-    except Exception as e:
-        return 'skipped (%s)' % e
+plt.rcParams.update({
+    "font.family": "DejaVu Sans",
+    "font.size": 9,
+    "axes.linewidth": 0.8,
+    "axes.labelsize": 9.5,
+    "xtick.labelsize": 8.5,
+    "ytick.labelsize": 8.5,
+    "legend.fontsize": 8,
+    "savefig.dpi": 300,
+})
 
 
-print('png:', _pdf_to_png(os.path.join(FIG_DIR, 'fig3_network.pdf'),
-                          os.path.join(FIG_DIR, 'fig3_network.png')))
+def load_panel_a():
+    """(pi0, empirical type-I) for the n=2700, theta=2 sweep."""
+    with open(TYPE1_JSON, encoding="utf-8") as fh:
+        payload = json.load(fh)
+    rows = [r for r in payload["results"]
+            if r["n"] == PANEL_A_N and abs(r["theta"] - PANEL_A_THETA) < 1e-9]
+    rows.sort(key=lambda r: r["pi_zero"])
+    return [r["pi_zero"] for r in rows], [r["empirical_type1"] for r in rows]
 
-# pdflatex wrote its intermediates into the output directory
-for e in ['.aux', '.log']:
-    f = os.path.join(FIG_DIR, 'fig3_network' + e)
-    if os.path.exists(f):
-        os.remove(f)
 
-pdf = os.path.join(FIG_DIR, 'fig3_network.pdf')
-print('Fig 3 done -- %d edges, %d genes, modules %s'
-      % (len(top_edges), len(genes_all), {m: len(modules[m]) for m in modules}))
-print('  pdf %d bytes' % os.path.getsize(pdf))
+def load_panel_b():
+    """(label, asymptotic, calibrated) at the calibrated configurations.
+
+    The calibrated rates come from finite simulation counts (60 replicates,
+    B=200), so they are stored as raw fractions (13/60 = 0.21666...). The
+    published figure plots them at three decimals; the display rounding is
+    applied here so that the regenerated figure matches it exactly.
+    """
+    with open(CALIB_JSON, encoding="utf-8") as fh:
+        payload = json.load(fh)
+    rows = sorted(payload["results"], key=lambda r: -r["n"])
+    # 'n=%d,' padded to 8 characters keeps the pi0 fields aligned under the
+    # x-axis rotation, as in the published figure.
+    labels = [("n=%d," % r["n"]).ljust(8) + "pi0=%.1f" % r["pi0"] for r in rows]
+    asym = [round(r["type1_asymptotic"], 3) for r in rows]
+    cal = [round(r["type1_calibrated"], 3) for r in rows]
+    return labels, asym, cal
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--outdir", default=FIG_DIR,
+                    help="output directory (default: ../../figures)")
+    args = ap.parse_args()
+    outdir = os.path.abspath(args.outdir)
+    os.makedirs(outdir, exist_ok=True)
+
+    pi0_a, type1_a = load_panel_a()
+    labels, asym, cal = load_panel_b()
+    print("panel (a): %d points" % len(pi0_a))
+    print("panel (b): %d configurations" % len(labels))
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(6.6, 3.0))
+
+    # ---------- Panel (a) ----------
+    x = np.arange(len(pi0_a))
+    ax1.bar(x, type1_a, width=0.62, color="#4c72b0", edgecolor="black",
+            linewidth=0.6, label="Asymptotic $\\chi^2_1$")
+    ax1.axhline(ALPHA, color="crimson", linestyle="--", linewidth=1.2,
+                label="Nominal $\\alpha=0.05$")
+    ax1.set_xticks(x)
+    ax1.set_xticklabels(["$%.1f$" % p for p in pi0_a])
+    ax1.set_xlabel("Zero-inflation rate $\\pi_0$")
+    ax1.set_ylabel("Empirical type-I error")
+    ax1.set_ylim(0, 0.35)
+    ax1.yaxis.set_major_locator(MultipleLocator(0.05))
+    ax1.set_title("(a) Asymptotic $\\chi^2$ null", fontsize=9.5)
+    ax1.legend(frameon=False, loc="upper left", handlelength=1.4)
+    for xi, yi in zip(x, type1_a):
+        ax1.text(xi, yi + 0.008, "%.2f" % yi, ha="center", fontsize=7.5)
+
+    # ---------- Panel (b) ----------
+    x2 = np.arange(len(labels))
+    w = 0.36
+    ax2.bar(x2 - w / 2, asym, width=w, color="#c44e52", edgecolor="black",
+            linewidth=0.6, label="Asymptotic $\\chi^2_1$")
+    ax2.bar(x2 + w / 2, cal, width=w, color="#55a868", edgecolor="black",
+            linewidth=0.6, label="Permutation-calibrated")
+    ax2.axhline(ALPHA, color="crimson", linestyle="--", linewidth=1.2,
+                label="Nominal $\\alpha$")
+    ax2.set_xticks(x2)
+    ax2.set_xticklabels(labels, rotation=12, ha="right", fontsize=7.2)
+    ax2.set_xlabel("Configuration")
+    ax2.set_ylabel("Empirical type-I error")
+    ax2.set_ylim(0, 0.35)
+    ax2.yaxis.set_major_locator(MultipleLocator(0.05))
+    ax2.set_title("(b) Monte-Carlo null calibration", fontsize=9.5)
+    ax2.legend(frameon=False, loc="upper right", handlelength=1.4, fontsize=7.2)
+    for xi, (a, c) in enumerate(zip(asym, cal)):
+        ax2.text(xi - w / 2, a + 0.008, "%.2f" % a, ha="center", fontsize=7)
+        ax2.text(xi + w / 2, c + 0.008, "%.2f" % c, ha="center", fontsize=7)
+
+    fig.tight_layout()
+    out_pdf = os.path.join(outdir, "fig3_type1_zinb.pdf")
+    out_png = os.path.join(outdir, "fig3_type1_zinb.png")
+    fig.savefig(out_pdf, bbox_inches="tight")
+    fig.savefig(out_png, bbox_inches="tight")
+    print("SAVED", out_pdf, out_png)
+
+
+if __name__ == "__main__":
+    main()

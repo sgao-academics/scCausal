@@ -120,7 +120,7 @@ for ct_name in ['B', 'CD14+ Monocyte', 'CD4+ T', 'CD8+ T', 'NK']:
 
 # Since we don't have full edge lists in checkpoints, let's use a different strategy:
 # Use the STRING-validated edges from the network data
-# The fig3_network.tex has the gene list
+# The fig4_network.tex has the gene list
 
 # For this validation, let's use the gene network from fig3 (d=50)
 network_genes = [

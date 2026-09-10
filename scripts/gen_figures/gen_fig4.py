@@ -1,170 +1,211 @@
 """
-Fig 4: Validation & Robustness -- 2x2 panel composite.
-Colorblind-friendly palette (Paul Tol "bright").
+Fig 4: Causal skeleton network -- TikZ circular module layout.
 
-Every panel is read from the FAIR-protocol result files (the same run that
-produces Table 1); nothing is hardcoded.
+Data source (FAIR protocol, same run as Table 1):
+    results/fair_supplementary.json  ->  edges_d50.nb_validated
+    (60 STRING-validated NB-LR edges at d = 50, spanning 40 genes)
 
-DATA PROVENANCE
-  (a) functional composition of the STRING-validated d=30 gene set
-      -> results/fair_downstream.json  (key: go_d30)
-  (b) STRING precision vs combined-score threshold (400-900)
-      -> results/fair_downstream.json  (key: threshold)
-  (c) library-size GLM offset ablation
-      -> results/fair_supplementary.json (keys: offset_d*)
-         baseline  -> results/checkpoints/fair_pbmc_d*.json (NB_moment)
-  (d) cross-tissue NB-LR precision, PBMC vs Paul15
-      -> results/checkpoints/fair_{pbmc,paul15}_d*.json (NB_moment)
+HLA- and MT- prefixes are dropped from the on-figure labels for legibility;
+the caption states this.
 """
-import os, json, matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-import scienceplots  # noqa: F401
-import numpy as np
+import os, json, subprocess, math
 
-FIG_DIR = os.path.join(os.path.dirname(__file__), '..', '..', 'figures')
-RES_DIR = os.path.join(os.path.dirname(__file__), '..', '..', 'results')
-CKPT_DIR = os.path.join(RES_DIR, 'checkpoints')
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
+FIG_DIR = os.path.join(ROOT, 'figures')
+RES_DIR = os.path.join(ROOT, 'results')
 os.makedirs(FIG_DIR, exist_ok=True)
 
-C = {'nb': '#EE7733', 'fz': '#0077BB', 'pau': '#EE3377', 'gn': '#009988',
-     'bg': '#FFFFFF', 'grid': '#E8E8E8', 'grey': '#BBBBBB'}
+supp = json.load(open(os.path.join(RES_DIR, 'fair_supplementary.json'), encoding='utf-8'))
+top_edges = [tuple(p) for p in supp['edges_d50']['nb_validated']]
+D_LABEL = 50
 
-plt.style.use(['science', 'no-latex', 'bright'])
-plt.rcParams.update({
-    'font.size': 9, 'axes.titlesize': 10.5, 'axes.labelsize': 8.5,
-    'xtick.labelsize': 7.5, 'ytick.labelsize': 7.5, 'legend.fontsize': 7,
-    'font.family': 'sans-serif',
-    'axes.spines.top': False, 'axes.spines.right': False,
-    'axes.edgecolor': '#BDBDBD', 'axes.linewidth': 0.8,
-})
+# ---- functional modules -------------------------------------------------
+GROUPS = {
+    'I': ['HLA-DPA1', 'HLA-DRA', 'HLA-DPB1', 'HLA-DRB1', 'CD74', 'B2M', 'CTSS'],
+    'E': ['GNLY', 'NKG7', 'GZMB', 'CCL5', 'SRGN', 'IL32', 'PPBP'],
+    'R': ['RPL8', 'RPL13', 'RPS3A', 'RPS4X', 'RPS5', 'RPS27A'],
+    'S': ['S100A4', 'S100A6', 'S100A8', 'S100A9', 'S100A11', 'LGALS1'],
+    'M': ['MT-CO1', 'MT-CO2', 'MT-CYB'],
+    'O': ['ACTB', 'ARPC1B', 'AIF1', 'CST3', 'FCER1G', 'H3F3B', 'LST1',
+          'TYROBP', 'UBB', 'FTL', 'FTH1'],
+}
+CAT = {g: k for k, v in GROUPS.items() for g in v}
+MODS = ['I', 'E', 'R', 'S', 'M', 'O']
+COL_HEX = {'I': 'EE7733', 'E': '882255', 'R': '0077BB',
+           'S': 'EE3377', 'M': '33BBEE', 'O': 'BBBBBB'}
+MOD_NAMES = {'I': 'Immune/HLA', 'E': 'Effectors', 'R': 'Ribosomal',
+             'S': 'S100/Ca', 'M': 'Mitochondrial', 'O': 'Other'}
 
 
-def _j(p):
-    with open(os.path.join(RES_DIR, p), encoding='utf-8') as fh:
-        return json.load(fh)
+def short(g):
+    for pre in ('HLA-', 'MT-'):
+        if g.startswith(pre):
+            return g[len(pre):]
+    return g
 
 
-def _ck(p):
-    with open(os.path.join(CKPT_DIR, p), encoding='utf-8') as fh:
-        return json.load(fh)
+# ---- gather nodes actually present in the validated edge set ------------
+genes_all = set()
+for g1, g2 in top_edges:
+    genes_all.add(g1); genes_all.add(g2)
+unknown = sorted(g for g in genes_all if g not in CAT)
+if unknown:
+    print('WARNING: genes without a module assignment:', unknown)
+    for g in unknown:
+        CAT[g] = 'O'
+    GROUPS['O'] = GROUPS['O'] + unknown
 
+modules = {m: sorted([g for g in genes_all if CAT.get(g) == m]) for m in MODS}
+modules = {m: v for m, v in modules.items() if v}
 
-D = [30, 50, 100, 200]
-ds = _j('fair_downstream.json')
-supp = _j('fair_supplementary.json')
-pbmc = {d: _ck('fair_pbmc_d%d.json' % d) for d in D}
-paul = {d: _ck('fair_paul15_d%d.json' % d) for d in D}
+# === LAYOUT: modules grouped with gaps ===
+NODE_R = 8.5      # node circle radius (cm)
+LABEL_R = 9.9     # label circle radius (cm)
+GAP_DEG = 7.0     # gap between modules (degrees); wide enough that the last
+                  # label of one module cannot collide with the first of the next
 
-# === FIGURE ===
-fig, axes = plt.subplots(2, 2, figsize=(14, 11))
-fig.patch.set_facecolor(C['bg'])
+mod_weights = {m: len(modules[m]) for m in modules}
+total_nodes = sum(mod_weights.values())
+total_gap = len(modules) * GAP_DEG
+usable_deg = 360.0 - total_gap
 
-# ---- (a) Reactome pathway co-membership enrichment ----
-# Literature-curated, independent of STRING's co-expression channel.
-ax = axes[0, 0]
-r30, r50 = ds['reactome']['by_d']['30'], ds['reactome']['by_d']['50']
-groups = [f"$d=30$\n({r30['n_edges']} edges,\n{r30['n_genes']} genes)",
-          f"$d=50$\n({r50['n_edges']} edges,\n{r50['n_genes']} genes)"]
-edge_pct = [r30['edge_pct'], r50['edge_pct']]
-bg_pct = [r30['bg_pct'], r50['bg_pct']]
-xg = np.arange(2); wg = 0.34
-ax.bar(xg - wg / 2, edge_pct, wg, color=C['nb'], edgecolor='white', lw=0.5,
-       label='STRING-validated edges')
-ax.bar(xg + wg / 2, bg_pct, wg, color=C['grey'], edgecolor='white', lw=0.5,
-       label='Background (all gene pairs)')
-for i, r in enumerate([r30, r50]):
-    ax.text(i - wg / 2, edge_pct[i] + 1.2, f"{r['edge_pct']:.1f}%",
-            ha='center', fontsize=7, fontweight='bold', color=C['nb'])
-    ax.text(i + wg / 2, bg_pct[i] + 1.2, f"{r['bg_pct']:.1f}%",
-            ha='center', fontsize=7, fontweight='bold', color='#616161')
-    ax.text(i - wg / 2, edge_pct[i] * 0.5,
-            f"OR$\\,={r['odds_ratio']:.2f}$\n$p={r['fisher_p']:.1e}$",
-            ha='center', va='center', fontsize=7.4, fontweight='bold', color='white')
-ax.set_xticks(xg); ax.set_xticklabels(groups, fontsize=7)
-ax.set_ylabel('Pathway co-membership of edge (%)')
-ax.set_title('(a) Reactome co-membership (PBMC)', fontweight='bold')
-ax.legend(fontsize=6.8, framealpha=0.9, loc='upper right')
-ax.set_ylim(0, 122)
-ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
-
-# ---- (b) STRING precision vs combined-score threshold ----
-ax = axes[0, 1]
-thr_axis = [400, 500, 600, 700, 800, 900]
-cmap = {30: C['nb'], 50: C['fz'], 100: C['pau']}
-for d in [30, 50, 100]:
-    if str(d) not in ds['threshold']:
+positions = {}
+all_nodes_ordered = []
+ang_cur = 0.0
+for m in MODS:
+    if m not in modules:
         continue
-    rec = ds['threshold'][str(d)]
-    nb = [rec['NB_moment'][str(t)]['precision'] for t in thr_axis]
-    fz = [rec['Fisher_z'][str(t)]['precision'] for t in thr_axis]
-    ax.plot(thr_axis, nb, 'o-', color=cmap[d], lw=2, ms=6, label=f'NB-LR, $d={d}$')
-    ax.plot(thr_axis, fz, 's--', color=cmap[d], lw=1.6, ms=5, mfc='white',
-            label=r"Fisher's $z$, $d=%d$" % d)
-ax.set_xlabel('STRING combined-score threshold')
-ax.set_ylabel('Validation precision (%)')
-ax.set_title('(b) STRING threshold sensitivity ($d{=}30,50,100$)', fontweight='bold')
-ax.legend(fontsize=6, framealpha=0.9, ncol=2)
-ax.invert_xaxis()
-ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
+    genes = modules[m]
+    n = len(genes)
+    mod_deg = (n / total_nodes) * usable_deg
+    step = mod_deg / (n - 1) if n > 1 else 0
+    for i, g in enumerate(genes):
+        ang = ang_cur + (i * step if n > 1 else mod_deg / 2)
+        rad = math.radians(ang - 90)          # start from the top
+        positions[g] = (NODE_R * math.cos(rad), NODE_R * math.sin(rad),
+                        LABEL_R * math.cos(rad), LABEL_R * math.sin(rad),
+                        ang, rad)
+        all_nodes_ordered.append(g)
+    ang_cur += mod_deg + GAP_DEG
 
-# ---- (c) library-size GLM offset ablation ----
-ax = axes[1, 0]
-no_off = [pbmc[d]['NB_moment']['precision'] for d in D]
-with_off = [supp['offset_d%d' % d]['precision'] for d in D]
-xl = np.arange(len(D)); wl = 0.36
-ax.bar(xl - wl / 2, no_off, wl, color=C['fz'], edgecolor='white', lw=0.5,
-       label=r'NB-LR, no offset')
-ax.bar(xl + wl / 2, with_off, wl, color=C['nb'], edgecolor='white', lw=0.5,
-       label=r'NB-LR, $+$ log(library size) offset')
-for i in range(len(D)):
-    dl = with_off[i] - no_off[i]
-    clr = C['pau'] if dl > 0 else C['fz']
-    ax.text(i, max(no_off[i], with_off[i]) + 0.4, f'{dl:+.2f}pp',
-            ha='center', fontsize=7.2, fontweight='bold', color=clr)
-ax.set_xticks(xl); ax.set_xticklabels([f'$d={d}$' for d in D])
-ax.set_ylabel('STRING precision (%)')
-ax.set_title('(c) Library-size offset (PBMC)', fontweight='bold')
-ax.legend(fontsize=7, framealpha=0.9, loc='upper right')
-ax.set_ylim(0, 18)
-ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
+# === GENERATE TIKZ ===
+L = []
+L.append(r'\documentclass[tikz,border=4pt]{standalone}')
+L.append(r'\usepackage[T1]{fontenc}\usepackage{lmodern}\usepackage{xcolor}')
+L.append(r'\usepackage{tikz}')
+L.append('')
+for m in MODS:
+    if m in modules:
+        L.append(r'\definecolor{c%s}{HTML}{%s}' % (m, COL_HEX[m]))
+L.append(r'\definecolor{eg}{HTML}{BDBDBD}')
+L.append('')
+L.append(r'\begin{document}')
+L.append(r'\begin{tikzpicture}[scale=1.0]')
+L.append('')
 
-# ---- (d) cross-tissue NB-LR precision, PBMC vs Paul15 ----
-ax = axes[1, 1]
-pb = [pbmc[d]['NB_moment']['precision'] for d in D]
-pa = [paul[d]['NB_moment']['precision'] for d in D]
-x4 = np.arange(len(D)); w4 = 0.36
-ax.bar(x4 - w4 / 2, pb, w4, color=C['fz'], edgecolor='white', lw=0.5,
-       label='PBMC (peripheral blood)')
-ax.bar(x4 + w4 / 2, pa, w4, color=C['pau'], edgecolor='white', lw=0.5,
-       label='Paul15 (bone marrow)')
-for i in range(len(D)):
-    dd = pa[i] - pb[i]
-    ax.text(i, max(pb[i], pa[i]) + 0.4, f'{dd:+.2f}pp', ha='center',
-            fontsize=7.2, fontweight='bold', color=C['pau'] if dd > 0 else C['fz'])
-ax.set_xticks(x4); ax.set_xticklabels([f'$d={d}$' for d in D])
-ax.set_ylabel('NB-LR STRING precision (%)')
-ax.set_title('(d) Cross-tissue NB-LR precision', fontweight='bold')
-ax.legend(fontsize=7, framealpha=0.9, loc='upper right')
-ax.set_ylim(0, 18)
-ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
+L.append(r'\node[font=\sffamily\bfseries\Large,align=center] at (0,11.2)')
+L.append(r'  {scCausal causal skeleton \textemdash\ PBMC 3K ($d{=}%d$, STRING ${\geq}700$)};' % D_LABEL)
+L.append(r'\node[font=\sffamily\itshape\footnotesize,text=gray] at (0,10.5)')
+L.append(r'  {%d STRING-validated edges, %d genes in %d functional modules};'
+         % (len(top_edges), len(genes_all), len(modules)))
+L.append('')
 
-plt.tight_layout(pad=2.5, h_pad=2.2, w_pad=2.2)
-for fmt in ['pdf', 'png']:
-    plt.savefig(os.path.join(FIG_DIR, f'fig4_validation.{fmt}'), dpi=300,
-                bbox_inches='tight', facecolor=C['bg'], edgecolor='none')
-plt.close()
+# radial connector lines
+for g in all_nodes_ordered:
+    xn, yn, xl, yl, ang_deg, rad = positions[g]
+    m = CAT.get(g, 'O')
+    L.append(r'\draw[c%s,line width=0.3pt,opacity=0.25] (%.3f,%.3f) -- (%.3f,%.3f);'
+             % (m, xn, yn, xl, yl))
+L.append('')
 
-print('Fig 4 done. Source values:')
-print('  (a) reactome d=30 / d=50      :',
-      (r30['edge_pct'], r30['bg_pct'], r30['odds_ratio'], r30['fisher_p']),
-      (r50['edge_pct'], r50['bg_pct'], r50['odds_ratio'], r50['fisher_p']))
-print('      validated genes in universe: %d / %d'
-      % (len(ds['go_d30']['validated_genes']), ds['go_d30']['universe_size']))
-print('  (b) thresholds                :', thr_axis)
-print('  (c) no-offset                 :', no_off)
-print('      with-offset               :', with_off)
-print('  (d) PBMC  / Paul15 NB precision:', pb, pa)
-for fmt in ['pdf', 'png']:
-    p = os.path.join(FIG_DIR, f'fig4_validation.{fmt}')
-    print('  file %-4s %8d bytes' % (fmt, os.path.getsize(p)))
+# edges as Bezier curves
+for g1, g2 in top_edges:
+    xn1, yn1 = positions[g1][0], positions[g1][1]
+    xn2, yn2 = positions[g2][0], positions[g2][1]
+    mx = (xn1 + xn2) / 2; my = (yn1 + yn2) / 2
+    dd = math.sqrt((xn1 - xn2) ** 2 + (yn1 - yn2) ** 2)
+    push = 1.8 if dd > 12 else 0.7
+    if abs(mx) > 0.01:
+        mx += push * (mx / abs(mx))
+    if abs(my) > 0.01:
+        my += push * (my / abs(my))
+    L.append(r'\draw[eg,line width=0.65pt,opacity=0.32] (%.3f,%.3f) .. controls (%.3f,%.3f) .. (%.3f,%.3f);'
+             % (xn1, yn1, mx, my, xn2, yn2))
+L.append('')
+
+# nodes
+for g in all_nodes_ordered:
+    xn, yn = positions[g][0], positions[g][1]
+    m = CAT.get(g, 'O')
+    sz = '7pt' if m == 'I' else '5pt'
+    L.append(r'\fill[c%s,draw=white,line width=1.1pt] (%.3f,%.3f) circle (%s);'
+             % (m, xn, yn, sz))
+L.append('')
+
+# labels
+for g in all_nodes_ordered:
+    xl, yl, rad = positions[g][2], positions[g][3], positions[g][5]
+    m = CAT.get(g, 'O')
+    lbl = short(g)
+    fs = r'\small' if len(lbl) <= 3 else (r'\footnotesize' if len(lbl) <= 5
+                                          else r'\fontsize{6.6}{7.6}\selectfont')
+    anchor = 'west' if abs(rad) < math.pi / 2 else 'east'
+    L.append(r'\node[font=\sffamily\bfseries%s,text=c%s,anchor=%s,inner sep=0.8pt] at (%.3f,%.3f) {%s};'
+             % (fs, m, anchor, xl, yl, lbl))
+L.append('')
+
+# legend (top-left)
+lx0, ly0 = -11.5, 11.2
+for m in MODS:
+    if m in modules:
+        L.append(r'\fill[c%s,draw=white,line width=0.5pt] (%.1f,%.1f) circle (4pt);'
+                 % (m, lx0, ly0))
+        L.append(r'\node[font=\sffamily\footnotesize,anchor=west] at (%.1f,%.1f) {%s (%d)};'
+                 % (lx0 + 0.75, ly0, MOD_NAMES[m], len(modules[m])))
+        ly0 -= 0.65
+
+L.append(r'\end{tikzpicture}')
+L.append(r'\end{document}')
+
+# one figure, one script: the TikZ source lives beside this file, the rendered
+# PDF/PNG land in figures/
+tex = os.path.join(HERE, 'fig4_network.tex')
+with open(tex, 'w', encoding='utf-8') as f:
+    f.write('\n'.join(L) + '\n')
+
+for _ in range(2):
+    subprocess.run(['pdflatex', '-interaction=nonstopmode', '-output-directory', FIG_DIR, tex],
+                   capture_output=True, cwd=HERE)
+
+def _pdf_to_png(pdf_path, png_path, dpi=300):
+    """Render the TikZ PDF to a preview PNG without needing poppler."""
+    try:                                    # PyMuPDF (self-contained)
+        import fitz
+        d = fitz.open(pdf_path)
+        d[0].get_pixmap(dpi=dpi).save(png_path)
+        d.close()
+        return 'pymupdf'
+    except Exception:
+        pass
+    try:                                    # pdf2image + poppler, if present
+        from pdf2image import convert_from_path
+        convert_from_path(pdf_path, dpi=dpi)[0].save(png_path, 'PNG')
+        return 'pdf2image'
+    except Exception as e:
+        return 'skipped (%s)' % e
+
+
+print('png:', _pdf_to_png(os.path.join(FIG_DIR, 'fig4_network.pdf'),
+                          os.path.join(FIG_DIR, 'fig4_network.png')))
+
+# pdflatex wrote its intermediates into the output directory
+for e in ['.aux', '.log']:
+    f = os.path.join(FIG_DIR, 'fig4_network' + e)
+    if os.path.exists(f):
+        os.remove(f)
+
+pdf = os.path.join(FIG_DIR, 'fig4_network.pdf')
+print('Fig 4 done -- %d edges, %d genes, modules %s'
+      % (len(top_edges), len(genes_all), {m: len(modules[m]) for m in modules}))
+print('  pdf %d bytes' % os.path.getsize(pdf))
