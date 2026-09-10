@@ -151,13 +151,20 @@ and scoring it against human STRING yields zero hits.
     ├── _reactome_validate.py         # Reactome pathway validation
     ├── _download_reactome.py
     └── gen_figures/
-        ├── gen_fig1.py               # TikZ pipeline schematic
+        ├── fig1_pipeline.tex         # hand-written TikZ source, Figure 1
+        ├── gen_fig1.py               # compiles it into figures/
         ├── gen_fig2.py               # 9-panel benchmark composite
         ├── gen_fig3.py               # TikZ circular network layout
         ├── gen_fig4.py               # 4-panel validation composite
         ├── gen_fig5.py               # type-I error under zero-inflation
         └── gen_graphical_abstract.py
 ```
+
+One figure, one script: `scripts/gen_figures/fig1_pipeline.tex` is
+hand-written TikZ and sits next to the script that compiles it, while
+`gen_fig3.py` builds its TikZ source programmatically at run time
+(`fig3_network.tex` is therefore generated, not tracked).  Both write the
+rendered PDF/PNG into `figures/`.
 
 Every figure script is deterministic and reads its numbers from `results/`;
 `gen_fig5.py` regenerates the published Figure 5 byte-for-byte.

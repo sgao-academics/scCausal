@@ -10,8 +10,10 @@ the caption states this.
 """
 import os, json, subprocess, math
 
-FIG_DIR = os.path.join(os.path.dirname(__file__), '..', '..', 'figures')
-RES_DIR = os.path.join(os.path.dirname(__file__), '..', '..', 'results')
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
+FIG_DIR = os.path.join(ROOT, 'figures')
+RES_DIR = os.path.join(ROOT, 'results')
 os.makedirs(FIG_DIR, exist_ok=True)
 
 supp = json.load(open(os.path.join(RES_DIR, 'fair_supplementary.json'), encoding='utf-8'))
@@ -166,13 +168,15 @@ for m in MODS:
 L.append(r'\end{tikzpicture}')
 L.append(r'\end{document}')
 
-tex = os.path.join(FIG_DIR, 'fig3_network.tex')
+# one figure, one script: the TikZ source lives beside this file, the rendered
+# PDF/PNG land in figures/
+tex = os.path.join(HERE, 'fig3_network.tex')
 with open(tex, 'w', encoding='utf-8') as f:
     f.write('\n'.join(L) + '\n')
 
 for _ in range(2):
     subprocess.run(['pdflatex', '-interaction=nonstopmode', '-output-directory', FIG_DIR, tex],
-                   capture_output=True, cwd=FIG_DIR)
+                   capture_output=True, cwd=HERE)
 
 def _pdf_to_png(pdf_path, png_path, dpi=300):
     """Render the TikZ PDF to a preview PNG without needing poppler."""
@@ -195,8 +199,9 @@ def _pdf_to_png(pdf_path, png_path, dpi=300):
 print('png:', _pdf_to_png(os.path.join(FIG_DIR, 'fig3_network.pdf'),
                           os.path.join(FIG_DIR, 'fig3_network.png')))
 
+# pdflatex wrote its intermediates into the output directory
 for e in ['.aux', '.log']:
-    f = tex.replace('.tex', e)
+    f = os.path.join(FIG_DIR, 'fig3_network' + e)
     if os.path.exists(f):
         os.remove(f)
 

@@ -12,6 +12,9 @@ results/cache/
 *.log
 *.log.err
 
+# Generated at run time by scripts/gen_figures/gen_fig3.py
+scripts/gen_figures/fig3_network.tex
+
 # Build products
 *.aux
 *.synctex.gz
