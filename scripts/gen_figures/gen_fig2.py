@@ -11,9 +11,10 @@ DATA PROVENANCE
   (d)     PBMC cell-type networks  -> results/fair_celltype.json
   (e)     Paul15 cell-type networks -> results/fair_celltype_paul15.json
              (validated against the MOUSE STRING v11 network, taxid 10090)
-  (f)     Simulation, 100 random seeds -> results/_everything_ckpt.json (E_sim_*)
+  (f)     Simulation, paired over seeds  -> results/sim_multiseed_d*_n*.json
+             (the sample-size sweep: NB-moment vs Fisher's z on a common grid)
   (g)     NOTEARS zero-edge collapse   -> results/_final_push_ckpt.json
-  (h)     NB advantage vs overdispersion: pooled over every fair setting above
+  (h)     Raw NB advantage vs overdispersion: pooled over every fair setting above
   (i)     Threshold robustness          -> results/fair_supplementary.json
 
 Fair protocol: identical tau = 0.10, identical top-d variance-selected gene set
@@ -90,10 +91,29 @@ ctp = _j('fair_celltype_paul15.json')['types']
 
 GLOBAL_PBMC_D30 = pbmc[30]['NB_moment']['precision']   # 14.11
 
-# --- simulation (100 seeds) ---
-ek = _j('_everything_ckpt.json')
-sim_d = [30, 50, 100]
-sim = [ek['E_sim_d%d' % d] for d in sim_d]
+# --- simulation: sample-size sweep, paired NB-moment vs Fisher's z ---
+def _sim_sweep():
+    """One row per (d, n) configuration of the sample-size sweep.
+
+    The 'paired' list inside each file is ordered (mle, mom, glm) versus
+    Fisher's z, so index 1 is the method-of-moments comparison reported in
+    Table 2 of the manuscript.
+    """
+    rows = []
+    for fn in sorted(os.listdir(RES_DIR)):
+        if not (fn.startswith('sim_multiseed_d') and fn.endswith('.json')):
+            continue
+        b = _j(fn)['agg']
+        pa = b['paired'][1]
+        lo, hi = pa.get('boot_ci95', (pa['mean_diff'], pa['mean_diff']))
+        rows.append({'d': b['d'], 'n': b['n'], 'seeds': b['seeds'],
+                     'diff': pa['mean_diff'], 'lo': lo, 'hi': hi,
+                     'p': pa['wilcoxon_p'],
+                     'win': '%d/%d' % (pa['wins'], pa['n'])})
+    return sorted(rows, key=lambda r: (r['n'], r['d']))
+
+
+sim_sweep = _sim_sweep()
 
 # --- NOTEARS ---
 notears = _j('_final_push_ckpt.json')['notears_d30_50']['d_30']
@@ -207,25 +227,27 @@ ax.set_title('(e) Paul15 cell types ($d=30$)', fontweight='bold', color=C['pau']
 ax.legend(fontsize=6, framealpha=0.9); ax.set_ylim(0, 27)
 ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
 
-# (f) Simulation, 100 seeds, Cohen's d
+# (f) Simulation: paired F1 difference (NB-LR minus Fisher's z) vs sample size
 ax = axes[1, 2]
-nb_f1 = [r['nb_f1'] for r in sim]
-fz_f1 = [r['fz_f1'] for r in sim]
-nb_sd = [r['nb_f1_std'] for r in sim]
-fz_sd = [r['fz_f1_std'] for r in sim]
-ax.errorbar(sim_d, nb_f1, yerr=nb_sd, fmt='o-', color=C['nb'], lw=2.4, ms=8,
-            capsize=3, label='NB-LR', zorder=3)
-ax.errorbar(sim_d, fz_f1, yerr=fz_sd, fmt='s--', color=C['fz'], lw=2.4, ms=8,
-            capsize=3, label=r"Fisher's $z$", zorder=3)
-for i, d in enumerate(sim_d):
-    pooled = np.sqrt((nb_sd[i] ** 2 + fz_sd[i] ** 2) / 2)
-    cd = (nb_f1[i] - fz_f1[i]) / pooled
-    ax.annotate(f"$d'={cd:+.2f}$", (d, max(nb_f1[i], fz_f1[i]) + 0.030),
-                ha='center', fontsize=7.5, fontweight='bold',
-                color=C['nb'] if cd > 0 else C['fz'])
-ax.set_xlabel('Genes ($d$)'); ax.set_ylabel('F1 score')
-ax.set_title("(f) Simulation (100 seeds, Cohen's $d'$)", fontweight='bold')
-ax.legend(fontsize=7, framealpha=0.9); ax.set_ylim(0.40, 0.66)
+s_n = [r['n'] for r in sim_sweep]
+s_d = [r['diff'] for r in sim_sweep]
+ax.axhline(0, color='#8A8A8A', lw=1.2, zorder=1)
+ax.errorbar(s_n, s_d,
+            yerr=[[r['diff'] - r['lo'] for r in sim_sweep],
+                  [r['hi'] - r['diff'] for r in sim_sweep]],
+            fmt='none', ecolor='#6E6E6E', elinewidth=1.2, capsize=4, zorder=2)
+ax.scatter(s_n, s_d, s=100, zorder=3, edgecolor='white', linewidth=1.4,
+           c=[C['nb'] if r['diff'] > 0 else C['fz'] for r in sim_sweep])
+ax.set_xscale('log')
+ax.set_xticks([300, 500, 800, 1500])
+ax.set_xticklabels(['300', '500', '800', '1500'])
+ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
+ax.set_xlabel('Cells ($n$, log scale)', fontsize=8)
+ax.set_ylabel(r"$\Delta$F$_1$  (NB-LR $-$ Fisher's $z$)", fontsize=8)
+ax.set_title('(f) Simulation vs sample size', fontweight='bold')
+ax.text(0.5, 0.06, r'$d \in \{30, 50, 100\}$: sign follows $n$, not $d$',
+        transform=ax.transAxes, ha='center', fontsize=6.4, color='#555555')
+ax.set_ylim(-0.042, 0.038)
 ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
 
 # ---- ROW 3: Methods, mechanism, robustness ----
@@ -290,7 +312,7 @@ ax2.spines['right'].set_color('#BDBDBD')
 h1, l1 = ax.get_legend_handles_labels()
 h2, l2 = ax2.get_legend_handles_labels()
 ax.legend(h1 + h2, l1 + l2, fontsize=5.8, framealpha=0.9, loc='upper left')
-ax.set_title('(h) Overdispersion drives the gain', fontweight='bold', color=C['nb'])
+ax.set_title('(h) Raw gain vs overdispersion', fontweight='bold', color=C['nb'])
 ax.yaxis.grid(True, alpha=0.12, color=C['grid'])
 
 # (i) Threshold robustness at d = 30

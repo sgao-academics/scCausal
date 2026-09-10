@@ -5,6 +5,7 @@ Runs the full fair-protocol pipeline and regenerates every figure.
     python run_all.py                 full pipeline (needs all external datasets)
     python run_all.py --pbmc-only     PBMC 3K only, no external datasets required
     python run_all.py --quick         smoke test: d=30 only, a few minutes
+    python run_all.py --skip-sim      full pipeline without the 100-seed simulation sweep
     python run_all.py --figs-only     regenerate figures from the shipped results
     python run_all.py --verify        check the shipped results are complete
     python run_all.py --download      print dataset download instructions
@@ -40,6 +41,20 @@ for _stream in (sys.stdout, sys.stderr):
         pass
 
 CHILD_ENV = dict(os.environ, PYTHONIOENCODING='utf-8')
+
+# Sample-size sweep behind Table 3 of the manuscript: (d, n, true edges, seeds).
+# The benchmark deliberately varies n at fixed d, because the sign of the
+# NB-LR vs Fisher's z difference follows the sample size rather than the
+# dimension.  Runs in roughly five minutes in total at --jobs 4.
+SIM_CONFIGS = [
+    (30, 300, 20, 100),
+    (30, 500, 20, 100),
+    (50, 300, 30, 100),
+    (50, 500, 30, 100),
+    (50, 800, 30, 100),
+    (50, 1500, 30, 50),
+    (100, 700, 40, 100),
+]
 
 STATUS = []
 
@@ -128,7 +143,14 @@ def verify():
         ('table1_fair_all.json', ['precision']),
         ('zinb_type1_v2_results.json', ['empirical_type1']),
         ('zinb_calib_v2_results.json', ['type1_calibrated']),
+        ('equal_count.json', ['tau', '"d30"', '"d50"', '"d100"', '"d200"',
+                              'fisher_skeleton_topk', 'p_value']),
+        ('equal_count_celltype.json', ['PBMC_celltype', 'Paul15_celltype']),
     ]
+    # One file per configuration of the sample-size sweep behind Table 2.
+    checks.extend(('sim_multiseed_d%d_n%d.json' % (d, n),
+                   ['"agg"', '"per_seed"', '"seeds"'])
+                  for d, n, _ne, _seeds in SIM_CONFIGS)
     ok = True
     print('\n%-34s %s' % ('result file', 'status'))
     print('-' * 68)
@@ -166,6 +188,8 @@ def main():
                     help='print external dataset download instructions')
     ap.add_argument('--skip-downstream', action='store_true',
                     help='skip Reactome and DepMap validation')
+    ap.add_argument('--skip-sim', action='store_true',
+                    help='skip the 100-seed simulation sample-size sweep')
     args = ap.parse_args()
 
     print('scCausal reproduction runner')
@@ -215,11 +239,34 @@ def main():
     # 3. Table 1 -----------------------------------------------------------
     run('reproduce_table1.py', label='Table 1 assembly')
 
-    # 4. supplementary sweeps ---------------------------------------------
+    # 4. matched-edge-budget comparison ------------------------------------
+    # Precision is a ratio, so a method emitting fewer edges can look better.
+    # This stage truncates Fisher's z to scCausal's edge count and compares the
+    # two edge sets with a Fisher exact test -> results/equal_count*.json.
+    run('equal_count_comparison.py', dims,
+        label='matched edge budget, pooled PBMC')
+    if args.quick:
+        print('\n  skipping cell-type matched-budget comparison (quick mode)')
+        STATUS.append(('cell-type matched budget', 'skipped', 0.0))
+    else:
+        run('equal_count_celltype.py', ['pbmc', 'paul'],
+            label='matched edge budget, cell-type networks')
+
+    # 5. simulation sample-size sweep --------------------------------------
+    if args.quick or args.skip_sim:
+        print('\n  skipping the simulation sweep (%d configurations)' % len(SIM_CONFIGS))
+        STATUS.append(('simulation sweep', 'skipped', 0.0))
+    else:
+        for d, n, ne, seeds in SIM_CONFIGS:
+            run('sim_multiseed.py',
+                ['--d', d, '--n', n, '--ne', ne, '--seeds', seeds, '--jobs', 4],
+                label='simulation d=%d n=%d (%d seeds)' % (d, n, seeds))
+
+    # 6. supplementary sweeps ---------------------------------------------
     run('fair_supplementary.py',
         label='alpha_sig / tau / library-size-offset sweeps')
 
-    # 5. downstream validation --------------------------------------------
+    # 7. downstream validation --------------------------------------------
     if args.quick or args.skip_downstream:
         print('\n  skipping downstream validation (Reactome + DepMap)')
         STATUS.append(('downstream validation', 'skipped', 0.0))
@@ -227,7 +274,7 @@ def main():
         run('fair_downstream.py',
             label='STRING thresholds, Reactome, DepMap')
 
-    # 6. figures -----------------------------------------------------------
+    # 8. figures -----------------------------------------------------------
     gen_figures()
 
     summary()

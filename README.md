@@ -43,6 +43,11 @@ python run_all.py --verify
 python run_all.py --quick
 ```
 
+The full run also reproduces the matched-edge-budget comparison (Table 2 of
+the manuscript) and the 100-seed sample-size sweep (Table 3), about five
+minutes in total at `--jobs 4`. Add `--skip-sim` to omit the sweep, and
+`--pbmc-only` to stay within the datasets that ship in this package.
+
 ## Headline results
 
 Skeletons are scored by STRING v11 precision (combined score >= 700), under a
@@ -53,19 +58,56 @@ PBMC 3K (n = 2,700 cells, top-*d* variable genes):
 
 | *d* | NB-LR, method of moments | Fisher's *z* | Edges (NB / Fz) |
 |----:|-------------------------:|-------------:|----------------:|
-| 30  | **14.11 %**              | 13.82 %      | 241 / 246 |
-| 50  | **10.07 %**              | 9.40 %       | 596 / 670 |
-| 100 | **7.47 %**               | 5.95 %       | 1,379 / 2,084 |
-| 200 | **6.50 %**               | 4.43 %       | 2,293 / 5,306 |
+| 30  | 14.11 %                  | 13.82 %      | 241 / 246 |
+| 50  | 10.07 %                  | 9.40 %       | 596 / 670 |
+| 100 | 7.47 %                   | 5.95 %       | 1,379 / 2,084 |
+| 200 | 6.50 %                   | 4.43 %       | 2,293 / 5,306 |
+
+Precision is a ratio, and on these data the two tests do **not** run at the
+same operating point, so the table above must not be read as an edge-quality
+ranking. Truncating Fisher's *z* to NB-LR's edge count and comparing the two
+edge sets with a Fisher exact test removes the difference: *p* = 1.000, 1.000,
+0.886 and 1.000 at *d* = 30/50/100/200, and at *d* = 30 the two sets of
+STRING-validated edges are identical (34 edges each, so the whole 0.29 pp gap
+is a denominator effect, 241 vs 246 edges). Pooled over all 23 comparisons the
+raw +1.92 pp difference becomes **-0.67 pp** at a matched budget, with 6 of 23
+positive. Reproduce with `results/equal_count.json` and
+`results/equal_count_celltype.json`.
 
 Paul15 (mouse haematopoiesis, validated against mouse STRING), *d* = 30:
-**10.38 %** vs 9.64 %.
+10.38 % vs 9.64 % raw; +0.18 pp across four clusters at a matched budget.
 
-Cell-type-resolved PBMC skeletons at *d* = 30: B cells **29.89 %** vs 24.59 %,
-CD4+ T cells **27.43 %** vs 24.41 %, CD8+ T cells **21.92 %** vs 20.49 %,
-CD14+ monocytes **17.52 %** vs 16.67 %. NB-LR exceeds Fisher's *z* in all
-15 PBMC cell-type x dimension settings, and in 13 of 14 Paul15
-cluster x dimension settings.
+Cell-type-resolved PBMC skeletons at *d* = 30: B cells 29.89 % vs 24.59 %,
+CD4+ T cells 27.43 % vs 24.41 %, CD8+ T cells 21.92 % vs 20.49 %, CD14+
+monocytes 17.52 % vs 16.67 %. Cell-type resolution roughly doubles absolute
+validation precision relative to the pooled network, but here too the raw gap
+to Fisher's *z* does not survive a matched edge budget (-1.07 pp over 15
+settings, 3 of 15 positive).
+
+A 100-seed simulation benchmark with known ground truth locates where the two
+tests actually differ. It sweeps the sample size at fixed dimension
+(`results/sim_multiseed_*.json`):
+
+| *d* | *n* | ΔF₁ (NB-LR − Fz) | Cohen's *d* | NB wins | *p* |
+|----:|----:|-----------------:|------------:|--------:|----:|
+| 30  | 300 | -0.030 | -0.42 | 26/100 | 5.6e-7 |
+| 50  | 300 | -0.019 | -0.38 | 28/100 | 2.4e-8 |
+| 30  | 500 | +0.012 | +0.19 | 61/100 | 1.7e-4 |
+| 50  | 500 | +0.025 | +0.57 | 80/100 | 3.7e-13 |
+| 100 | 700 | +0.006 | +0.14 | 67/100 | 2.7e-10 |
+| 50  | 800 | +0.004 | +0.07 | 30/100 | 7.0e-4 |
+| 50  | 1,500 | +0.003 | +0.07 | 9/50 | 7.4e-3 |
+
+The sign follows *n*, not *d*: Fisher's *z* is significantly better below
+*n* = 300, and NB-LR from *n* = 500 upward with an advantage that contracts as
+the sample grows. At the PBMC sample size (*n* = 2,700) the two tests are
+indistinguishable at a matched edge budget, which is the outcome the sweep
+predicts.
+
+What the method does deliver: *p*-values interpretable under the generative
+model that produced the data, a data-driven dispersion that dominates the fixed
+default (14.11 % vs 13.33 % at *d* = 30; 6.50 % vs 4.79 % at *d* = 200), and
+Type-I error control characterised and repaired under heavy zero-inflation.
 
 Independent validation:
 
@@ -131,6 +173,15 @@ and scoring it against human STRING yields zero hits.
 │   ├── table1_fair_all.json          #   Table 1 assembly
 │   ├── zinb_type1_v2_results.json    #   type-I error grid (Figure 3a)
 │   ├── zinb_calib_v2_results.json    #   Monte-Carlo calibration (Figure 3b)
+│   ├── equal_count.json              #   matched-edge-budget comparison, pooled
+│   ├── equal_count_celltype.json     #   matched-edge-budget comparison, cell type
+│   ├── sim_multiseed_d30_n300.json   #   simulation sample-size sweep:
+│   ├── sim_multiseed_d30_n500.json   #   one file per (d, n) configuration,
+│   ├── sim_multiseed_d50_n300.json   #   100 paired seeds each (50 at
+│   ├── sim_multiseed_d50_n500.json   #   n = 1,500)
+│   ├── sim_multiseed_d50_n800.json
+│   ├── sim_multiseed_d50_n1500.json
+│   ├── sim_multiseed_d100_n700.json
 │   └── ...                           #   supporting checkpoints
 └── scripts/
     ├── config.py                     # dataset path resolution
@@ -146,6 +197,9 @@ and scoring it against human STRING yields zero hits.
     ├── run_pbmc.py, run_paul.py, run_synthetic.py, run_baselines.py
     ├── run_everything.py, run_fix30.py
     ├── sweep_all.py, sweep_ci.py, sweep_full.py
+    ├── sim_multiseed.py              # simulation sweep, paired over seeds
+    ├── equal_count_comparison.py     # matched-edge-budget, pooled PBMC
+    ├── equal_count_celltype.py       # matched-edge-budget, cell-type networks
     ├── download_data.py
     ├── _depmap_coessential.py        # CRISPR co-essentiality validation
     ├── _reactome_validate.py         # Reactome pathway validation

@@ -1,0 +1,592 @@
+{
+  "PBMC_celltype": {
+    "B": {
+      "d30": {
+        "edges_scCausal": 87,
+        "hits_scCausal": 26,
+        "fisher_marginal_topk": {
+          "edges": 87,
+          "hits": 29,
+          "precision": 33.33
+        },
+        "fisher_skeleton": {
+          "edges": 122,
+          "hits": 30,
+          "precision": 24.59
+        },
+        "fisher_skeleton_topk": {
+          "edges": 87,
+          "hits": 29,
+          "precision": 33.33
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 0.8525,
+          "p_value": 0.7445296245205286
+        },
+        "n_cells": 453,
+        "alpha_hat": 0.5278,
+        "scCausal_precision": 29.89,
+        "fisher_z_full_precision": 24.59,
+        "delta_raw": 5.3,
+        "delta_equal_count": -3.44,
+        "delta_equal_count_marginal": -3.44
+      },
+      "d50": {
+        "edges_scCausal": 176,
+        "hits_scCausal": 36,
+        "fisher_marginal_topk": {
+          "edges": 176,
+          "hits": 38,
+          "precision": 21.59
+        },
+        "fisher_skeleton": {
+          "edges": 249,
+          "hits": 45,
+          "precision": 18.07
+        },
+        "fisher_skeleton_topk": {
+          "edges": 176,
+          "hits": 40,
+          "precision": 22.73
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 0.8743,
+          "p_value": 0.6977265261732588
+        },
+        "n_cells": 453,
+        "alpha_hat": 0.8171,
+        "scCausal_precision": 20.45,
+        "fisher_z_full_precision": 18.07,
+        "delta_raw": 2.38,
+        "delta_equal_count": -2.28,
+        "delta_equal_count_marginal": -1.14
+      },
+      "d100": {
+        "edges_scCausal": 388,
+        "hits_scCausal": 54,
+        "fisher_marginal_topk": {
+          "edges": 388,
+          "hits": 69,
+          "precision": 17.78
+        },
+        "fisher_skeleton": {
+          "edges": 628,
+          "hits": 79,
+          "precision": 12.58
+        },
+        "fisher_skeleton_topk": {
+          "edges": 388,
+          "hits": 69,
+          "precision": 17.78
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 0.7475,
+          "p_value": 0.16860905963349898
+        },
+        "n_cells": 453,
+        "alpha_hat": 1.1458,
+        "scCausal_precision": 13.92,
+        "fisher_z_full_precision": 12.58,
+        "delta_raw": 1.34,
+        "delta_equal_count": -3.86,
+        "delta_equal_count_marginal": -3.86
+      },
+      "d200": {
+        "edges_scCausal": 892,
+        "hits_scCausal": 85,
+        "fisher_marginal_topk": {
+          "edges": 892,
+          "hits": 118,
+          "precision": 13.23
+        },
+        "fisher_skeleton": {
+          "edges": 1484,
+          "hits": 123,
+          "precision": 8.29
+        },
+        "fisher_skeleton_topk": {
+          "edges": 892,
+          "hits": 116,
+          "precision": 13.0
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 0.7046,
+          "p_value": 0.024489778668955707
+        },
+        "n_cells": 453,
+        "alpha_hat": 1.1938,
+        "scCausal_precision": 9.53,
+        "fisher_z_full_precision": 8.29,
+        "delta_raw": 1.24,
+        "delta_equal_count": -3.47,
+        "delta_equal_count_marginal": -3.7
+      }
+    },
+    "CD14+ Monocyte": {
+      "d30": {
+        "edges_scCausal": 234,
+        "hits_scCausal": 41,
+        "fisher_marginal_topk": {
+          "edges": 234,
+          "hits": 36,
+          "precision": 15.38
+        },
+        "fisher_skeleton": {
+          "edges": 258,
+          "hits": 43,
+          "precision": 16.67
+        },
+        "fisher_skeleton_topk": {
+          "edges": 234,
+          "hits": 41,
+          "precision": 17.52
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 1.0,
+          "p_value": 1.0
+        },
+        "n_cells": 484,
+        "alpha_hat": 0.5963,
+        "scCausal_precision": 17.52,
+        "fisher_z_full_precision": 16.67,
+        "delta_raw": 0.85,
+        "delta_equal_count": 0.0,
+        "delta_equal_count_marginal": 2.14
+      },
+      "d50": {
+        "edges_scCausal": 500,
+        "hits_scCausal": 61,
+        "fisher_marginal_topk": {
+          "edges": 500,
+          "hits": 55,
+          "precision": 11.0
+        },
+        "fisher_skeleton": {
+          "edges": 612,
+          "hits": 66,
+          "precision": 10.78
+        },
+        "fisher_skeleton_topk": {
+          "edges": 500,
+          "hits": 56,
+          "precision": 11.2
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 1.1017,
+          "p_value": 0.6940612254524665
+        },
+        "n_cells": 484,
+        "alpha_hat": 0.7197,
+        "scCausal_precision": 12.2,
+        "fisher_z_full_precision": 10.78,
+        "delta_raw": 1.42,
+        "delta_equal_count": 1.0,
+        "delta_equal_count_marginal": 1.2
+      },
+      "d100": {
+        "edges_scCausal": 1100,
+        "hits_scCausal": 84,
+        "fisher_marginal_topk": {
+          "edges": 1100,
+          "hits": 84,
+          "precision": 7.64
+        },
+        "fisher_skeleton": {
+          "edges": 1556,
+          "hits": 100,
+          "precision": 6.43
+        },
+        "fisher_skeleton_topk": {
+          "edges": 1100,
+          "hits": 87,
+          "precision": 7.91
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 0.9627,
+          "p_value": 0.8735165264679724
+        },
+        "n_cells": 484,
+        "alpha_hat": 0.9434,
+        "scCausal_precision": 7.64,
+        "fisher_z_full_precision": 6.43,
+        "delta_raw": 1.21,
+        "delta_equal_count": -0.27,
+        "delta_equal_count_marginal": 0.0
+      },
+      "d200": {
+        "edges_scCausal": 2073,
+        "hits_scCausal": 114,
+        "fisher_marginal_topk": {
+          "edges": 2073,
+          "hits": 108,
+          "precision": 5.21
+        },
+        "fisher_skeleton": {
+          "edges": 3248,
+          "hits": 152,
+          "precision": 4.68
+        },
+        "fisher_skeleton_topk": {
+          "edges": 2073,
+          "hits": 120,
+          "precision": 5.79
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 0.9471,
+          "p_value": 0.7365702748762097
+        },
+        "n_cells": 484,
+        "alpha_hat": 1.2,
+        "scCausal_precision": 5.5,
+        "fisher_z_full_precision": 4.68,
+        "delta_raw": 0.82,
+        "delta_equal_count": -0.29,
+        "delta_equal_count_marginal": 0.29
+      }
+    },
+    "CD4+ T": {
+      "d30": {
+        "edges_scCausal": 113,
+        "hits_scCausal": 31,
+        "fisher_marginal_topk": {
+          "edges": 113,
+          "hits": 23,
+          "precision": 20.35
+        },
+        "fisher_skeleton": {
+          "edges": 127,
+          "hits": 31,
+          "precision": 24.41
+        },
+        "fisher_skeleton_topk": {
+          "edges": 113,
+          "hits": 28,
+          "precision": 24.78
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 1.1476,
+          "p_value": 0.762141498222689
+        },
+        "n_cells": 1184,
+        "alpha_hat": 0.4967,
+        "scCausal_precision": 27.43,
+        "fisher_z_full_precision": 24.41,
+        "delta_raw": 3.02,
+        "delta_equal_count": 2.65,
+        "delta_equal_count_marginal": 7.08
+      },
+      "d50": {
+        "edges_scCausal": 216,
+        "hits_scCausal": 39,
+        "fisher_marginal_topk": {
+          "edges": 216,
+          "hits": 33,
+          "precision": 15.28
+        },
+        "fisher_skeleton": {
+          "edges": 286,
+          "hits": 42,
+          "precision": 14.69
+        },
+        "fisher_skeleton_topk": {
+          "edges": 216,
+          "hits": 34,
+          "precision": 15.74
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 1.1795,
+          "p_value": 0.6077755647986796
+        },
+        "n_cells": 1184,
+        "alpha_hat": 0.7388,
+        "scCausal_precision": 18.06,
+        "fisher_z_full_precision": 14.69,
+        "delta_raw": 3.37,
+        "delta_equal_count": 2.32,
+        "delta_equal_count_marginal": 2.78
+      },
+      "d100": {
+        "edges_scCausal": 396,
+        "hits_scCausal": 58,
+        "fisher_marginal_topk": {
+          "edges": 396,
+          "hits": 60,
+          "precision": 15.15
+        },
+        "fisher_skeleton": {
+          "edges": 644,
+          "hits": 70,
+          "precision": 10.87
+        },
+        "fisher_skeleton_topk": {
+          "edges": 396,
+          "hits": 58,
+          "precision": 14.65
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 1.0,
+          "p_value": 1.0
+        },
+        "n_cells": 1184,
+        "alpha_hat": 1.1124,
+        "scCausal_precision": 14.65,
+        "fisher_z_full_precision": 10.87,
+        "delta_raw": 3.78,
+        "delta_equal_count": 0.0,
+        "delta_equal_count_marginal": -0.5
+      },
+      "d200": {
+        "edges_scCausal": 547,
+        "hits_scCausal": 72,
+        "fisher_marginal_topk": {
+          "edges": 547,
+          "hits": 79,
+          "precision": 14.44
+        },
+        "fisher_skeleton": {
+          "edges": 1251,
+          "hits": 96,
+          "precision": 7.67
+        },
+        "fisher_skeleton_topk": {
+          "edges": 547,
+          "hits": 76,
+          "precision": 13.89
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 0.9394,
+          "p_value": 0.7909461064202009
+        },
+        "n_cells": 1184,
+        "alpha_hat": 2.7626,
+        "scCausal_precision": 13.16,
+        "fisher_z_full_precision": 7.67,
+        "delta_raw": 5.49,
+        "delta_equal_count": -0.73,
+        "delta_equal_count_marginal": -1.28
+      }
+    },
+    "CD8+ T": {
+      "d30": {
+        "edges_scCausal": 146,
+        "hits_scCausal": 32,
+        "fisher_marginal_topk": {
+          "edges": 146,
+          "hits": 38,
+          "precision": 26.03
+        },
+        "fisher_skeleton": {
+          "edges": 205,
+          "hits": 42,
+          "precision": 20.49
+        },
+        "fisher_skeleton_topk": {
+          "edges": 146,
+          "hits": 38,
+          "precision": 26.03
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 0.7978,
+          "p_value": 0.49327181912260387
+        },
+        "n_cells": 348,
+        "alpha_hat": 0.4428,
+        "scCausal_precision": 21.92,
+        "fisher_z_full_precision": 20.49,
+        "delta_raw": 1.43,
+        "delta_equal_count": -4.11,
+        "delta_equal_count_marginal": -4.11
+      },
+      "d50": {
+        "edges_scCausal": 246,
+        "hits_scCausal": 42,
+        "fisher_marginal_topk": {
+          "edges": 246,
+          "hits": 45,
+          "precision": 18.29
+        },
+        "fisher_skeleton": {
+          "edges": 351,
+          "hits": 51,
+          "precision": 14.53
+        },
+        "fisher_skeleton_topk": {
+          "edges": 246,
+          "hits": 45,
+          "precision": 18.29
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 0.9196,
+          "p_value": 0.8132899279345347
+        },
+        "n_cells": 348,
+        "alpha_hat": 0.461,
+        "scCausal_precision": 17.07,
+        "fisher_z_full_precision": 14.53,
+        "delta_raw": 2.54,
+        "delta_equal_count": -1.22,
+        "delta_equal_count_marginal": -1.22
+      },
+      "d100": {
+        "edges_scCausal": 508,
+        "hits_scCausal": 60,
+        "fisher_marginal_topk": {
+          "edges": 508,
+          "hits": 72,
+          "precision": 14.17
+        },
+        "fisher_skeleton": {
+          "edges": 840,
+          "hits": 80,
+          "precision": 9.52
+        },
+        "fisher_skeleton_topk": {
+          "edges": 508,
+          "hits": 72,
+          "precision": 14.17
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 0.811,
+          "p_value": 0.3046825996243358
+        },
+        "n_cells": 348,
+        "alpha_hat": 0.6239,
+        "scCausal_precision": 11.81,
+        "fisher_z_full_precision": 9.52,
+        "delta_raw": 2.29,
+        "delta_equal_count": -2.36,
+        "delta_equal_count_marginal": -2.36
+      }
+    }
+  },
+  "Paul15_celltype": {
+    "13Baso": {
+      "d30": {
+        "edges_scCausal": 274,
+        "hits_scCausal": 33,
+        "fisher_marginal_topk": {
+          "edges": 274,
+          "hits": 34,
+          "precision": 12.41
+        },
+        "fisher_skeleton": {
+          "edges": 321,
+          "hits": 36,
+          "precision": 11.21
+        },
+        "fisher_skeleton_topk": {
+          "edges": 274,
+          "hits": 34,
+          "precision": 12.41
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 0.9666,
+          "p_value": 1.0
+        },
+        "n_cells": 300,
+        "alpha_hat": 0.2874,
+        "scCausal_precision": 12.04,
+        "fisher_z_full_precision": 11.21,
+        "delta_raw": 0.83,
+        "delta_equal_count": -0.37,
+        "delta_equal_count_marginal": -0.37
+      }
+    },
+    "14Mo": {
+      "d30": {
+        "edges_scCausal": 268,
+        "hits_scCausal": 34,
+        "fisher_marginal_topk": {
+          "edges": 268,
+          "hits": 31,
+          "precision": 11.57
+        },
+        "fisher_skeleton": {
+          "edges": 308,
+          "hits": 35,
+          "precision": 11.36
+        },
+        "fisher_skeleton_topk": {
+          "edges": 268,
+          "hits": 34,
+          "precision": 12.69
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 1.0,
+          "p_value": 1.0
+        },
+        "n_cells": 373,
+        "alpha_hat": 0.2388,
+        "scCausal_precision": 12.69,
+        "fisher_z_full_precision": 11.36,
+        "delta_raw": 1.33,
+        "delta_equal_count": 0.0,
+        "delta_equal_count_marginal": 1.12
+      }
+    },
+    "2Ery": {
+      "d30": {
+        "edges_scCausal": 317,
+        "hits_scCausal": 31,
+        "fisher_marginal_topk": {
+          "edges": 317,
+          "hits": 30,
+          "precision": 9.46
+        },
+        "fisher_skeleton": {
+          "edges": 310,
+          "hits": 30,
+          "precision": 9.68
+        },
+        "fisher_skeleton_topk": {
+          "edges": 310,
+          "hits": 30,
+          "precision": 9.68
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 1.0369,
+          "p_value": 1.0
+        },
+        "n_cells": 329,
+        "alpha_hat": 0.1424,
+        "scCausal_precision": 9.78,
+        "fisher_z_full_precision": 9.68,
+        "delta_raw": 0.1,
+        "delta_equal_count": 0.1,
+        "delta_equal_count_marginal": 0.32
+      }
+    },
+    "3Ery": {
+      "d30": {
+        "edges_scCausal": 303,
+        "hits_scCausal": 31,
+        "fisher_marginal_topk": {
+          "edges": 303,
+          "hits": 29,
+          "precision": 9.57
+        },
+        "fisher_skeleton": {
+          "edges": 334,
+          "hits": 31,
+          "precision": 9.28
+        },
+        "fisher_skeleton_topk": {
+          "edges": 303,
+          "hits": 28,
+          "precision": 9.24
+        },
+        "fisher_exact_skeleton_topk": {
+          "odds_ratio": 1.1194,
+          "p_value": 0.7842692637823042
+        },
+        "n_cells": 246,
+        "alpha_hat": 0.2225,
+        "scCausal_precision": 10.23,
+        "fisher_z_full_precision": 9.28,
+        "delta_raw": 0.95,
+        "delta_equal_count": 0.99,
+        "delta_equal_count_marginal": 0.66
+      }
+    }
+  }
+}
