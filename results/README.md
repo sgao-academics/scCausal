@@ -18,8 +18,9 @@ that produced it. Files are grouped by whether the manuscript cites them.
 | `zinb_type1_moment.json` | Table 5(c) | `scripts/zinb_type1_moment.py` |
 | `fair_celltype.json`, `fair_celltype_paul15.json` | Table 6, Table 7 | `scripts/fair_supplementary.py` |
 | `checkpoints/ct*_d*.json` | Table 6, Table 7 | `scripts/fair_supplementary.py` |
-| `fair_downstream.json` | Fig. 5(a-d) | `scripts/fair_downstream.py` |
-| `depmap_coessentiality.json` | CRISPR co-essentiality section | `scripts/_depmap_coessential.py` |
+| `fair_downstream.json` | Fig. 5(a), Reactome and DepMap blocks | `scripts/fair_downstream.py` |
+| `checkpoints/ds_depmap.json` | CRISPR co-essentiality section (49 testable edges) | `scripts/fair_downstream.py` |
+| `checkpoints/fair_paul15_d{50,100,200}.json` | Table 1 (Paul15 rows at `d=50/100/200`) | `scripts/fair_supplementary.py` |
 | `string_background.json` | STRING random-pair background | `scripts/string_background_rate.py` |
 | `checkpoints/supp_alpha_*.json`, `supp_tau_*.json`, `supp_offset_*.json` | parameter-sensitivity section | `scripts/fair_supplementary.py` |
 | `checkpoints/supp_edges_d{30,50}.json` | edge lists for the network figure and the STRING background | `scripts/fair_supplementary.py` |
@@ -39,6 +40,11 @@ files in section 1 supersede them.
 | `fix_dropout.json` | dropout sweep used as a diagnostic while building the fair protocol |
 | `fix_sim_mle.json`, `fix_sim_nsweep.json` | MLE-dispersion variants explored before settling on the moment estimator |
 | `mech_disp_sweep.json`, `mech_theta_sweep.json` | 30-seed and 5-seed pilots; the reported sweep is the 100-seed `sim_disp_sweep.json` |
+| `depmap_coessentiality.json`, `_depmap_log.txt` | early DepMap run over a 14-edge subset (11 testable; odds ratio undefined). The manuscript reports the 49-edge run in `checkpoints/ds_depmap.json` (OR 1.19, p 0.34) |
+| `ci_full_sweep.json` | early dimension sweep of the pre-fair pipeline (`d=30`: 216 edges, 14.81%); Table 1 reports 241 edges, 14.11% |
+| `multi_d_sweep.json` | pre-fair score-based sweep; its "scCausal" column is an earlier low-rank model, not the NB-LR PC test |
+| `_libsize_main_ckpt.json` | intermediate offset checkpoint (11.90/8.80/6.40/5.90%); the manuscript values come from `fair_supplementary.json` `offset_d*` (12.25/10.08/7.81/7.48%) |
+| `synthetic_benchmark.json`, `validation_results.json` | pre-fair-protocol runs kept for provenance |
 
 ## 3. Run checkpoints
 
