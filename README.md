@@ -115,7 +115,7 @@ Independent validation:
   therefore independent of STRING's co-expression channel — is enriched over a
   matched background at odds ratio 4.82 (*p* = 9.0e-4, *d* = 30) and 2.42
   (*p* = 1.6e-3, *d* = 50).
-- **DepMap** CRISPR co-essentiality supports individual predictions: 8 of the 49
+- **DepMap** CRISPR co-essentiality supports individual predictions: 9 of the 49
   testable edges survive a Bonferroni correction, headed by RPL13–RPL8
   (*r* = 0.183, *p* = 1.6e-10). Co-essentiality is pervasive genome-wide
   (27.1 % of random gene pairs reach *p* < 0.05), so the edge set as a whole is
@@ -200,8 +200,9 @@ and scoring it against human STRING yields zero hits.
     ├── sim_multiseed.py              # simulation sweep, paired over seeds
     ├── equal_count_comparison.py     # matched-edge-budget, pooled PBMC
     ├── equal_count_celltype.py       # matched-edge-budget, cell-type networks
+    ├── zinb_type1_v2.py              # type-I error grid (Fig. 3a)     -> results/zinb_type1_v2_results.json
+    ├── zinb_calib_v2.py              # permutation-null calibration      -> results/zinb_calib_v2_results.json
     ├── download_data.py
-    ├── _depmap_coessential.py        # CRISPR co-essentiality validation
     ├── _reactome_validate.py         # Reactome pathway validation
     ├── _download_reactome.py
     └── gen_figures/
