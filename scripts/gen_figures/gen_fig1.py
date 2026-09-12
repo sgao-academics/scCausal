@@ -1,25 +1,41 @@
-"""Fig 1: Pipeline schematic -- TikZ compilation + PNG conversion.
+"""Fig 1: framework schematic -- TikZ compilation + PNG preview.
 
-One figure, one script: the TikZ source fig1_pipeline.tex sits beside this
-file, and the rendered PDF/PNG land in figures/.
+One figure, one script: the TikZ source fig1_pipeline.tex sits beside this file
+and is drawn at 1:1 print scale (canvas 16.30 x 7.10 cm vs a 16.46 cm textwidth),
+so the 6-7.5 pt type in the source is the type that reaches the page.
+
+The rendered PDF/PNG land in figures/. A non-zero pdflatex exit stops the script
+instead of silently leaving last run's PDF in place.
 """
-import subprocess, os, sys
+import os
+import subprocess
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-FIG_DIR = os.path.abspath(os.path.join(HERE, '..', '..', 'figures'))
+ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
+FIG_DIR = os.path.join(ROOT, 'figures')
 TEX = os.path.join(HERE, 'fig1_pipeline.tex')
-
-# Compile TikZ -> PDF
-print("Compiling TikZ...")
-for _ in range(2):
-    r = subprocess.run(
-        ['pdflatex', '-interaction=nonstopmode', '-output-directory', FIG_DIR, TEX],
-        capture_output=True, cwd=HERE
-    )
-
-# Convert PDF -> PNG for the PNG preview only; the manuscript embeds the PDF.
 PDF = os.path.join(FIG_DIR, 'fig1_pipeline.pdf')
 PNG = os.path.join(FIG_DIR, 'fig1_pipeline.png')
+LOG = os.path.join(FIG_DIR, 'fig1_pipeline.log')
+
+
+def compile_tikz():
+    """Compile twice (TikZ needs a second pass for the bounding box)."""
+    src_mtime = os.path.getmtime(TEX)
+    for _ in range(2):
+        res = subprocess.run(
+            ['pdflatex', '-interaction=nonstopmode', '-file-line-error',
+             '-output-directory', FIG_DIR, TEX],
+            capture_output=True, cwd=HERE)
+    if res.returncode != 0:
+        tail = ''
+        if os.path.exists(LOG):
+            with open(LOG, encoding='utf-8', errors='replace') as fh:
+                tail = ''.join(l for l in fh if l.startswith('!'))[:600]
+        sys.exit('pdflatex failed (rc=%d) on %s\n%s' % (res.returncode, TEX, tail))
+    if not os.path.exists(PDF) or os.path.getmtime(PDF) < src_mtime:
+        sys.exit('pdflatex reported success but %s was not regenerated' % PDF)
 
 
 def pdf_to_png():
@@ -46,7 +62,9 @@ def pdf_to_png():
             return 'skipped (%s)' % exc
 
 
-print("PNG:", pdf_to_png())
+print('Compiling TikZ...')
+compile_tikz()
+print('PNG:', pdf_to_png())
 
 # pdflatex wrote its intermediates into the output directory
 for ext in ['.aux', '.log']:
@@ -54,4 +72,5 @@ for ext in ['.aux', '.log']:
     if os.path.exists(f):
         os.remove(f)
 
-print("Fig 1 done -- TikZ pipeline schematic")
+print('Fig 1 done -- framework schematic (%d bytes PDF, %d bytes PNG)'
+      % (os.path.getsize(PDF), os.path.getsize(PNG)))

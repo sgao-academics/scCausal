@@ -1,175 +1,158 @@
-% fig1_pipeline.tex — wide 4-stage pipeline, verified zero-overlap geometry
-\documentclass[tikz,border=10pt]{standalone}
+% fig1_pipeline.tex -- scCausal framework overview (mechanism schematic, no result claims)
+%
+% DESIGN CONTRACT (Nature Research figure guide, "Preparing figures")
+%   * sans-serif Helvetica throughout
+%   * body text 6-7 pt AT FINAL PRINT SIZE  -> canvas drawn at 1:1
+%     canvas 16.30 x 7.10 cm; \textwidth of cas-sc = 16.46 cm -> scale ~1.00
+%   * no coloured text: colour lives only in fills, rules and arrows
+%   * flat design: hairline borders, no drop shadow, no gradient
+%   * colourblind-safe: single blue accent + one green accent
+%   * stage badges 6 pt bold white on filled disc
+%
+% GEOMETRY (cm), canvas 16.30 wide x 7.10 tall
+%   boxes w=3.25 h=3.80, gaps 0.90, side margins 0.30
+%     B1 0.30-3.55 (c=1.925)   B2 4.45-7.70 (c=6.075)
+%     B3 8.60-11.85 (c=10.225) B4 12.75-16.00 (c=14.375)
+%   gaps centred at 4.00 / 8.15 / 12.30 ; boxes span y 1.20-5.00 (c=3.10)
+\documentclass[tikz,border=2pt]{standalone}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
+\usepackage{fix-cm}% CM at arbitrary sizes -> no font-substitution warnings for 6.5 pt math
+\usepackage{helvet}
 \usepackage{amsmath,amssymb}
 \usepackage{xcolor}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows.meta, calc, backgrounds, fit, shadows.blur}
+\usetikzlibrary{arrows.meta, calc, backgrounds}
+\renewcommand{\familydefault}{\sfdefault}
 
-\definecolor{blue}{HTML}{1565C0}
-\definecolor{orange}{HTML}{E65100}
-\definecolor{green}{HTML}{2E7D32}
-\definecolor{dark}{HTML}{0D47A1}
-\definecolor{grey}{HTML}{546E7A}
-\definecolor{light}{HTML}{F8F9FC}
-
-% === VERIFIED GEOMETRY ===
-% Canvas: 34.0 cm wide × 12.0 cm tall
-% Each box: 6.4 cm wide × 4.8 cm tall
-% Gap between boxes: 2.0 cm (for arrow + label)
-% Left margin: 1.6 cm, Right margin: 1.6 cm
-% Total: 1.6 + 6.4 + 2.0 + 6.4 + 2.0 + 6.4 + 2.0 + 6.4 + 1.6 = 34.8 → use 34.0
-% Box L/R edges (cm):
-%   B1: 1.4 — 7.8    B2: 9.8 — 16.2    B3: 18.2 — 24.6    B4: 26.6 — 33.0
-% Arrow zones:
-%   A1: 7.8 — 9.8 (center 8.8)    A2: 16.2 — 18.2 (center 17.2)    A3: 24.6 — 26.6 (center 25.6)
+\definecolor{ink}{HTML}{1F2933}      % all text
+\definecolor{muted}{HTML}{5C6B76}    % secondary text
+\definecolor{rule}{HTML}{D3DCE3}     % hairline neutrals
+\definecolor{blue}{HTML}{1B6CA8}
+\definecolor{bluefill}{HTML}{EFF5FA}
+\definecolor{blueline}{HTML}{AFCBE0}
+\definecolor{green}{HTML}{0E7C66}
+\definecolor{greenfill}{HTML}{ECF6F2}
+\definecolor{greenline}{HTML}{A5D0C4}
+\definecolor{arrowc}{HTML}{46545F}
 
 \begin{document}
 \begin{tikzpicture}[
-    box/.style={
-        rectangle, rounded corners=5pt, draw=#1!35, line width=1.6pt,
-        fill=light, inner sep=0pt,
-        minimum width=6.4cm, minimum height=4.8cm,
-        blur shadow={shadow blur steps=4, shadow xshift=0.3pt, shadow yshift=-0.5pt, shadow blur radius=1.5pt, shadow opacity=15}
-    },
-    stage/.style={
-        circle, draw=#1, fill=white, line width=2pt,
-        minimum size=8.5mm, font=\sffamily\bfseries\small, text=#1
-    },
-    arr/.style={-{Stealth[length=2.5mm,width=2mm]}, line width=2.2pt, dark!70},
-    alabel/.style={font=\sffamily\footnotesize\bfseries, text=orange, align=center},
+    ebox/.style={rectangle, rounded corners=3pt, line width=0.7pt,
+                 inner sep=0pt, minimum width=3.25cm, minimum height=3.80cm},
+    badge/.style={circle, inner sep=0pt, minimum size=4.4mm,
+                  font=\fontsize{6}{7}\selectfont\bfseries, text=white},
+    flow/.style={-{Stealth[length=1.6mm,width=1.3mm]}, line width=1.0pt, draw=arrowc},
+    glab/.style={font=\fontsize{6}{7}\selectfont, text=ink, align=center},
+    dline/.style={font=\fontsize{6}{7.2}\selectfont, text=muted, align=center},
 ]
 
-% ===== CANVAS =====
-\fill[white] (0,0) rectangle (34.0, 11.8);
+% force the exact canvas so the printed scale is known
+\path[use as bounding box] (0,0) rectangle (16.30,7.10);
 
-% ===== TITLE =====
-\node[font=\sffamily\bfseries\fontsize{17}{20}\selectfont, text=dark, align=center]
-    at (17.0, 10.8) {scCausal: Distribution-Aware Causal Skeleton Discovery};
-\node[font=\sffamily\fontsize{10}{13}\selectfont, text=grey]
-    at (17.0, 9.95) {NB likelihood ratio CI testing replaces Fisher's $z$-test in the PC algorithm};
+% ======================= HEADER =======================
+\node[font=\fontsize{7.5}{9}\selectfont\bfseries, text=ink, align=center]
+    at (8.15, 6.66) {The scCausal framework};
+\node[font=\fontsize{6.5}{8}\selectfont, text=muted, align=center]
+    at (8.15, 6.30)
+    {NB likelihood-ratio conditional-independence testing replaces Fisher's $z$ in the PC algorithm};
 
-% ===== KEY RESULT BAR =====
-\node[rectangle, rounded corners=3pt, fill=blue!4, draw=blue!18, line width=0.8pt,
-      inner sep=8pt, font=\sffamily\small] at (17.0, 8.6) {
-    \textcolor{grey}{PBMC $d{=}30$\;}\textcolor{blue}{\bfseries NB-LR: 14.1\%}\;
-    vs.\;\textcolor{orange}{Fisher: 13.8\%}\qquad
-    \textcolor{grey}{Paul15 $d{=}30$\;}\textcolor{blue}{\bfseries NB-LR: 10.4\%}\;
-    vs.\;\textcolor{orange}{Fisher: 9.6\%}\qquad
-    \textcolor{grey}{100 seeds $d{=}50$\;}\textcolor{blue}{\bfseries NB wins 80/100}
-};
+% fair-protocol strip: the paper's methodological contribution, not a result
+\node[rounded corners=2pt, draw=blueline, line width=0.6pt, fill=bluefill,
+      inner xsep=6pt, inner ysep=3pt, font=\fontsize{6.5}{8}\selectfont,
+      text=ink, align=center] at (8.15, 5.62)
+    {One fair protocol: identical pre-filter, gene set and preprocessing for every test};
 
-% ===== BOX CENTERS (Y = 4.5cm from bottom, height = 4.8cm → spans y:1.8 to y:6.6) =====
-% B1: center=(4.6, 4.25), B2: center=(13.0, 4.25), B3: center=(21.4, 4.25), B4: center=(29.8, 4.25)
-\def\boxY{4.25}
-
-% ---- BOX 1: Input ----
-\node[box=blue] (b1) at (4.6, \boxY) {};
-\node[stage=blue] at (1.8, \boxY+0.2) {\small 1};
-\node[font=\sffamily\bfseries\large, text=blue] at (4.6, \boxY+1.8) {scRNA-seq Counts};
-% Mini heatmap icon (decorative). The random() draws below are seeded so that
-% this figure is bit-for-bit reproducible.
-\pgfmathsetseed{42}
-\begin{scope}[shift={(4.6, \boxY+0.4)}, scale=0.9]
-    \foreach \row in {1,...,5} {
-        \foreach \col in {1,...,7} {
-            \pgfmathsetmacro{\val}{random(0,100)<55 ? 0 : (random(0,100)-50)/60+0.2}
-            \pgfmathsetmacro{\r}{\val<0.05 ? 0.82 : 0.08}
-            \pgfmathsetmacro{\g}{\val<0.05 ? 0.82 : 0.28}
-            \pgfmathsetmacro{\b}{\val<0.05 ? 0.82 : 0.70}
-            \definecolor{mc}{rgb}{\r,\g,\b}
-            \fill[mc] (\col*0.30-1.15, -\row*0.30+0.8) rectangle ++(0.25,0.25);
-        }
-    }
+% ======================= STAGE 1 : RAW COUNTS =======================
+\node[ebox, draw=blueline, fill=bluefill] (b1) at (1.925, 3.10) {};
+\node[badge, fill=blue] at (0.56, 5.00) {1};
+\node[font=\fontsize{7}{8.5}\selectfont\bfseries, text=ink] at (1.925, 4.62) {Raw counts};
+\draw[blueline, line width=0.6pt] (0.475, 4.36) -- (3.375, 4.36);
+% heatmap icon (seeded -> reproducible)
+\begin{scope}[shift={(1.925, 3.32)}]
+  \pgfmathsetseed{42}
+  \foreach \r in {1,...,5}{
+    \foreach \c in {1,...,6}{
+      \pgfmathsetmacro{\q}{random(0,100)}
+      \pgfmathsetmacro{\op}{max(0.10, 0.32+(\q-58)/42*0.6)}
+      \pgfmathsetmacro{\xoff}{-0.725+(\c-1)*0.25}
+      \pgfmathsetmacro{\yoff}{0.62-(\r-1)*0.25}
+      \fill[blue, fill opacity=\op] (\xoff,\yoff) rectangle ++(0.20,-0.20);
+    }}
 \end{scope}
-\node[font=\sffamily\small, text=grey, align=center] at (4.6, \boxY-1.0) {
-    $n{=}2{,}700$, ${>}90\%$ zeros\\
-    NB-distributed\\
-    Raw UMI counts
-};
+\node[dline] at (1.925, 2.30) {Raw UMI counts};
+\node[dline] at (1.925, 2.00) {$n{=}2{,}700$, ${>}90\%$ zeros};
+\node[dline] at (1.925, 1.70) {no log transform};
 
-% ---- ARROW 1 -> 2 ----
-\draw[arr] (7.8, \boxY) -- (9.8, \boxY);
-\node[alabel] at (8.8, \boxY+0.8) {NB-LR\\[-2pt]CI test};
-
-% ---- BOX 2: PC Skeleton ----
-\node[box=blue] (b2) at (13.0, \boxY) {};
-\node[stage=blue] at (10.2, \boxY+0.2) {\small 2};
-\node[font=\sffamily\bfseries\large, text=blue] at (13.0, \boxY+1.8) {PC Skeleton Discovery};
-% chi2 curve icon — strictly separated layers
-\begin{scope}[shift={(13.0, \boxY+0.5)}]
-    % Layer 1: H0 text (top)
-    \node[font=\sffamily\scriptsize, text=orange] at (0.3, 1.55)
-        {$H_0\!:X_i\!\perp\!\!\!\perp\!X_j\!\!\mid\!X_S$};
-    % Layer 2: chi2 curve + dashed line (middle)
-    \draw[blue, line width=1.3pt, domain=0:4.5, samples=35]
-        plot (\x*0.32-0.5, {exp(-\x*0.55)*1.1-0.05});
-    \draw[dark, dashed, line width=0.7pt] (0.45*0.32-0.5, 0) -- (0.45*0.32-0.5, 0.95);
-    % Layer 3: label (bottom)
-    \node[font=\sffamily\fontsize{6}{8}\selectfont, text=dark] at (0.45*0.32-0.5, -0.35) {$\chi^2_{1,\alpha}$};
+% ======================= STAGE 2 : CI TEST =======================
+\node[ebox, draw=blueline, fill=bluefill] (b2) at (6.075, 3.10) {};
+\node[badge, fill=blue] at (4.71, 5.00) {2};
+\node[font=\fontsize{7}{8.5}\selectfont\bfseries, text=ink] at (6.075, 4.62) {NB-LR CI test};
+\draw[blueline, line width=0.6pt] (4.625, 4.36) -- (7.525, 4.36);
+% chi-square null with shaded upper tail (schematic, no data)
+\begin{scope}[shift={(6.075, 3.32)}]
+  \fill[blue, fill opacity=0.17]
+      plot[domain=1.5:4.5, samples=45] (\x*0.4222-0.95, {exp(-\x*0.62)*0.92-0.44})
+      -- (0.95,-0.44) -- (-0.317,-0.44) -- cycle;
+  \draw[arrowc!45, line width=0.6pt] (-0.95,-0.44) -- (0.98,-0.44);
+  \draw[blue, line width=1.1pt, domain=0:4.5, samples=50]
+      plot (\x*0.4222-0.95, {exp(-\x*0.62)*0.92-0.44});
+  \draw[blue, dashed, line width=0.7pt] (-0.317,-0.44) -- (-0.317,0.02);
+  \node[anchor=west, font=\fontsize{5.5}{6.5}\selectfont, text=muted]
+      at (-0.25, 0.10) {$\alpha$};
 \end{scope}
-\node[font=\sffamily\small, text=grey, align=center] at (13.0, \boxY-1.0) {
-    $\Lambda{\sim}\chi^2_1$ statistic\\
-    First-order conditioning\\
-    Remove if $p{>}0.05$
-};
+\node[dline] at (6.075, 2.30) {Log-likelihood ratio};
+\node[dline] at (6.075, 2.00) {Order-1 conditioning};
+\node[dline] at (6.075, 1.70) {Moments dispersion};
 
-% ---- ARROW 2 -> 3 ----
-\draw[arr] (16.2, \boxY) -- (18.2, \boxY);
-\node[alabel] at (17.2, \boxY+0.8) {Meek's\\[-2pt]rules};
-
-% ---- BOX 3: Orientation ----
-\node[box=blue] (b3) at (21.4, \boxY) {};
-\node[stage=blue] at (18.6, \boxY+0.2) {\small 3};
-\node[font=\sffamily\bfseries\large, text=blue] at (21.4, \boxY+1.8) {Edge Orientation};
-% Mini DAG icon
-\begin{scope}[shift={(21.4, \boxY+0.55)}, scale=0.85]
-    \coordinate (t)  at (0,   1.0);
-    \coordinate (l)  at (-0.55,0.3);
-    \coordinate (m)  at (0,   0.3);
-    \coordinate (r)  at (0.55, 0.3);
-    \coordinate (b)  at (0,  -0.35);
-    \foreach \s/\e in {t/l, t/m, t/r, l/b, r/b} {
-        \draw[orange, line width=1.1pt, -{Stealth[length=1.5mm]}] (\s) -- (\e);
-    }
-    \foreach \n in {t,l,m,r,b} { \fill[blue] (\n) circle (2.3pt); }
+% ======================= STAGE 3 : ORIENTATION =======================
+\node[ebox, draw=blueline, fill=bluefill] (b3) at (10.225, 3.10) {};
+\node[badge, fill=blue] at (8.86, 5.00) {3};
+\node[font=\fontsize{7}{8.5}\selectfont\bfseries, text=ink] at (10.225, 4.62) {Edge orientation};
+\draw[blueline, line width=0.6pt] (8.775, 4.36) -- (11.675, 4.36);
+% DAG icon; the v-structure converging on the bottom node is highlighted
+% collider (v-structure) A -> C <- B, plus one outgoing oriented edge C -> D
+\begin{scope}[shift={(10.225, 3.36)}]
+  \coordinate (A) at (-0.58,-0.24);
+  \coordinate (B) at ( 0.58,-0.24);
+  \coordinate (C) at ( 0.00, 0.30);
+  \coordinate (D) at ( 0.00,-0.66);
+  \draw[arrowc!55, line width=0.6pt, -{Stealth[length=1.0mm,width=0.8mm]}]
+      (C) -- (D);
+  \draw[blue, line width=1.2pt, -{Stealth[length=1.4mm,width=1.1mm]}] (A) -- (C);
+  \draw[blue, line width=1.2pt, -{Stealth[length=1.4mm,width=1.1mm]}] (B) -- (C);
+  \foreach \n in {A,B,D}{\fill[arrowc!70] (\n) circle (0.055);}
+  \fill[blue] (C) circle (0.070);
 \end{scope}
-\node[font=\sffamily\small, text=grey, align=center] at (21.4, \boxY-1.0) {
-    V-structure detection\\
-    Markov equivalence class\\
-    Interpretable $p$-values
-};
+\node[dline] at (10.225, 2.30) {v-structures $+$ Meek's};
+\node[dline] at (10.225, 2.00) {Markov equivalence};
+\node[dline] at (10.225, 1.70) {Interpretable $p$-values};
 
-% ---- ARROW 3 -> 4 ----
-\draw[arr] (24.6, \boxY) -- (26.6, \boxY);
-\node[font=\sffamily\footnotesize\bfseries, text=green, align=center] at (25.6, \boxY+0.8) {Validate};
-
-% ---- BOX 4: Validation ----
-\node[box=green] (b4) at (29.8, \boxY) {};
-\node[stage=green] at (27.0, \boxY+0.2) {\small 4};
-\node[font=\sffamily\bfseries\large, text=green] at (29.8, \boxY+1.8) {Validation};
-% Checkmark icon
-\begin{scope}[shift={(29.8, \boxY+0.6)}]
-    \fill[green!15] (0,0) circle (0.65);
-    \fill[green!28] (0,0) circle (0.42);
-    \draw[green, line width=2.5pt, line cap=round] (-0.28,-0.04) -- (-0.06,0.20) -- (0.28,-0.22);
+% ======================= STAGE 4 : VALIDATION =======================
+\node[ebox, draw=greenline, fill=greenfill] (b4) at (14.375, 3.10) {};
+\node[badge, fill=green] at (13.01, 5.00) {4};
+\node[font=\fontsize{7}{8.5}\selectfont\bfseries, text=ink] at (14.375, 4.62) {Validation};
+\draw[greenline, line width=0.6pt] (12.925, 4.36) -- (15.825, 4.36);
+% line-art check in a ring
+\begin{scope}[shift={(14.375, 3.34)}]
+  \draw[green, line width=0.9pt] (0,0) circle (0.50);
+  \draw[green, line width=1.7pt, line cap=round, line join=round]
+      (-0.22,-0.02) -- (-0.05,0.16) -- (0.26,-0.20);
 \end{scope}
-\node[font=\sffamily\small, text=grey, align=center] at (29.8, \boxY-1.0) {
-    STRING PPI (${\ge}700$)\\
-    PBMC $+$ Paul15\\
-    100-seed sim\\[1pt]
-    \textcolor{green}{\bfseries 0 false positives}
-};
+\node[dline] at (14.375, 2.30) {STRING PPI $\ge 700$};
+\node[dline] at (14.375, 2.00) {Reactome $\cdot$ CRISPR};
+\node[dline] at (14.375, 1.70) {synthetic $\cdot$ permuted};
 
-% ===== BOTTOM STRIP =====
-\node[font=\sffamily\footnotesize, text=grey!55] at (17.0, 0.5) {
-    \textcolor{blue}{2} tissues \quad$\cdot$\quad
-    \textcolor{blue}{4} cell types \quad$\cdot$\quad
-    \textcolor{blue}{14} Paul15 clusters \quad$\cdot$\quad
-    \textcolor{blue}{100} simulation seeds \quad$\cdot$\quad
-    \textcolor{blue}{5} comparison methods
-};
+% ======================= FLOW ARROWS =======================
+\draw[flow] (3.55, 3.10) -- (4.45, 3.10);
+\node[glab] at (4.00, 3.56) {NB-LR\\[-1pt]CI test};
+\draw[flow] (7.70, 3.10) -- (8.60, 3.10);
+\node[glab] at (8.15, 3.56) {Meek's\\[-1pt]rules};
+\draw[flow] (11.85, 3.10) -- (12.75, 3.10);
+\node[glab] at (12.30, 3.44) {Validate};
+
+% ======================= FOOTER =======================
+\node[font=\fontsize{6}{7}\selectfont, text=muted, align=center] at (8.15, 0.62)
+    {2 tissues \quad$\cdot$\quad 4 cell types \quad$\cdot$\quad 14 hematopoietic clusters \quad$\cdot$\quad 100 simulation seeds \quad$\cdot$\quad 5 comparison methods};
 
 \end{tikzpicture}
 \end{document}
