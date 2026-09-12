@@ -185,18 +185,15 @@ and scoring it against human STRING yields zero hits.
 │   └── ...                           #   supporting checkpoints
 └── scripts/
     ├── config.py                     # dataset path resolution
-    ├── sccausal_ci.py                # NB-LR conditional independence test
-    ├── sccausal_engine.py            # differentiable skeleton engine
-    ├── sccausal_ci_fast.py           # fast CI variant
-    ├── sccausal_twostage.py          # two-stage variant
-    ├── sccausal_v2.py, sccausal_v3.py
+    ├── sccausal_ci.py                # NB-LR conditional independence test (reference)
+    ├── sccausal_ci_fast.py           # fast CI variant (statsmodels IRLS)
     ├── reproduce_benchmark.py        # fair PBMC + Paul15 benchmark  -> fair_*.json
     ├── reproduce_table1.py           # Table 1 assembly               -> table1_fair_all.json
     ├── fair_supplementary.py         # alpha_sig / tau / offset sweeps
     ├── fair_downstream.py            # STRING thresholds, Reactome, DepMap
-    ├── run_pbmc.py, run_paul.py, run_synthetic.py, run_baselines.py
+    ├── run_paul.py, run_baselines.py
     ├── run_everything.py, run_fix30.py
-    ├── sweep_all.py, sweep_ci.py, sweep_full.py
+    ├── sweep_ci.py, sweep_full.py
     ├── sim_multiseed.py              # simulation sweep, paired over seeds
     ├── equal_count_comparison.py     # matched-edge-budget, pooled PBMC
     ├── equal_count_celltype.py       # matched-edge-budget, cell-type networks
@@ -214,6 +211,13 @@ and scoring it against human STRING yields zero hits.
         ├── gen_fig5.py               # Figure 5: 4-panel validation composite
         └── gen_graphical_abstract.py
 ```
+
+`run_all.py` drives the reproduction pipeline: `reproduce_benchmark.py`,
+`reproduce_table1.py`, `fair_supplementary.py`, `fair_downstream.py`,
+`equal_count_comparison.py`, `equal_count_celltype.py`, `sim_multiseed.py`
+and the `gen_figures/` scripts. The remaining scripts are exploratory runs
+kept for provenance and are not required to reproduce any number reported in
+the manuscript.
 
 One figure, one script, and `gen_figN.py` always produces `figN_*`: the script
 index is the figure number in the manuscript, so `gen_fig3.py` writes
