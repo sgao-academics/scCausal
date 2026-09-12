@@ -1,0 +1,111 @@
+{
+  "alpha_sig": 0.05,
+  "fixed_alpha": 1.0,
+  "reps": 200,
+  "results": [
+    {
+      "n": 2700,
+      "theta": 2.0,
+      "pi0": 0.0,
+      "reps": 200,
+      "valid": 200,
+      "alpha_true": 0.5,
+      "alpha_hat_mean": 0.7669,
+      "alpha_hat_median": 0.7643,
+      "type1_fixed": 0.02,
+      "type1_moment": 0.02,
+      "type1_oracle": 0.05
+    },
+    {
+      "n": 2700,
+      "theta": 2.0,
+      "pi0": 0.5,
+      "reps": 200,
+      "valid": 200,
+      "alpha_true": 0.5,
+      "alpha_hat_mean": 2.523,
+      "alpha_hat_median": 2.52,
+      "type1_fixed": 0.085,
+      "type1_moment": 0.01,
+      "type1_oracle": 0.165
+    },
+    {
+      "n": 2700,
+      "theta": 2.0,
+      "pi0": 0.7,
+      "reps": 200,
+      "valid": 200,
+      "alpha_true": 0.5,
+      "alpha_hat_mean": 4.9014,
+      "alpha_hat_median": 4.8424,
+      "type1_fixed": 0.14,
+      "type1_moment": 0.03,
+      "type1_oracle": 0.185
+    },
+    {
+      "n": 2700,
+      "theta": 2.0,
+      "pi0": 0.9,
+      "reps": 200,
+      "valid": 200,
+      "alpha_true": 0.5,
+      "alpha_hat_mean": 16.5774,
+      "alpha_hat_median": 16.3345,
+      "type1_fixed": 0.33,
+      "type1_moment": 0.055,
+      "type1_oracle": 0.355
+    },
+    {
+      "n": 500,
+      "theta": 2.0,
+      "pi0": 0.0,
+      "reps": 200,
+      "valid": 200,
+      "alpha_true": 0.5,
+      "alpha_hat_mean": 0.7758,
+      "alpha_hat_median": 0.7698,
+      "type1_fixed": 0.01,
+      "type1_moment": 0.01,
+      "type1_oracle": 0.015
+    },
+    {
+      "n": 500,
+      "theta": 2.0,
+      "pi0": 0.5,
+      "reps": 200,
+      "valid": 200,
+      "alpha_true": 0.5,
+      "alpha_hat_mean": 2.5835,
+      "alpha_hat_median": 2.5313,
+      "type1_fixed": 0.095,
+      "type1_moment": 0.04,
+      "type1_oracle": 0.125
+    },
+    {
+      "n": 500,
+      "theta": 2.0,
+      "pi0": 0.7,
+      "reps": 200,
+      "valid": 200,
+      "alpha_true": 0.5,
+      "alpha_hat_mean": 4.6566,
+      "alpha_hat_median": 4.5077,
+      "type1_fixed": 0.115,
+      "type1_moment": 0.03,
+      "type1_oracle": 0.175
+    },
+    {
+      "n": 500,
+      "theta": 2.0,
+      "pi0": 0.9,
+      "reps": 200,
+      "valid": 200,
+      "alpha_true": 0.5,
+      "alpha_hat_mean": 16.1779,
+      "alpha_hat_median": 15.6878,
+      "type1_fixed": 0.22,
+      "type1_moment": 0.055,
+      "type1_oracle": 0.24
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+[
+  {
+    "case": "d=30",
+    "universe": 29,
+    "pairs": 406,
+    "background_hits": 46,
+    "background_rate_pct": 11.33,
+    "discovered_testable": 222,
+    "discovered_hits": 34,
+    "precision_pct": 15.32,
+    "enrichment": 1.35,
+    "odds_ratio": 1.42,
+    "p_one_sided": 0.09655580722371451
+  },
+  {
+    "case": "d=50",
+    "universe": 49,
+    "pairs": 1176,
+    "background_hits": 76,
+    "background_rate_pct": 6.46,
+    "discovered_testable": 568,
+    "discovered_hits": 60,
+    "precision_pct": 10.56,
+    "enrichment": 1.63,
+    "odds_ratio": 1.71,
+    "p_one_sided": 0.0022331689195004755
+  }
+]

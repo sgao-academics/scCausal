@@ -214,7 +214,7 @@ and scoring it against human STRING yields zero hits.
 
 `run_all.py` drives the reproduction pipeline: `reproduce_benchmark.py`,
 `reproduce_table1.py`, `fair_supplementary.py`, `fair_downstream.py`,
-`equal_count_comparison.py`, `equal_count_celltype.py`, `sim_multiseed.py`
+`equal_count_comparison.py`, `equal_count_celltype.py`, `sim_multiseed.py`, `sim_disp_sweep.py` (dispersion and zero-inflation sweep, Table 4), `zinb_type1_v2.py` and `zinb_type1_moment.py` (Type-I error, Table 5) and `string_background_rate.py` (STRING random-pair background)
 and the `gen_figures/` scripts. The remaining scripts are exploratory runs
 kept for provenance and are not required to reproduce any number reported in
 the manuscript.
