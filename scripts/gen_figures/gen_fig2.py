@@ -20,6 +20,12 @@ REPORTING CONVENTION
   Panels (a), (b), (d), (e) and (i) show raw, unmatched differences.  Their
   matched-edge-budget counterparts are reported in Table (eqcount) of the
   manuscript.
+  Panel (h) reports the estimated dispersion as the end points of each curve in
+  the legend rather than as a label on every marker: one d-group column is only
+  ~37 px wide, so it cannot also hold four numeric labels, and the Paul15 curve
+  (alpha-hat ~ 0.64) maps below the Paul15 bars, leaving no free space for a
+  label.  Labelling every point tested 45.9%-57.6% collisions and four labels
+  outside the axes frame.
 
 DATA PROVENANCE
   (a,b,c) STRING precision, validated-edge counts and total edge counts, PBMC
@@ -354,17 +360,26 @@ ax.set_ylabel(r'$\Delta$ precision (pp)')
 ax.set_title('(h) Raw gain vs overdispersion', fontweight='bold', loc='left', pad=2.5)
 ax.set_ylim(0, 3.3)
 ax2 = ax.twinx()
+# The dispersion is summarised by its end points in the legend instead of being
+# annotated at every d.  A single d-group column is only ~37 px wide and already
+# carries two bar labels; four numeric labels per group do not fit, and at d=30
+# the PBMC alpha-hat (2.40) lands within 0.01 of the Paul15 bar top (0.74 on the
+# left scale), so any placement of the two labels collides.  The Paul15 curve is
+# worse: alpha-hat ~ 0.64 maps to 0.20 on the left scale, i.e. inside the Paul15
+# bars, leaving no free space above, below or beside its markers.  Measured with
+# a bounding-box audit, the previous per-point annotations produced two text
+# collisions (45.9% and 57.6% coverage) and four labels hanging outside the axes
+# frame.  The end points below are computed from the same arrays, so the printed
+# range cannot drift from the plotted curve.
+# Two decimals on both series, so the printed range matches the Results sentence
+# verbatim: "alpha-hat from 2.40 at d=30 to 7.78 at d=200" (PBMC).
 ax2.plot(x, a_hat_pbmc, 'o--', color=C['nb'], lw=1.2, ms=3.0, mfc='white',
-         mew=0.9, label=r'$\hat{\alpha}$, PBMC')
+         mew=0.9, label=r'$\hat{\alpha}$, PBMC (%.2f$\to$%.2f)'
+                        % (a_hat_pbmc[0], a_hat_pbmc[-1]))
 ax2.plot(x, a_hat_paul, 's--', color=C['fz'], lw=1.2, ms=3.0, mfc='white',
-         mew=0.9, label=r'$\hat{\alpha}$, Paul15')
-for i in range(len(D)):
-    ax2.annotate('%.1f' % a_hat_pbmc[i], (i, a_hat_pbmc[i]), textcoords='offset points',
-                 xytext=(0, 4), ha='center', fontsize=5.3, color=C['nb'],
-                 path_effects=STROKE)
-    ax2.annotate('%.2f' % a_hat_paul[i], (i, a_hat_paul[i]), textcoords='offset points',
-                 xytext=(0, -8), ha='center', fontsize=5.3, color=C['fz'],
-                 path_effects=STROKE)
+         mew=0.9, label=r'$\hat{\alpha}$, Paul15 (%.2f$\to$%.2f)'
+                        % (a_hat_paul[0], a_hat_paul[-1]))
+ax2.tick_params(axis='x', labelbottom=False)   # x ticks belong to the left axes
 ax2.set_ylabel(r'$\hat{\alpha}$')
 ax2.set_ylim(0, 10.6)
 ax2.spines['right'].set_visible(True)
