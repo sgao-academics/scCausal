@@ -229,14 +229,18 @@ the script that compiles it, while `gen_fig4.py` builds its TikZ source
 programmatically at run time (`fig4_network.tex` is therefore generated, not
 tracked).  Both write the rendered PDF/PNG into `figures/`.
 
-Every figure script is deterministic and reads its numbers from `results/`;
-`gen_fig3.py` regenerates the published Figure 3 byte-for-byte.
+Every figure script is deterministic and reads its numbers from `results/`.
+With the pinned environment (`matplotlib==3.11.1` in `requirements.txt`) the
+PNGs of all six figures regenerate byte-for-byte from the shipped `results/`,
+including the graphical abstract; the PDFs differ only in their embedded
+creation timestamps. matplotlib is pinned because other versions shift text
+metrics and therefore pixels, even when every reported number is identical.
 
 ## Requirements
 
-- Python >= 3.9
-- numpy, scipy, pandas, matplotlib, networkx, scanpy, statsmodels,
-  scikit-learn, torch, tqdm, scienceplots
+- Python >= 3.9 (>= 3.11 if you install the pinned matplotlib)
+- numpy, scipy, pandas, matplotlib (pinned to 3.11.1), networkx, scanpy,
+  statsmodels, scikit-learn, torch, tqdm, scienceplots
 - LaTeX (with TikZ) only for Figures 1 and 4, which are TikZ sources
 
 ## Citation
