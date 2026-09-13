@@ -31,7 +31,7 @@ Writes results/zinb_type1_moment.json.
 
 Usage
 -----
-    D:\\Miniconda3\\envs\\torch-cuda128\\python.exe scripts/zinb_type1_moment.py --reps 200
+    python scripts/zinb_type1_moment.py --reps 200
 """
 import argparse
 import json

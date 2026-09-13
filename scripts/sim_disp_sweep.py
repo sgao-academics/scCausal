@@ -26,7 +26,7 @@ Writes results/sim_disp_sweep.json.
 
 Usage
 -----
-    D:\\Miniconda3\\envs\\torch-cuda128\\python.exe scripts/sim_disp_sweep.py --seeds 100
+    python scripts/sim_disp_sweep.py --seeds 100
 """
 import argparse
 import json

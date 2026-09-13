@@ -29,7 +29,8 @@ Repeats
     Wilcoxon signed-rank test of NB-LR against Fisher's z.
 
 Usage
-    python norman_validation.py --h5 E:/sccausal_data/norman_2019_raw.h5ad --d 30 50 --n-seeds 10
+    python norman_validation.py --d 30 50 --n-seeds 10
+    The screen is located through scripts/config.py (SC_CAUSAL_DATA or ~/scCausal_data/).
 """
 import sys, os, json, time, argparse
 import numpy as np
