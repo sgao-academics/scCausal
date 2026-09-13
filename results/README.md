@@ -24,6 +24,8 @@ that produced it. Files are grouped by whether the manuscript cites them.
 | `string_background.json` | STRING random-pair background | `scripts/string_background_rate.py` |
 | `checkpoints/supp_alpha_*.json`, `supp_tau_*.json`, `supp_offset_*.json` | parameter-sensitivity section | `scripts/fair_supplementary.py` |
 | `checkpoints/supp_edges_d{30,50}.json` | edge lists for the network figure and the STRING background | `scripts/fair_supplementary.py` |
+| `checkpoints/norman_validation.json` | Table 8 (transcription-factor screen, CRISPRa) | `scripts/norman_validation.py` |
+| `checkpoints/perturbseq_validation.json` | Table 8 (essential-gene screen, CRISPRi) | `scripts/perturbseq_validation.py` |
 
 ## 2. Exploratory runs, superseded
 
@@ -61,6 +63,25 @@ python scripts/sim_disp_sweep.py        # Table 4      (~3 min)
 python scripts/zinb_type1_moment.py     # Table 5(c)   (~20 s)
 python scripts/string_background_rate.py # STRING background
 ```
+
+Interventional validation (Table 8) needs the two Perturb-seq screens, which are
+distributed by the scverse example-data archive and must be downloaded manually
+into `data/`:
+
+```bash
+curl -L -o data/norman_2019_raw.h5ad \
+  https://exampledata.scverse.org/pertpy/norman_2019_raw.h5ad
+curl -L -o data/replogle_2022_k562_essential.h5ad \
+  https://exampledata.scverse.org/pertpy/replogle_2022_k562_essential.h5ad
+
+python scripts/norman_validation.py --d 30 50 --n-seeds 10        # Table 8, CRISPRa rows (~8 min)
+python scripts/perturbseq_validation.py --d 50 --n-seeds 10      # Table 8, CRISPRi rows (~19 min)
+```
+
+Both scripts take the screen path with `--h5` and default to `data/`. The
+observation arm is always the subset of cells whose guides are all negative
+controls; the gold standard is rebuilt from the perturbations in the same file,
+so no external label file is required.
 
 Dataset paths are resolved by `scripts/config.py` through the environment
 variables documented in the top-level `README.md`; no absolute path appears in

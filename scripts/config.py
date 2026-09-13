@@ -39,6 +39,10 @@ DATASETS = {
     'string_ppi_mouse': '10090.string_ppi_full.txt.gz',
     'trrust': 'trrust_human.tsv',
     'depmap_crispr': 'CRISPR_gene_effect.csv',
+    # Perturb-seq screens used for the interventional validation (Table 8).
+    # Both are distributed by the scverse example-data archive.
+    'norman_h5ad': 'norman_2019_raw.h5ad',
+    'replogle_h5ad': 'replogle_2022_k562_essential.h5ad',
 }
 
 def get_path(dataset_key):
@@ -126,6 +130,19 @@ Required files:
      Download: https://depmap.org/portal/download/all/
      File: CRISPR_gene_effect.csv
      Save as: {os.path.join(d, 'CRISPR_gene_effect.csv')}
+
+  6. Perturb-seq screens (only needed for the interventional validation of
+     Table 8; scripts/norman_validation.py and scripts/perturbseq_validation.py
+     read the screen with --h5 and default to this directory):
+     Download: https://exampledata.scverse.org/pertpy/norman_2019_raw.h5ad
+       Save as: {os.path.join(d, 'norman_2019_raw.h5ad')}
+     Download: https://exampledata.scverse.org/pertpy/replogle_2022_k562_essential.h5ad
+       Save as: {os.path.join(d, 'replogle_2022_k562_essential.h5ad')}
+
+     Note: the observation arm and the gold standard are both derived from the
+     screen itself -- non-targeting control cells give the skeleton, the
+     single-gene perturbations give the intervention -- so no label file is
+     needed and the guide columns already present in the h5ad are sufficient.
 
 PBMC 3K ships with this package (data/pbmc3k_filtered.h5ad); it does not need
 manual setup. The Reactome GMT (data/ReactomePathways.gmt) is also included.

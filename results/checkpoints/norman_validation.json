@@ -1,0 +1,5098 @@
+{
+  "meta": {
+    "source": "norman_2019_raw.h5ad",
+    "cells": 111445,
+    "genes": 33660,
+    "ntc_cells": 11855,
+    "single_gene_perturbations": 105,
+    "pool_in_matrix": 102,
+    "min_cells": 50,
+    "tau": 0.1,
+    "alpha": 0.05,
+    "base_seed": 42,
+    "n_seeds": 10,
+    "fair": true
+  },
+  "results": {
+    "30": {
+      "panel_genes": [
+        "BPGM",
+        "SLC4A1",
+        "CELF2",
+        "LYL1",
+        "ZBTB10",
+        "FOXO4",
+        "SGK1",
+        "UBASH3B",
+        "BAK1",
+        "KIF18B",
+        "ARID1A",
+        "ARRDC3",
+        "GLB1L2",
+        "PTPN13",
+        "IKZF3",
+        "RHOXF2",
+        "MAP2K6",
+        "SLC6A9",
+        "FOXF1",
+        "MAP7D1",
+        "MAP2K3",
+        "SNAI1",
+        "HNF4A",
+        "JUN",
+        "DLX2",
+        "CLDN6",
+        "CEBPE",
+        "PTPN1",
+        "CEBPA",
+        "DUSP9"
+      ],
+      "cells_per_perturbation_median": 479,
+      "gold": {
+        "fdr05_lfc025": 70,
+        "fdr05_lfc010": 222,
+        "fdr05_lfc050": 21
+      },
+      "sweep": {
+        "500": {
+          "n": 500,
+          "reps": 10,
+          "runs": [
+            {
+              "seed": 42,
+              "edges_nb": 118,
+              "edges_fz": 148,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 118,
+                  "hits": 29,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.1935,
+                  "fisher_p": 0.0033259485004310083,
+                  "precision": 24.58,
+                  "recall": 41.43
+                },
+                "fisher_z": {
+                  "edges": 148,
+                  "hits": 33,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 1.9389,
+                  "fisher_p": 0.009224816154736228,
+                  "precision": 22.3,
+                  "recall": 47.14
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 118,
+                  "hits": 78,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.3427,
+                  "fisher_p": 8.779915594192638e-05,
+                  "precision": 66.1,
+                  "recall": 35.14
+                },
+                "fisher_z": {
+                  "edges": 148,
+                  "hits": 95,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.2582,
+                  "fisher_p": 5.707835471237701e-05,
+                  "precision": 64.19,
+                  "recall": 42.79
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 118,
+                  "hits": 9,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.0986,
+                  "fisher_p": 0.08290592943465035,
+                  "precision": 7.63,
+                  "recall": 42.86
+                },
+                "fisher_z": {
+                  "edges": 148,
+                  "hits": 9,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.4838,
+                  "fisher_p": 0.2571403276338844,
+                  "precision": 6.08,
+                  "recall": 42.86
+                }
+              }
+            },
+            {
+              "seed": 1042,
+              "edges_nb": 130,
+              "edges_fz": 139,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 130,
+                  "hits": 31,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.1357,
+                  "fisher_p": 0.0038120097709150582,
+                  "precision": 23.85,
+                  "recall": 44.29
+                },
+                "fisher_z": {
+                  "edges": 139,
+                  "hits": 33,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.1792,
+                  "fisher_p": 0.0027452742662063814,
+                  "precision": 23.74,
+                  "recall": 47.14
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 130,
+                  "hits": 81,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.9227,
+                  "fisher_p": 0.0014589685019452546,
+                  "precision": 62.31,
+                  "recall": 36.49
+                },
+                "fisher_z": {
+                  "edges": 139,
+                  "hits": 88,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.086,
+                  "fisher_p": 0.00031221147160941575,
+                  "precision": 63.31,
+                  "recall": 39.64
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 130,
+                  "hits": 10,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.2273,
+                  "fisher_p": 0.06125558775148851,
+                  "precision": 7.69,
+                  "recall": 47.62
+                },
+                "fisher_z": {
+                  "edges": 139,
+                  "hits": 12,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 3.0131,
+                  "fisher_p": 0.012920399137487005,
+                  "precision": 8.63,
+                  "recall": 57.14
+                }
+              }
+            },
+            {
+              "seed": 2042,
+              "edges_nb": 129,
+              "edges_fz": 132,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 129,
+                  "hits": 35,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.883,
+                  "fisher_p": 7.246979679719424e-05,
+                  "precision": 27.13,
+                  "recall": 50.0
+                },
+                "fisher_z": {
+                  "edges": 132,
+                  "hits": 31,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.0777,
+                  "fisher_p": 0.005061356364879018,
+                  "precision": 23.48,
+                  "recall": 44.29
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 129,
+                  "hits": 87,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.6238,
+                  "fisher_p": 6.129178387626066e-06,
+                  "precision": 67.44,
+                  "recall": 39.19
+                },
+                "fisher_z": {
+                  "edges": 132,
+                  "hits": 88,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.5224,
+                  "fisher_p": 1.1710752829988403e-05,
+                  "precision": 66.67,
+                  "recall": 39.64
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 129,
+                  "hits": 12,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 3.3846,
+                  "fisher_p": 0.006598869981452043,
+                  "precision": 9.3,
+                  "recall": 57.14
+                },
+                "fisher_z": {
+                  "edges": 132,
+                  "hits": 11,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.6636,
+                  "fisher_p": 0.02559051436448685,
+                  "precision": 8.33,
+                  "recall": 52.38
+                }
+              }
+            },
+            {
+              "seed": 3042,
+              "edges_nb": 131,
+              "edges_fz": 121,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 131,
+                  "hits": 30,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 1.9604,
+                  "fisher_p": 0.009436981829383646,
+                  "precision": 22.9,
+                  "recall": 42.86
+                },
+                "fisher_z": {
+                  "edges": 121,
+                  "hits": 31,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.4288,
+                  "fisher_p": 0.0009254196686053458,
+                  "precision": 25.62,
+                  "recall": 44.29
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 131,
+                  "hits": 89,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.7245,
+                  "fisher_p": 2.5318011268099343e-06,
+                  "precision": 67.94,
+                  "recall": 40.09
+                },
+                "fisher_z": {
+                  "edges": 121,
+                  "hits": 82,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.6132,
+                  "fisher_p": 1.0168997083393315e-05,
+                  "precision": 67.77,
+                  "recall": 36.94
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 131,
+                  "hits": 9,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.7951,
+                  "fisher_p": 0.14475200639533695,
+                  "precision": 6.87,
+                  "recall": 42.86
+                },
+                "fisher_z": {
+                  "edges": 121,
+                  "hits": 10,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.4816,
+                  "fisher_p": 0.03818793141692577,
+                  "precision": 8.26,
+                  "recall": 47.62
+                }
+              }
+            },
+            {
+              "seed": 4042,
+              "edges_nb": 125,
+              "edges_fz": 128,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 125,
+                  "hits": 32,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.4629,
+                  "fisher_p": 0.0007214179157747937,
+                  "precision": 25.6,
+                  "recall": 45.71
+                },
+                "fisher_z": {
+                  "edges": 128,
+                  "hits": 27,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 1.6413,
+                  "fisher_p": 0.047494059371355944,
+                  "precision": 21.09,
+                  "recall": 38.57
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 125,
+                  "hits": 78,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.9131,
+                  "fisher_p": 0.0017756986682926227,
+                  "precision": 62.4,
+                  "recall": 35.14
+                },
+                "fisher_z": {
+                  "edges": 128,
+                  "hits": 79,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.849,
+                  "fisher_p": 0.0027033764403503477,
+                  "precision": 61.72,
+                  "recall": 35.59
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 125,
+                  "hits": 9,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.9267,
+                  "fisher_p": 0.11351978823741621,
+                  "precision": 7.2,
+                  "recall": 42.86
+                },
+                "fisher_z": {
+                  "edges": 128,
+                  "hits": 9,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.8592,
+                  "fisher_p": 0.12855851132685275,
+                  "precision": 7.03,
+                  "recall": 42.86
+                }
+              }
+            },
+            {
+              "seed": 5042,
+              "edges_nb": 113,
+              "edges_fz": 128,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 113,
+                  "hits": 31,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.7433,
+                  "fisher_p": 0.00021233517190456601,
+                  "precision": 27.43,
+                  "recall": 44.29
+                },
+                "fisher_z": {
+                  "edges": 128,
+                  "hits": 34,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.7228,
+                  "fisher_p": 0.00017228385237600413,
+                  "precision": 26.56,
+                  "recall": 48.57
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 113,
+                  "hits": 69,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.7322,
+                  "fisher_p": 0.008765019506808818,
+                  "precision": 61.06,
+                  "recall": 31.08
+                },
+                "fisher_z": {
+                  "edges": 128,
+                  "hits": 81,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.029,
+                  "fisher_p": 0.0006697738533558149,
+                  "precision": 63.28,
+                  "recall": 36.49
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 113,
+                  "hits": 11,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 3.3647,
+                  "fisher_p": 0.007306647116674541,
+                  "precision": 9.73,
+                  "recall": 52.38
+                },
+                "fisher_z": {
+                  "edges": 128,
+                  "hits": 15,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 6.6593,
+                  "fisher_p": 5.516507524325146e-05,
+                  "precision": 11.72,
+                  "recall": 71.43
+                }
+              }
+            },
+            {
+              "seed": 6042,
+              "edges_nb": 151,
+              "edges_fz": 161,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 151,
+                  "hits": 33,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 1.8669,
+                  "fisher_p": 0.013246921310017583,
+                  "precision": 21.85,
+                  "recall": 47.14
+                },
+                "fisher_z": {
+                  "edges": 161,
+                  "hits": 36,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.0329,
+                  "fisher_p": 0.00522124283567086,
+                  "precision": 22.36,
+                  "recall": 51.43
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 151,
+                  "hits": 91,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.7714,
+                  "fisher_p": 0.0033292393295972712,
+                  "precision": 60.26,
+                  "recall": 40.99
+                },
+                "fisher_z": {
+                  "edges": 161,
+                  "hits": 101,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.1285,
+                  "fisher_p": 0.00012830494526142183,
+                  "precision": 62.73,
+                  "recall": 45.5
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 151,
+                  "hits": 9,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.4366,
+                  "fisher_p": 0.2802060634261497,
+                  "precision": 5.96,
+                  "recall": 42.86
+                },
+                "fisher_z": {
+                  "edges": 161,
+                  "hits": 10,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.5834,
+                  "fisher_p": 0.21008944374855928,
+                  "precision": 6.21,
+                  "recall": 47.62
+                }
+              }
+            },
+            {
+              "seed": 7042,
+              "edges_nb": 128,
+              "edges_fz": 143,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 128,
+                  "hits": 34,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.7228,
+                  "fisher_p": 0.00017228385237600413,
+                  "precision": 26.56,
+                  "recall": 48.57
+                },
+                "fisher_z": {
+                  "edges": 143,
+                  "hits": 32,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 1.927,
+                  "fisher_p": 0.010154933823086472,
+                  "precision": 22.38,
+                  "recall": 45.71
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 128,
+                  "hits": 78,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.7658,
+                  "fisher_p": 0.005093809675434828,
+                  "precision": 60.94,
+                  "recall": 35.14
+                },
+                "fisher_z": {
+                  "edges": 143,
+                  "hits": 80,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.3414,
+                  "fisher_p": 0.09145274194585779,
+                  "precision": 55.94,
+                  "recall": 36.04
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 128,
+                  "hits": 11,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.7923,
+                  "fisher_p": 0.02015813114537532,
+                  "precision": 8.59,
+                  "recall": 52.38
+                },
+                "fisher_z": {
+                  "edges": 143,
+                  "hits": 10,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.9207,
+                  "fisher_p": 0.10986269141203635,
+                  "precision": 6.99,
+                  "recall": 47.62
+                }
+              }
+            },
+            {
+              "seed": 8042,
+              "edges_nb": 147,
+              "edges_fz": 172,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 147,
+                  "hits": 33,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 1.9637,
+                  "fisher_p": 0.008139716335010632,
+                  "precision": 22.45,
+                  "recall": 47.14
+                },
+                "fisher_z": {
+                  "edges": 172,
+                  "hits": 40,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.3535,
+                  "fisher_p": 0.0008940799905770016,
+                  "precision": 23.26,
+                  "recall": 57.14
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 147,
+                  "hits": 85,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.5111,
+                  "fisher_p": 0.027162431153674383,
+                  "precision": 57.82,
+                  "recall": 38.29
+                },
+                "fisher_z": {
+                  "edges": 172,
+                  "hits": 96,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.3734,
+                  "fisher_p": 0.06486503086042027,
+                  "precision": 55.81,
+                  "recall": 43.24
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 147,
+                  "hits": 10,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.8381,
+                  "fisher_p": 0.12879896311560587,
+                  "precision": 6.8,
+                  "recall": 47.62
+                },
+                "fisher_z": {
+                  "edges": 172,
+                  "hits": 13,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.6061,
+                  "fisher_p": 0.02869920021386344,
+                  "precision": 7.56,
+                  "recall": 61.9
+                }
+              }
+            },
+            {
+              "seed": 9042,
+              "edges_nb": 117,
+              "edges_fz": 137,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 117,
+                  "hits": 26,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 1.7792,
+                  "fisher_p": 0.026930283529537358,
+                  "precision": 22.22,
+                  "recall": 37.14
+                },
+                "fisher_z": {
+                  "edges": 137,
+                  "hits": 31,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 1.9422,
+                  "fisher_p": 0.009823324248087378,
+                  "precision": 22.63,
+                  "recall": 44.29
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 117,
+                  "hits": 70,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.6265,
+                  "fisher_p": 0.016930845587973312,
+                  "precision": 59.83,
+                  "recall": 31.53
+                },
+                "fisher_z": {
+                  "edges": 137,
+                  "hits": 81,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.6106,
+                  "fisher_p": 0.01430408884692502,
+                  "precision": 59.12,
+                  "recall": 36.49
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 117,
+                  "hits": 8,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.7219,
+                  "fisher_p": 0.17369560704304124,
+                  "precision": 6.84,
+                  "recall": 38.1
+                },
+                "fisher_z": {
+                  "edges": 137,
+                  "hits": 10,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.0544,
+                  "fisher_p": 0.0850287286310699,
+                  "precision": 7.3,
+                  "recall": 47.62
+                }
+              }
+            }
+          ],
+          "fdr05_lfc025_nb": {
+            "or_mean": 2.2711,
+            "or_sd": 0.4026,
+            "hit_mean": 31.4,
+            "n_or": 10
+          },
+          "fdr05_lfc025_fisher_z": {
+            "or_mean": 2.1244,
+            "or_sd": 0.3085,
+            "hit_mean": 32.8,
+            "n_or": 10
+          },
+          "fdr05_lfc010_nb": {
+            "or_mean": 1.9934,
+            "or_sd": 0.4219,
+            "hit_mean": 80.6,
+            "n_or": 10
+          },
+          "fdr05_lfc010_fisher_z": {
+            "or_mean": 1.9812,
+            "or_sd": 0.4394,
+            "hit_mean": 87.1,
+            "n_or": 10
+          },
+          "fdr05_lfc050_nb": {
+            "or_mean": 2.2586,
+            "or_sd": 0.6887,
+            "hit_mean": 9.8,
+            "n_or": 10
+          },
+          "fdr05_lfc050_fisher_z": {
+            "or_mean": 2.6325,
+            "or_sd": 1.4998,
+            "hit_mean": 10.9,
+            "n_or": 10
+          },
+          "paired_wilcoxon_lfc025": {
+            "median_diff": -0.0115,
+            "win_rate": 0.5,
+            "p": 0.625
+          }
+        },
+        "1000": {
+          "n": 1000,
+          "reps": 10,
+          "runs": [
+            {
+              "seed": 42,
+              "edges_nb": 165,
+              "edges_fz": 170,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 165,
+                  "hits": 41,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.7478,
+                  "fisher_p": 0.00010827875342887187,
+                  "precision": 24.85,
+                  "recall": 58.57
+                },
+                "fisher_z": {
+                  "edges": 170,
+                  "hits": 41,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.5865,
+                  "fisher_p": 0.0002552910422648457,
+                  "precision": 24.12,
+                  "recall": 58.57
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 165,
+                  "hits": 110,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.8214,
+                  "fisher_p": 2.4067523050634255e-07,
+                  "precision": 66.67,
+                  "recall": 49.55
+                },
+                "fisher_z": {
+                  "edges": 170,
+                  "hits": 109,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.4036,
+                  "fisher_p": 8.782887284458573e-06,
+                  "precision": 64.12,
+                  "recall": 49.1
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 165,
+                  "hits": 13,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.801,
+                  "fisher_p": 0.019674209817378403,
+                  "precision": 7.88,
+                  "recall": 61.9
+                },
+                "fisher_z": {
+                  "edges": 170,
+                  "hits": 12,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.1603,
+                  "fisher_p": 0.06708674749152631,
+                  "precision": 7.06,
+                  "recall": 57.14
+                }
+              }
+            },
+            {
+              "seed": 1042,
+              "edges_nb": 206,
+              "edges_fz": 220,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 206,
+                  "hits": 49,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 3.0913,
+                  "fisher_p": 2.6645646875612768e-05,
+                  "precision": 23.79,
+                  "recall": 70.0
+                },
+                "fisher_z": {
+                  "edges": 220,
+                  "hits": 49,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.6472,
+                  "fisher_p": 0.0002754792798120547,
+                  "precision": 22.27,
+                  "recall": 70.0
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 206,
+                  "hits": 126,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.182,
+                  "fisher_p": 4.3491387603984954e-05,
+                  "precision": 61.17,
+                  "recall": 56.76
+                },
+                "fisher_z": {
+                  "edges": 220,
+                  "hits": 132,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.0833,
+                  "fisher_p": 0.00010914296774186046,
+                  "precision": 60.0,
+                  "recall": 59.46
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 206,
+                  "hits": 15,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.9188,
+                  "fisher_p": 0.02004176579452464,
+                  "precision": 7.28,
+                  "recall": 71.43
+                },
+                "fisher_z": {
+                  "edges": 220,
+                  "hits": 15,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.5488,
+                  "fisher_p": 0.040050968131134915,
+                  "precision": 6.82,
+                  "recall": 71.43
+                }
+              }
+            },
+            {
+              "seed": 2042,
+              "edges_nb": 210,
+              "edges_fz": 214,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 210,
+                  "hits": 45,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.1818,
+                  "fisher_p": 0.0025148128457840174,
+                  "precision": 21.43,
+                  "recall": 64.29
+                },
+                "fisher_z": {
+                  "edges": 214,
+                  "hits": 42,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 1.6831,
+                  "fisher_p": 0.03244099884335572,
+                  "precision": 19.63,
+                  "recall": 60.0
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 210,
+                  "hits": 124,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.8685,
+                  "fisher_p": 0.0008461876693190455,
+                  "precision": 59.05,
+                  "recall": 55.86
+                },
+                "fisher_z": {
+                  "edges": 214,
+                  "hits": 123,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.6657,
+                  "fisher_p": 0.005359425551985533,
+                  "precision": 57.48,
+                  "recall": 55.41
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 210,
+                  "hits": 14,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.2245,
+                  "fisher_p": 0.06569202527214922,
+                  "precision": 6.67,
+                  "recall": 66.67
+                },
+                "fisher_z": {
+                  "edges": 214,
+                  "hits": 14,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.14,
+                  "fisher_p": 0.0775532282020754,
+                  "precision": 6.54,
+                  "recall": 66.67
+                }
+              }
+            },
+            {
+              "seed": 3042,
+              "edges_nb": 213,
+              "edges_fz": 227,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 213,
+                  "hits": 44,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 1.9627,
+                  "fisher_p": 0.007876153784023263,
+                  "precision": 20.66,
+                  "recall": 62.86
+                },
+                "fisher_z": {
+                  "edges": 227,
+                  "hits": 48,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.2671,
+                  "fisher_p": 0.0019025005647209368,
+                  "precision": 21.15,
+                  "recall": 68.57
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 213,
+                  "hits": 126,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.9009,
+                  "fisher_p": 0.0006217715627846605,
+                  "precision": 59.15,
+                  "recall": 56.76
+                },
+                "fisher_z": {
+                  "edges": 227,
+                  "hits": 135,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.0409,
+                  "fisher_p": 0.00016583040723364994,
+                  "precision": 59.47,
+                  "recall": 60.81
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 213,
+                  "hits": 11,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.1545,
+                  "fisher_p": 0.46086795407551834,
+                  "precision": 5.16,
+                  "recall": 52.38
+                },
+                "fisher_z": {
+                  "edges": 227,
+                  "hits": 12,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.2341,
+                  "fisher_p": 0.40566755402855836,
+                  "precision": 5.29,
+                  "recall": 57.14
+                }
+              }
+            },
+            {
+              "seed": 4042,
+              "edges_nb": 201,
+              "edges_fz": 219,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 201,
+                  "hits": 47,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.7998,
+                  "fisher_p": 0.00010102685679957242,
+                  "precision": 23.38,
+                  "recall": 67.14
+                },
+                "fisher_z": {
+                  "edges": 219,
+                  "hits": 49,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.6765,
+                  "fisher_p": 0.00023584503065344006,
+                  "precision": 22.37,
+                  "recall": 70.0
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 201,
+                  "hits": 123,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.1503,
+                  "fisher_p": 6.064696352306393e-05,
+                  "precision": 61.19,
+                  "recall": 55.41
+                },
+                "fisher_z": {
+                  "edges": 219,
+                  "hits": 129,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.8957,
+                  "fisher_p": 0.0006501306683483865,
+                  "precision": 58.9,
+                  "recall": 58.11
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 201,
+                  "hits": 13,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.9535,
+                  "fisher_p": 0.10489527658534482,
+                  "precision": 6.47,
+                  "recall": 61.9
+                },
+                "fisher_z": {
+                  "edges": 219,
+                  "hits": 13,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.6408,
+                  "fisher_p": 0.19456055903947034,
+                  "precision": 5.94,
+                  "recall": 61.9
+                }
+              }
+            },
+            {
+              "seed": 5042,
+              "edges_nb": 185,
+              "edges_fz": 198,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 185,
+                  "hits": 40,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.023,
+                  "fisher_p": 0.005303628679710419,
+                  "precision": 21.62,
+                  "recall": 57.14
+                },
+                "fisher_z": {
+                  "edges": 198,
+                  "hits": 44,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.3187,
+                  "fisher_p": 0.0011490195625585848,
+                  "precision": 22.22,
+                  "recall": 62.86
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 185,
+                  "hits": 111,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.8784,
+                  "fisher_p": 0.0008816465932961396,
+                  "precision": 60.0,
+                  "recall": 50.0
+                },
+                "fisher_z": {
+                  "edges": 198,
+                  "hits": 120,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.0362,
+                  "fisher_p": 0.00018344134008252937,
+                  "precision": 60.61,
+                  "recall": 54.05
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 185,
+                  "hits": 11,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.5172,
+                  "fisher_p": 0.23770349938223867,
+                  "precision": 5.95,
+                  "recall": 52.38
+                },
+                "fisher_z": {
+                  "edges": 198,
+                  "hits": 14,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.5,
+                  "fisher_p": 0.03829871194791709,
+                  "precision": 7.07,
+                  "recall": 66.67
+                }
+              }
+            },
+            {
+              "seed": 6042,
+              "edges_nb": 169,
+              "edges_fz": 171,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 169,
+                  "hits": 40,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.4393,
+                  "fisher_p": 0.000564128152364988,
+                  "precision": 23.67,
+                  "recall": 57.14
+                },
+                "fisher_z": {
+                  "edges": 171,
+                  "hits": 39,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.2207,
+                  "fisher_p": 0.0018378671622573568,
+                  "precision": 22.81,
+                  "recall": 55.71
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 169,
+                  "hits": 104,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.0068,
+                  "fisher_p": 0.00033099770679451623,
+                  "precision": 61.54,
+                  "recall": 46.85
+                },
+                "fisher_z": {
+                  "edges": 171,
+                  "hits": 103,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.8457,
+                  "fisher_p": 0.0013609043013021248,
+                  "precision": 60.23,
+                  "recall": 46.4
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 169,
+                  "hits": 12,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.1826,
+                  "fisher_p": 0.06417502004131163,
+                  "precision": 7.1,
+                  "recall": 57.14
+                },
+                "fisher_z": {
+                  "edges": 171,
+                  "hits": 12,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.1384,
+                  "fisher_p": 0.07009418498134093,
+                  "precision": 7.02,
+                  "recall": 57.14
+                }
+              }
+            },
+            {
+              "seed": 7042,
+              "edges_nb": 194,
+              "edges_fz": 207,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 194,
+                  "hits": 44,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.4256,
+                  "fisher_p": 0.000642166289238216,
+                  "precision": 22.68,
+                  "recall": 62.86
+                },
+                "fisher_z": {
+                  "edges": 207,
+                  "hits": 47,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.6182,
+                  "fisher_p": 0.0002672826694680337,
+                  "precision": 22.71,
+                  "recall": 67.14
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 194,
+                  "hits": 116,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.894,
+                  "fisher_p": 0.0007138294968778719,
+                  "precision": 59.79,
+                  "recall": 52.25
+                },
+                "fisher_z": {
+                  "edges": 207,
+                  "hits": 122,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.8372,
+                  "fisher_p": 0.001141025349127647,
+                  "precision": 58.94,
+                  "recall": 54.95
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 194,
+                  "hits": 13,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.0919,
+                  "fisher_p": 0.07954761151929245,
+                  "precision": 6.7,
+                  "recall": 61.9
+                },
+                "fisher_z": {
+                  "edges": 207,
+                  "hits": 13,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.8428,
+                  "fisher_p": 0.1307613916370855,
+                  "precision": 6.28,
+                  "recall": 61.9
+                }
+              }
+            },
+            {
+              "seed": 8042,
+              "edges_nb": 212,
+              "edges_fz": 242,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 212,
+                  "hits": 46,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.2977,
+                  "fisher_p": 0.0014120453879959058,
+                  "precision": 21.7,
+                  "recall": 65.71
+                },
+                "fisher_z": {
+                  "edges": 242,
+                  "hits": 49,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.0794,
+                  "fisher_p": 0.005530338654858605,
+                  "precision": 20.25,
+                  "recall": 70.0
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 212,
+                  "hits": 129,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.1726,
+                  "fisher_p": 4.659876750494948e-05,
+                  "precision": 60.85,
+                  "recall": 58.11
+                },
+                "fisher_z": {
+                  "edges": 242,
+                  "hits": 140,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.858,
+                  "fisher_p": 0.0009910002234859037,
+                  "precision": 57.85,
+                  "recall": 63.06
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 212,
+                  "hits": 14,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.1818,
+                  "fisher_p": 0.07143655621280418,
+                  "precision": 6.6,
+                  "recall": 66.67
+                },
+                "fisher_z": {
+                  "edges": 242,
+                  "hits": 14,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.6316,
+                  "fisher_p": 0.2077304450122999,
+                  "precision": 5.79,
+                  "recall": 66.67
+                }
+              }
+            },
+            {
+              "seed": 9042,
+              "edges_nb": 192,
+              "edges_fz": 206,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 192,
+                  "hits": 46,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.875,
+                  "fisher_p": 6.294020834590995e-05,
+                  "precision": 23.96,
+                  "recall": 65.71
+                },
+                "fisher_z": {
+                  "edges": 206,
+                  "hits": 47,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.6475,
+                  "fisher_p": 0.00022832692832299383,
+                  "precision": 22.82,
+                  "recall": 67.14
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 192,
+                  "hits": 117,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.0503,
+                  "fisher_p": 0.0001680986723781812,
+                  "precision": 60.94,
+                  "recall": 52.7
+                },
+                "fisher_z": {
+                  "edges": 206,
+                  "hits": 122,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.8736,
+                  "fisher_p": 0.0008158577684523418,
+                  "precision": 59.22,
+                  "recall": 54.95
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 192,
+                  "hits": 15,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 3.3475,
+                  "fisher_p": 0.009164653338618128,
+                  "precision": 7.81,
+                  "recall": 71.43
+                },
+                "fisher_z": {
+                  "edges": 206,
+                  "hits": 16,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 3.7726,
+                  "fisher_p": 0.005888213635924114,
+                  "precision": 7.77,
+                  "recall": 76.19
+                }
+              }
+            }
+          ],
+          "fdr05_lfc025_nb": {
+            "or_mean": 2.4844,
+            "or_sd": 0.381,
+            "hit_mean": 44.2,
+            "n_or": 10
+          },
+          "fdr05_lfc025_fisher_z": {
+            "or_mean": 2.3745,
+            "or_sd": 0.3245,
+            "hit_mean": 45.5,
+            "n_or": 10
+          },
+          "fdr05_lfc010_nb": {
+            "or_mean": 2.0925,
+            "or_sd": 0.2849,
+            "hit_mean": 118.6,
+            "n_or": 10
+          },
+          "fdr05_lfc010_fisher_z": {
+            "or_mean": 1.954,
+            "or_sd": 0.2002,
+            "hit_mean": 123.5,
+            "n_or": 10
+          },
+          "fdr05_lfc050_nb": {
+            "or_mean": 2.2373,
+            "or_sd": 0.651,
+            "hit_mean": 13.1,
+            "n_or": 10
+          },
+          "fdr05_lfc050_fisher_z": {
+            "or_mean": 2.1609,
+            "or_sd": 0.6972,
+            "hit_mean": 13.5,
+            "n_or": 10
+          },
+          "paired_wilcoxon_lfc025": {
+            "median_diff": 0.1898,
+            "win_rate": 0.7,
+            "p": 0.375
+          }
+        },
+        "3000": {
+          "n": 3000,
+          "reps": 10,
+          "runs": [
+            {
+              "seed": 42,
+              "edges_nb": 221,
+              "edges_fz": 222,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 221,
+                  "hits": 53,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 3.6558,
+                  "fisher_p": 3.294109790907518e-06,
+                  "precision": 23.98,
+                  "recall": 75.71
+                },
+                "fisher_z": {
+                  "edges": 222,
+                  "hits": 53,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 3.6157,
+                  "fisher_p": 3.998354345957987e-06,
+                  "precision": 23.87,
+                  "recall": 75.71
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 221,
+                  "hits": 135,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.2915,
+                  "fisher_p": 1.4645811002616501e-05,
+                  "precision": 61.09,
+                  "recall": 60.81
+                },
+                "fisher_z": {
+                  "edges": 222,
+                  "hits": 136,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.3353,
+                  "fisher_p": 9.594596372654775e-06,
+                  "precision": 61.26,
+                  "recall": 61.26
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 221,
+                  "hits": 17,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 4.375,
+                  "fisher_p": 0.0037054027021703926,
+                  "precision": 7.69,
+                  "recall": 80.95
+                },
+                "fisher_z": {
+                  "edges": 222,
+                  "hits": 17,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 4.3329,
+                  "fisher_p": 0.003946523295732435,
+                  "precision": 7.66,
+                  "recall": 80.95
+                }
+              }
+            },
+            {
+              "seed": 1042,
+              "edges_nb": 223,
+              "edges_fz": 223,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 223,
+                  "hits": 49,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.5613,
+                  "fisher_p": 0.00043453337358781706,
+                  "precision": 21.97,
+                  "recall": 70.0
+                },
+                "fisher_z": {
+                  "edges": 223,
+                  "hits": 49,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.5613,
+                  "fisher_p": 0.00043453337358781706,
+                  "precision": 21.97,
+                  "recall": 70.0
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 223,
+                  "hits": 131,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.8933,
+                  "fisher_p": 0.0006664738733970771,
+                  "precision": 58.74,
+                  "recall": 59.01
+                },
+                "fisher_z": {
+                  "edges": 223,
+                  "hits": 131,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.8933,
+                  "fisher_p": 0.0006664738733970771,
+                  "precision": 58.74,
+                  "recall": 59.01
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 223,
+                  "hits": 14,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.9617,
+                  "fisher_p": 0.1100001358244668,
+                  "precision": 6.28,
+                  "recall": 66.67
+                },
+                "fisher_z": {
+                  "edges": 223,
+                  "hits": 14,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.9617,
+                  "fisher_p": 0.1100001358244668,
+                  "precision": 6.28,
+                  "recall": 66.67
+                }
+              }
+            },
+            {
+              "seed": 2042,
+              "edges_nb": 216,
+              "edges_fz": 217,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 216,
+                  "hits": 55,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 4.646,
+                  "fisher_p": 6.745523647765736e-08,
+                  "precision": 25.46,
+                  "recall": 78.57
+                },
+                "fisher_z": {
+                  "edges": 217,
+                  "hits": 55,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 4.5947,
+                  "fisher_p": 8.440437684788484e-08,
+                  "precision": 25.35,
+                  "recall": 78.57
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 216,
+                  "hits": 138,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.8434,
+                  "fisher_p": 7.298661975268818e-08,
+                  "precision": 63.89,
+                  "recall": 62.16
+                },
+                "fisher_z": {
+                  "edges": 217,
+                  "hits": 138,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.7866,
+                  "fisher_p": 1.248588696933408e-07,
+                  "precision": 63.59,
+                  "recall": 62.16
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 216,
+                  "hits": 15,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.6493,
+                  "fisher_p": 0.03314947276431154,
+                  "precision": 6.94,
+                  "recall": 71.43
+                },
+                "fisher_z": {
+                  "edges": 217,
+                  "hits": 15,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.6238,
+                  "fisher_p": 0.034776570578146274,
+                  "precision": 6.91,
+                  "recall": 71.43
+                }
+              }
+            },
+            {
+              "seed": 3042,
+              "edges_nb": 212,
+              "edges_fz": 215,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 212,
+                  "hits": 52,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 3.7014,
+                  "fisher_p": 2.069784975139648e-06,
+                  "precision": 24.53,
+                  "recall": 74.29
+                },
+                "fisher_z": {
+                  "edges": 215,
+                  "hits": 52,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 3.5801,
+                  "fisher_p": 3.7443192034000822e-06,
+                  "precision": 24.19,
+                  "recall": 74.29
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 212,
+                  "hits": 129,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.1726,
+                  "fisher_p": 4.659876750494948e-05,
+                  "precision": 60.85,
+                  "recall": 58.11
+                },
+                "fisher_z": {
+                  "edges": 215,
+                  "hits": 130,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.1279,
+                  "fisher_p": 7.126032722140452e-05,
+                  "precision": 60.47,
+                  "recall": 58.56
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 212,
+                  "hits": 15,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.7538,
+                  "fisher_p": 0.02724982738755249,
+                  "precision": 7.08,
+                  "recall": 71.43
+                },
+                "fisher_z": {
+                  "edges": 215,
+                  "hits": 15,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.675,
+                  "fisher_p": 0.03158497195818175,
+                  "precision": 6.98,
+                  "recall": 71.43
+                }
+              }
+            },
+            {
+              "seed": 4042,
+              "edges_nb": 186,
+              "edges_fz": 184,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 186,
+                  "hits": 48,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 3.5889,
+                  "fisher_p": 1.8618954273928115e-06,
+                  "precision": 25.81,
+                  "recall": 68.57
+                },
+                "fisher_z": {
+                  "edges": 184,
+                  "hits": 46,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 3.1528,
+                  "fisher_p": 1.457611809775378e-05,
+                  "precision": 25.0,
+                  "recall": 65.71
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 186,
+                  "hits": 120,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.6203,
+                  "fisher_p": 8.389484701345566e-07,
+                  "precision": 64.52,
+                  "recall": 54.05
+                },
+                "fisher_z": {
+                  "edges": 184,
+                  "hits": 118,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.5271,
+                  "fisher_p": 2.0825325540397505e-06,
+                  "precision": 64.13,
+                  "recall": 53.15
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 186,
+                  "hits": 13,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.2637,
+                  "fisher_p": 0.056436646888996043,
+                  "precision": 6.99,
+                  "recall": 61.9
+                },
+                "fisher_z": {
+                  "edges": 184,
+                  "hits": 13,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.3092,
+                  "fisher_p": 0.05155114667023131,
+                  "precision": 7.07,
+                  "recall": 61.9
+                }
+              }
+            },
+            {
+              "seed": 5042,
+              "edges_nb": 224,
+              "edges_fz": 228,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 224,
+                  "hits": 49,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.5333,
+                  "fisher_p": 0.0005041170735159263,
+                  "precision": 21.88,
+                  "recall": 70.0
+                },
+                "fisher_z": {
+                  "edges": 228,
+                  "hits": 49,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.4246,
+                  "fisher_p": 0.0008980995656822575,
+                  "precision": 21.49,
+                  "recall": 70.0
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 224,
+                  "hits": 133,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.0035,
+                  "fisher_p": 0.00023540025748540109,
+                  "precision": 59.38,
+                  "recall": 59.91
+                },
+                "fisher_z": {
+                  "edges": 228,
+                  "hits": 134,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 1.9277,
+                  "fisher_p": 0.0004868718114436335,
+                  "precision": 58.77,
+                  "recall": 60.36
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 224,
+                  "hits": 13,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.5634,
+                  "fisher_p": 0.2259020219555241,
+                  "precision": 5.8,
+                  "recall": 61.9
+                },
+                "fisher_z": {
+                  "edges": 228,
+                  "hits": 13,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.5041,
+                  "fisher_p": 0.25291021128925567,
+                  "precision": 5.7,
+                  "recall": 61.9
+                }
+              }
+            },
+            {
+              "seed": 6042,
+              "edges_nb": 214,
+              "edges_fz": 216,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 214,
+                  "hits": 49,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.8283,
+                  "fisher_p": 0.00010567676124619107,
+                  "precision": 22.9,
+                  "recall": 70.0
+                },
+                "fisher_z": {
+                  "edges": 216,
+                  "hits": 48,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.5584,
+                  "fisher_p": 0.00040036996344851197,
+                  "precision": 22.22,
+                  "recall": 68.57
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 214,
+                  "hits": 136,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.737,
+                  "fisher_p": 2.0154517213021926e-07,
+                  "precision": 63.55,
+                  "recall": 61.26
+                },
+                "fisher_z": {
+                  "edges": 216,
+                  "hits": 135,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.5287,
+                  "fisher_p": 1.478589161049959e-06,
+                  "precision": 62.5,
+                  "recall": 60.81
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 214,
+                  "hits": 15,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.701,
+                  "fisher_p": 0.030081337408147866,
+                  "precision": 7.01,
+                  "recall": 71.43
+                },
+                "fisher_z": {
+                  "edges": 216,
+                  "hits": 15,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.6493,
+                  "fisher_p": 0.03314947276431154,
+                  "precision": 6.94,
+                  "recall": 71.43
+                }
+              }
+            },
+            {
+              "seed": 7042,
+              "edges_nb": 209,
+              "edges_fz": 209,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 209,
+                  "hits": 53,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 4.1768,
+                  "fisher_p": 2.794850297430146e-07,
+                  "precision": 25.36,
+                  "recall": 75.71
+                },
+                "fisher_z": {
+                  "edges": 209,
+                  "hits": 52,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 3.8273,
+                  "fisher_p": 1.1250339428307959e-06,
+                  "precision": 24.88,
+                  "recall": 74.29
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 209,
+                  "hits": 130,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.3968,
+                  "fisher_p": 5.401792550180405e-06,
+                  "precision": 62.2,
+                  "recall": 58.56
+                },
+                "fisher_z": {
+                  "edges": 209,
+                  "hits": 129,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.306,
+                  "fisher_p": 1.2976342908156296e-05,
+                  "precision": 61.72,
+                  "recall": 58.11
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 209,
+                  "hits": 17,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 4.9141,
+                  "fisher_p": 0.001678549662633681,
+                  "precision": 8.13,
+                  "recall": 80.95
+                },
+                "fisher_z": {
+                  "edges": 209,
+                  "hits": 17,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 4.9141,
+                  "fisher_p": 0.001678549662633681,
+                  "precision": 8.13,
+                  "recall": 80.95
+                }
+              }
+            },
+            {
+              "seed": 8042,
+              "edges_nb": 223,
+              "edges_fz": 227,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 223,
+                  "hits": 50,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 2.7746,
+                  "fisher_p": 0.0001586967171787103,
+                  "precision": 22.42,
+                  "recall": 71.43
+                },
+                "fisher_z": {
+                  "edges": 227,
+                  "hits": 52,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 3.1365,
+                  "fisher_p": 3.412257473684641e-05,
+                  "precision": 22.91,
+                  "recall": 74.29
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 223,
+                  "hits": 137,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.3802,
+                  "fisher_p": 6.226771208229163e-06,
+                  "precision": 61.43,
+                  "recall": 61.71
+                },
+                "fisher_z": {
+                  "edges": 227,
+                  "hits": 139,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.3788,
+                  "fisher_p": 6.382140026876529e-06,
+                  "precision": 61.23,
+                  "recall": 62.61
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 223,
+                  "hits": 14,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 1.9617,
+                  "fisher_p": 0.1100001358244668,
+                  "precision": 6.28,
+                  "recall": 66.67
+                },
+                "fisher_z": {
+                  "edges": 227,
+                  "hits": 15,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.3821,
+                  "fisher_p": 0.054879697727361,
+                  "precision": 6.61,
+                  "recall": 71.43
+                }
+              }
+            },
+            {
+              "seed": 9042,
+              "edges_nb": 199,
+              "edges_fz": 202,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 199,
+                  "hits": 49,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 3.3444,
+                  "fisher_p": 7.230707482564288e-06,
+                  "precision": 24.62,
+                  "recall": 70.0
+                },
+                "fisher_z": {
+                  "edges": 202,
+                  "hits": 50,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 3.5033,
+                  "fisher_p": 3.7441129101483895e-06,
+                  "precision": 24.75,
+                  "recall": 71.43
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 199,
+                  "hits": 124,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.3282,
+                  "fisher_p": 1.1200474440047632e-05,
+                  "precision": 62.31,
+                  "recall": 55.86
+                },
+                "fisher_z": {
+                  "edges": 202,
+                  "hits": 124,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.19,
+                  "fisher_p": 4.12282537692843e-05,
+                  "precision": 61.39,
+                  "recall": 55.86
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 199,
+                  "hits": 14,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.4757,
+                  "fisher_p": 0.04015914640065479,
+                  "precision": 7.04,
+                  "recall": 66.67
+                },
+                "fisher_z": {
+                  "edges": 202,
+                  "hits": 14,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.4043,
+                  "fisher_p": 0.04617338742253498,
+                  "precision": 6.93,
+                  "recall": 66.67
+                }
+              }
+            }
+          ],
+          "fdr05_lfc025_nb": {
+            "or_mean": 3.3811,
+            "or_sd": 0.7087,
+            "hit_mean": 50.7,
+            "n_or": 10
+          },
+          "fdr05_lfc025_fisher_z": {
+            "or_mean": 3.2955,
+            "or_sd": 0.6736,
+            "hit_mean": 50.6,
+            "n_or": 10
+          },
+          "fdr05_lfc010_nb": {
+            "or_mean": 2.3667,
+            "or_sd": 0.3038,
+            "hit_mean": 131.3,
+            "n_or": 10
+          },
+          "fdr05_lfc010_fisher_z": {
+            "or_mean": 2.3001,
+            "or_sd": 0.2777,
+            "hit_mean": 131.4,
+            "n_or": 10
+          },
+          "fdr05_lfc050_nb": {
+            "or_mean": 2.7619,
+            "or_sd": 1.0697,
+            "hit_mean": 14.7,
+            "n_or": 10
+          },
+          "fdr05_lfc050_fisher_z": {
+            "or_mean": 2.7757,
+            "or_sd": 1.0455,
+            "hit_mean": 14.8,
+            "n_or": 10
+          },
+          "paired_wilcoxon_lfc025": {
+            "median_diff": 0.08,
+            "win_rate": 0.7,
+            "p": 0.30078125
+          }
+        },
+        "11855": {
+          "n": 11855,
+          "reps": 1,
+          "runs": [
+            {
+              "seed": 42,
+              "edges_nb": 220,
+              "edges_fz": 220,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 220,
+                  "hits": 52,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 3.3876,
+                  "fisher_p": 9.69675146460165e-06,
+                  "precision": 23.64,
+                  "recall": 74.29
+                },
+                "fisher_z": {
+                  "edges": 220,
+                  "hits": 52,
+                  "gold": 70,
+                  "pairs": 435,
+                  "odds_ratio": 3.3876,
+                  "fisher_p": 9.69675146460165e-06,
+                  "precision": 23.64,
+                  "recall": 74.29
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 220,
+                  "hits": 135,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.3367,
+                  "fisher_p": 9.446481161180136e-06,
+                  "precision": 61.36,
+                  "recall": 60.81
+                },
+                "fisher_z": {
+                  "edges": 220,
+                  "hits": 135,
+                  "gold": 222,
+                  "pairs": 435,
+                  "odds_ratio": 2.3367,
+                  "fisher_p": 9.446481161180136e-06,
+                  "precision": 61.36,
+                  "recall": 60.81
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 220,
+                  "hits": 14,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.0194,
+                  "fisher_p": 0.09825663593906951,
+                  "precision": 6.36,
+                  "recall": 66.67
+                },
+                "fisher_z": {
+                  "edges": 220,
+                  "hits": 14,
+                  "gold": 21,
+                  "pairs": 435,
+                  "odds_ratio": 2.0194,
+                  "fisher_p": 0.09825663593906951,
+                  "precision": 6.36,
+                  "recall": 66.67
+                }
+              }
+            }
+          ],
+          "fdr05_lfc025_nb": {
+            "or_mean": 3.3876,
+            "or_sd": 0.0,
+            "hit_mean": 52.0,
+            "n_or": 1
+          },
+          "fdr05_lfc025_fisher_z": {
+            "or_mean": 3.3876,
+            "or_sd": 0.0,
+            "hit_mean": 52.0,
+            "n_or": 1
+          },
+          "fdr05_lfc010_nb": {
+            "or_mean": 2.3367,
+            "or_sd": 0.0,
+            "hit_mean": 135.0,
+            "n_or": 1
+          },
+          "fdr05_lfc010_fisher_z": {
+            "or_mean": 2.3367,
+            "or_sd": 0.0,
+            "hit_mean": 135.0,
+            "n_or": 1
+          },
+          "fdr05_lfc050_nb": {
+            "or_mean": 2.0194,
+            "or_sd": 0.0,
+            "hit_mean": 14.0,
+            "n_or": 1
+          },
+          "fdr05_lfc050_fisher_z": {
+            "or_mean": 2.0194,
+            "or_sd": 0.0,
+            "hit_mean": 14.0,
+            "n_or": 1
+          }
+        }
+      },
+      "null": {
+        "fdr05_lfc025_nb": {
+          "mean": 27.78,
+          "sd": 3.81,
+          "p_ge": 0.0,
+          "n_null": 2000
+        },
+        "fdr05_lfc025_fisher_z": {
+          "mean": 27.78,
+          "sd": 3.81,
+          "p_ge": 0.0,
+          "n_null": 2000
+        },
+        "fdr05_lfc010_nb": {
+          "mean": 88.11,
+          "sd": 5.62,
+          "p_ge": 0.0,
+          "n_null": 2000
+        },
+        "fdr05_lfc010_fisher_z": {
+          "mean": 88.11,
+          "sd": 5.62,
+          "p_ge": 0.0,
+          "n_null": 2000
+        },
+        "fdr05_lfc050_nb": {
+          "mean": 8.31,
+          "sd": 2.12,
+          "p_ge": 0.007,
+          "n_null": 2000
+        },
+        "fdr05_lfc050_fisher_z": {
+          "mean": 8.31,
+          "sd": 2.12,
+          "p_ge": 0.007,
+          "n_null": 2000
+        }
+      },
+      "scoring_fdr05_lfc025": {
+        "nb": {
+          "edges": 220,
+          "hits": 52,
+          "gold": 70,
+          "pairs": 435,
+          "odds_ratio": 3.3876,
+          "fisher_p": 9.69675146460165e-06,
+          "precision": 23.64,
+          "recall": 74.29
+        },
+        "fisher_z": {
+          "edges": 220,
+          "hits": 52,
+          "gold": 70,
+          "pairs": 435,
+          "odds_ratio": 3.3876,
+          "fisher_p": 9.69675146460165e-06,
+          "precision": 23.64,
+          "recall": 74.29
+        }
+      },
+      "scoring_fdr05_lfc010": {
+        "nb": {
+          "edges": 220,
+          "hits": 135,
+          "gold": 222,
+          "pairs": 435,
+          "odds_ratio": 2.3367,
+          "fisher_p": 9.446481161180136e-06,
+          "precision": 61.36,
+          "recall": 60.81
+        },
+        "fisher_z": {
+          "edges": 220,
+          "hits": 135,
+          "gold": 222,
+          "pairs": 435,
+          "odds_ratio": 2.3367,
+          "fisher_p": 9.446481161180136e-06,
+          "precision": 61.36,
+          "recall": 60.81
+        }
+      },
+      "scoring_fdr05_lfc050": {
+        "nb": {
+          "edges": 220,
+          "hits": 14,
+          "gold": 21,
+          "pairs": 435,
+          "odds_ratio": 2.0194,
+          "fisher_p": 0.09825663593906951,
+          "precision": 6.36,
+          "recall": 66.67
+        },
+        "fisher_z": {
+          "edges": 220,
+          "hits": 14,
+          "gold": 21,
+          "pairs": 435,
+          "odds_ratio": 2.0194,
+          "fisher_p": 0.09825663593906951,
+          "precision": 6.36,
+          "recall": 66.67
+        }
+      }
+    },
+    "50": {
+      "panel_genes": [
+        "BPGM",
+        "SLC4A1",
+        "CELF2",
+        "LYL1",
+        "ZBTB10",
+        "FOXO4",
+        "SGK1",
+        "UBASH3B",
+        "BAK1",
+        "KIF18B",
+        "ARID1A",
+        "ARRDC3",
+        "GLB1L2",
+        "PTPN13",
+        "IKZF3",
+        "RHOXF2",
+        "MAP2K6",
+        "SLC6A9",
+        "FOXF1",
+        "MAP7D1",
+        "MAP2K3",
+        "SNAI1",
+        "HNF4A",
+        "JUN",
+        "DLX2",
+        "CLDN6",
+        "CEBPE",
+        "PTPN1",
+        "CEBPA",
+        "DUSP9",
+        "ISL2",
+        "KLF1",
+        "TBX3",
+        "FOXL2",
+        "CSRNP1",
+        "BCL2L11",
+        "CDKN1B",
+        "CNNM4",
+        "MIDN",
+        "ELMSAN1",
+        "RUNX1T1",
+        "BCORL1",
+        "MAML2",
+        "UBASH3A",
+        "CBL",
+        "PRTG",
+        "HOXA13",
+        "ZC3HAV1",
+        "CBFA2T3",
+        "SET"
+      ],
+      "cells_per_perturbation_median": 568,
+      "gold": {
+        "fdr05_lfc025": 108,
+        "fdr05_lfc010": 366,
+        "fdr05_lfc050": 29
+      },
+      "sweep": {
+        "500": {
+          "n": 500,
+          "reps": 10,
+          "runs": [
+            {
+              "seed": 42,
+              "edges_nb": 180,
+              "edges_fz": 225,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 180,
+                  "hits": 33,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 2.9034,
+                  "fisher_p": 7.422072814633798e-06,
+                  "precision": 18.33,
+                  "recall": 30.56
+                },
+                "fisher_z": {
+                  "edges": 225,
+                  "hits": 37,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 2.5751,
+                  "fisher_p": 2.5680235936729055e-05,
+                  "precision": 16.44,
+                  "recall": 34.26
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 180,
+                  "hits": 93,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.0229,
+                  "fisher_p": 2.336495832674328e-11,
+                  "precision": 51.67,
+                  "recall": 25.41
+                },
+                "fisher_z": {
+                  "edges": 225,
+                  "hits": 110,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 2.7799,
+                  "fisher_p": 1.967300041268652e-11,
+                  "precision": 48.89,
+                  "recall": 30.05
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 180,
+                  "hits": 9,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.6974,
+                  "fisher_p": 0.018436046279193742,
+                  "precision": 5.0,
+                  "recall": 31.03
+                },
+                "fisher_z": {
+                  "edges": 225,
+                  "hits": 9,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.0417,
+                  "fisher_p": 0.06786756459845412,
+                  "precision": 4.0,
+                  "recall": 31.03
+                }
+              }
+            },
+            {
+              "seed": 1042,
+              "edges_nb": 182,
+              "edges_fz": 207,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 182,
+                  "hits": 36,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.3253,
+                  "fisher_p": 3.0309413175883866e-07,
+                  "precision": 19.78,
+                  "recall": 33.33
+                },
+                "fisher_z": {
+                  "edges": 207,
+                  "hits": 39,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.1928,
+                  "fisher_p": 3.150818952068609e-07,
+                  "precision": 18.84,
+                  "recall": 36.11
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 182,
+                  "hits": 98,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.3738,
+                  "fisher_p": 1.655016689326677e-13,
+                  "precision": 53.85,
+                  "recall": 26.78
+                },
+                "fisher_z": {
+                  "edges": 207,
+                  "hits": 107,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.1356,
+                  "fisher_p": 3.4380690425649503e-13,
+                  "precision": 51.69,
+                  "recall": 29.23
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 182,
+                  "hits": 9,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.661,
+                  "fisher_p": 0.01975077524144949,
+                  "precision": 4.95,
+                  "recall": 31.03
+                },
+                "fisher_z": {
+                  "edges": 207,
+                  "hits": 12,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.6235,
+                  "fisher_p": 0.0014123583194849004,
+                  "precision": 5.8,
+                  "recall": 41.38
+                }
+              }
+            },
+            {
+              "seed": 2042,
+              "edges_nb": 183,
+              "edges_fz": 200,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 183,
+                  "hits": 40,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.0066,
+                  "fisher_p": 1.8583584237828801e-09,
+                  "precision": 21.86,
+                  "recall": 37.04
+                },
+                "fisher_z": {
+                  "edges": 200,
+                  "hits": 36,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 2.9055,
+                  "fisher_p": 3.735156973374278e-06,
+                  "precision": 18.0,
+                  "recall": 33.33
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 183,
+                  "hits": 102,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.711,
+                  "fisher_p": 1.6886026865930791e-15,
+                  "precision": 55.74,
+                  "recall": 27.87
+                },
+                "fisher_z": {
+                  "edges": 200,
+                  "hits": 101,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 2.9259,
+                  "fisher_p": 1.472203575351147e-11,
+                  "precision": 50.5,
+                  "recall": 27.6
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 183,
+                  "hits": 13,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.9037,
+                  "fisher_p": 9.268817064600242e-05,
+                  "precision": 7.1,
+                  "recall": 44.83
+                },
+                "fisher_z": {
+                  "edges": 200,
+                  "hits": 12,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.7847,
+                  "fisher_p": 0.001025490762328078,
+                  "precision": 6.0,
+                  "recall": 41.38
+                }
+              }
+            },
+            {
+              "seed": 3042,
+              "edges_nb": 184,
+              "edges_fz": 197,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 184,
+                  "hits": 33,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 2.8148,
+                  "fisher_p": 1.2414487530223213e-05,
+                  "precision": 17.93,
+                  "recall": 30.56
+                },
+                "fisher_z": {
+                  "edges": 197,
+                  "hits": 37,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.117,
+                  "fisher_p": 8.099993302340781e-07,
+                  "precision": 18.78,
+                  "recall": 34.26
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 184,
+                  "hits": 99,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.3763,
+                  "fisher_p": 1.265320856897852e-13,
+                  "precision": 53.8,
+                  "recall": 27.05
+                },
+                "fisher_z": {
+                  "edges": 197,
+                  "hits": 99,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 2.8793,
+                  "fisher_p": 3.7732266133330895e-11,
+                  "precision": 50.25,
+                  "recall": 27.05
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 184,
+                  "hits": 9,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.6254,
+                  "fisher_p": 0.021134539984375065,
+                  "precision": 4.89,
+                  "recall": 31.03
+                },
+                "fisher_z": {
+                  "edges": 197,
+                  "hits": 11,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.3184,
+                  "fisher_p": 0.0033711029583371405,
+                  "precision": 5.58,
+                  "recall": 37.93
+                }
+              }
+            },
+            {
+              "seed": 4042,
+              "edges_nb": 179,
+              "edges_fz": 194,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 179,
+                  "hits": 37,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.5782,
+                  "fisher_p": 5.362013553072055e-08,
+                  "precision": 20.67,
+                  "recall": 34.26
+                },
+                "fisher_z": {
+                  "edges": 194,
+                  "hits": 33,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 2.6127,
+                  "fisher_p": 4.127543995396042e-05,
+                  "precision": 17.01,
+                  "recall": 30.56
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 179,
+                  "hits": 87,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 2.5997,
+                  "fisher_p": 8.274285204633391e-09,
+                  "precision": 48.6,
+                  "recall": 23.77
+                },
+                "fisher_z": {
+                  "edges": 194,
+                  "hits": 92,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 2.4919,
+                  "fisher_p": 1.3538499919201224e-08,
+                  "precision": 47.42,
+                  "recall": 25.14
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 179,
+                  "hits": 9,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.7159,
+                  "fisher_p": 0.017803922210485643,
+                  "precision": 5.03,
+                  "recall": 31.03
+                },
+                "fisher_z": {
+                  "edges": 194,
+                  "hits": 9,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.4592,
+                  "fisher_p": 0.029160348964053853,
+                  "precision": 4.64,
+                  "recall": 31.03
+                }
+              }
+            },
+            {
+              "seed": 5042,
+              "edges_nb": 169,
+              "edges_fz": 210,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 169,
+                  "hits": 34,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.3421,
+                  "fisher_p": 4.837272919223901e-07,
+                  "precision": 20.12,
+                  "recall": 31.48
+                },
+                "fisher_z": {
+                  "edges": 210,
+                  "hits": 41,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.4327,
+                  "fisher_p": 4.271038158337645e-08,
+                  "precision": 19.52,
+                  "recall": 37.96
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 169,
+                  "hits": 83,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 2.6362,
+                  "fisher_p": 1.0821823734949854e-08,
+                  "precision": 49.11,
+                  "recall": 22.68
+                },
+                "fisher_z": {
+                  "edges": 210,
+                  "hits": 105,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 2.8889,
+                  "fisher_p": 1.1122960774671118e-11,
+                  "precision": 50.0,
+                  "recall": 28.69
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 169,
+                  "hits": 12,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.6714,
+                  "fisher_p": 0.00020124665959554304,
+                  "precision": 7.1,
+                  "recall": 41.38
+                },
+                "fisher_z": {
+                  "edges": 210,
+                  "hits": 16,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 6.3569,
+                  "fisher_p": 2.755403311053889e-06,
+                  "precision": 7.62,
+                  "recall": 55.17
+                }
+              }
+            },
+            {
+              "seed": 6042,
+              "edges_nb": 222,
+              "edges_fz": 256,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 222,
+                  "hits": 34,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 2.2704,
+                  "fisher_p": 0.0002971575891067825,
+                  "precision": 15.32,
+                  "recall": 31.48
+                },
+                "fisher_z": {
+                  "edges": 256,
+                  "hits": 39,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 2.3442,
+                  "fisher_p": 9.367179197176901e-05,
+                  "precision": 15.23,
+                  "recall": 36.11
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 222,
+                  "hits": 101,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 2.3246,
+                  "fisher_p": 3.537408586619759e-08,
+                  "precision": 45.5,
+                  "recall": 27.6
+                },
+                "fisher_z": {
+                  "edges": 256,
+                  "hits": 118,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 2.4859,
+                  "fisher_p": 4.277111404672574e-10,
+                  "precision": 46.09,
+                  "recall": 32.24
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 222,
+                  "hits": 9,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.0768,
+                  "fisher_p": 0.0631017064794264,
+                  "precision": 4.05,
+                  "recall": 31.03
+                },
+                "fisher_z": {
+                  "edges": 256,
+                  "hits": 10,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.0325,
+                  "fisher_p": 0.061542608022023354,
+                  "precision": 3.91,
+                  "recall": 34.48
+                }
+              }
+            },
+            {
+              "seed": 7042,
+              "edges_nb": 204,
+              "edges_fz": 239,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 204,
+                  "hits": 38,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.11,
+                  "fisher_p": 6.689667527873193e-07,
+                  "precision": 18.63,
+                  "recall": 35.19
+                },
+                "fisher_z": {
+                  "edges": 239,
+                  "hits": 37,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 2.3605,
+                  "fisher_p": 0.00010857346411876537,
+                  "precision": 15.48,
+                  "recall": 34.26
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 204,
+                  "hits": 91,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 2.1846,
+                  "fisher_p": 7.145837531385861e-07,
+                  "precision": 44.61,
+                  "recall": 24.86
+                },
+                "fisher_z": {
+                  "edges": 239,
+                  "hits": 99,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 1.9043,
+                  "fisher_p": 1.4509244839814265e-05,
+                  "precision": 41.42,
+                  "recall": 27.05
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 204,
+                  "hits": 10,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.7184,
+                  "fisher_p": 0.01421363026005469,
+                  "precision": 4.9,
+                  "recall": 34.48
+                },
+                "fisher_z": {
+                  "edges": 239,
+                  "hits": 10,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.2225,
+                  "fisher_p": 0.040472627530521145,
+                  "precision": 4.18,
+                  "recall": 34.48
+                }
+              }
+            },
+            {
+              "seed": 8042,
+              "edges_nb": 196,
+              "edges_fz": 231,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 196,
+                  "hits": 38,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.2949,
+                  "fisher_p": 2.1400017654160267e-07,
+                  "precision": 19.39,
+                  "recall": 35.19
+                },
+                "fisher_z": {
+                  "edges": 231,
+                  "hits": 44,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.4191,
+                  "fisher_p": 2.286774836970565e-08,
+                  "precision": 19.05,
+                  "recall": 40.74
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 196,
+                  "hits": 99,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 2.9128,
+                  "fisher_p": 2.5200678614326993e-11,
+                  "precision": 50.51,
+                  "recall": 27.05
+                },
+                "fisher_z": {
+                  "edges": 231,
+                  "hits": 109,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 2.5621,
+                  "fisher_p": 4.629595308064484e-10,
+                  "precision": 47.19,
+                  "recall": 29.78
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 196,
+                  "hits": 10,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.858,
+                  "fisher_p": 0.010736413787394011,
+                  "precision": 5.1,
+                  "recall": 34.48
+                },
+                "fisher_z": {
+                  "edges": 231,
+                  "hits": 13,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.6451,
+                  "fisher_p": 0.001060853418987006,
+                  "precision": 5.63,
+                  "recall": 44.83
+                }
+              }
+            },
+            {
+              "seed": 9042,
+              "edges_nb": 173,
+              "edges_fz": 202,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 173,
+                  "hits": 28,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 2.3462,
+                  "fisher_p": 0.0004788941644766108,
+                  "precision": 16.18,
+                  "recall": 25.93
+                },
+                "fisher_z": {
+                  "edges": 202,
+                  "hits": 32,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 2.3455,
+                  "fisher_p": 0.00024864548890455906,
+                  "precision": 15.84,
+                  "recall": 29.63
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 173,
+                  "hits": 82,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 2.4368,
+                  "fisher_p": 1.1329190484000086e-07,
+                  "precision": 47.4,
+                  "recall": 22.4
+                },
+                "fisher_z": {
+                  "edges": 202,
+                  "hits": 94,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 2.4031,
+                  "fisher_p": 3.080198807025981e-08,
+                  "precision": 46.53,
+                  "recall": 25.68
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 173,
+                  "hits": 8,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.3804,
+                  "fisher_p": 0.041257455101012475,
+                  "precision": 4.62,
+                  "recall": 27.59
+                },
+                "fisher_z": {
+                  "edges": 202,
+                  "hits": 10,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.7522,
+                  "fisher_p": 0.01327227120538636,
+                  "precision": 4.95,
+                  "recall": 34.48
+                }
+              }
+            }
+          ],
+          "fdr05_lfc025_nb": {
+            "or_mean": 3.0992,
+            "or_sd": 0.5348,
+            "hit_mean": 35.1,
+            "n_or": 10
+          },
+          "fdr05_lfc025_fisher_z": {
+            "or_mean": 2.8305,
+            "or_sd": 0.4389,
+            "hit_mean": 37.5,
+            "n_or": 10
+          },
+          "fdr05_lfc010_nb": {
+            "or_mean": 2.8579,
+            "or_sd": 0.5081,
+            "hit_mean": 93.5,
+            "n_or": 10
+          },
+          "fdr05_lfc010_fisher_z": {
+            "or_mean": 2.6457,
+            "or_sd": 0.352,
+            "hit_mean": 103.4,
+            "n_or": 10
+          },
+          "fdr05_lfc050_nb": {
+            "or_mean": 3.0308,
+            "or_sd": 0.9529,
+            "hit_mean": 9.8,
+            "n_or": 10
+          },
+          "fdr05_lfc050_fisher_z": {
+            "or_mean": 3.2237,
+            "or_sd": 1.2954,
+            "hit_mean": 11.2,
+            "n_or": 10
+          },
+          "paired_wilcoxon_lfc025": {
+            "median_diff": 0.0666,
+            "win_rate": 0.6,
+            "p": 0.232421875
+          }
+        },
+        "1000": {
+          "n": 1000,
+          "reps": 10,
+          "runs": [
+            {
+              "seed": 42,
+              "edges_nb": 213,
+              "edges_fz": 228,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 213,
+                  "hits": 45,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.0349,
+                  "fisher_p": 3.385994371498884e-10,
+                  "precision": 21.13,
+                  "recall": 41.67
+                },
+                "fisher_z": {
+                  "edges": 228,
+                  "hits": 47,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.9844,
+                  "fisher_p": 2.697924091797759e-10,
+                  "precision": 20.61,
+                  "recall": 43.52
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 213,
+                  "hits": 124,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.4331,
+                  "fisher_p": 1.312404511065829e-21,
+                  "precision": 58.22,
+                  "recall": 33.88
+                },
+                "fisher_z": {
+                  "edges": 228,
+                  "hits": 128,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.082,
+                  "fisher_p": 2.2137087892311122e-20,
+                  "precision": 56.14,
+                  "recall": 34.97
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 213,
+                  "hits": 13,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.0462,
+                  "fisher_p": 0.0004647653218077262,
+                  "precision": 6.1,
+                  "recall": 44.83
+                },
+                "fisher_z": {
+                  "edges": 228,
+                  "hits": 13,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.7073,
+                  "fisher_p": 0.000930471652053113,
+                  "precision": 5.7,
+                  "recall": 44.83
+                }
+              }
+            },
+            {
+              "seed": 1042,
+              "edges_nb": 274,
+              "edges_fz": 299,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 274,
+                  "hits": 55,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.2552,
+                  "fisher_p": 6.972604417872574e-12,
+                  "precision": 20.07,
+                  "recall": 50.93
+                },
+                "fisher_z": {
+                  "edges": 299,
+                  "hits": 56,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.8734,
+                  "fisher_p": 9.095917394885482e-11,
+                  "precision": 18.73,
+                  "recall": 51.85
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 274,
+                  "hits": 147,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.8688,
+                  "fisher_p": 3.201801877076971e-21,
+                  "precision": 53.65,
+                  "recall": 40.16
+                },
+                "fisher_z": {
+                  "edges": 299,
+                  "hits": 157,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.793,
+                  "fisher_p": 1.177596381024058e-21,
+                  "precision": 52.51,
+                  "recall": 42.9
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 274,
+                  "hits": 15,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.8762,
+                  "fisher_p": 0.0004399302654528965,
+                  "precision": 5.47,
+                  "recall": 51.72
+                },
+                "fisher_z": {
+                  "edges": 299,
+                  "hits": 15,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.4406,
+                  "fisher_p": 0.0012012278831480716,
+                  "precision": 5.02,
+                  "recall": 51.72
+                }
+              }
+            },
+            {
+              "seed": 2042,
+              "edges_nb": 255,
+              "edges_fz": 271,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 255,
+                  "hits": 49,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.6728,
+                  "fisher_p": 1.365613479025581e-09,
+                  "precision": 19.22,
+                  "recall": 45.37
+                },
+                "fisher_z": {
+                  "edges": 271,
+                  "hits": 48,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.2072,
+                  "fisher_p": 4.613007187141203e-08,
+                  "precision": 17.71,
+                  "recall": 44.44
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 255,
+                  "hits": 139,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.9221,
+                  "fisher_p": 9.888199069766936e-21,
+                  "precision": 54.51,
+                  "recall": 37.98
+                },
+                "fisher_z": {
+                  "edges": 271,
+                  "hits": 144,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.7387,
+                  "fisher_p": 3.9735820026970236e-20,
+                  "precision": 53.14,
+                  "recall": 39.34
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 255,
+                  "hits": 15,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.2679,
+                  "fisher_p": 0.00018706399375013503,
+                  "precision": 5.88,
+                  "recall": 51.72
+                },
+                "fisher_z": {
+                  "edges": 271,
+                  "hits": 16,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.5418,
+                  "fisher_p": 8.868331473986312e-05,
+                  "precision": 5.9,
+                  "recall": 55.17
+                }
+              }
+            },
+            {
+              "seed": 3042,
+              "edges_nb": 283,
+              "edges_fz": 310,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 283,
+                  "hits": 49,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.1339,
+                  "fisher_p": 6.773211453526318e-08,
+                  "precision": 17.31,
+                  "recall": 45.37
+                },
+                "fisher_z": {
+                  "edges": 310,
+                  "hits": 54,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.3633,
+                  "fisher_p": 5.767860870654252e-09,
+                  "precision": 17.42,
+                  "recall": 50.0
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 283,
+                  "hits": 145,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.4279,
+                  "fisher_p": 3.224937712492282e-18,
+                  "precision": 51.24,
+                  "recall": 39.62
+                },
+                "fisher_z": {
+                  "edges": 310,
+                  "hits": 156,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.4007,
+                  "fisher_p": 7.069825199807845e-19,
+                  "precision": 50.32,
+                  "recall": 42.62
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 283,
+                  "hits": 11,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.076,
+                  "fisher_p": 0.050297682962149454,
+                  "precision": 3.89,
+                  "recall": 37.93
+                },
+                "fisher_z": {
+                  "edges": 310,
+                  "hits": 13,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.4594,
+                  "fisher_p": 0.016323736247358205,
+                  "precision": 4.19,
+                  "recall": 44.83
+                }
+              }
+            },
+            {
+              "seed": 4042,
+              "edges_nb": 263,
+              "edges_fz": 290,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 263,
+                  "hits": 53,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.162,
+                  "fisher_p": 1.9938355741213927e-11,
+                  "precision": 20.15,
+                  "recall": 49.07
+                },
+                "fisher_z": {
+                  "edges": 290,
+                  "hits": 54,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.7331,
+                  "fisher_p": 3.509227461923451e-10,
+                  "precision": 18.62,
+                  "recall": 50.0
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 263,
+                  "hits": 143,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.9491,
+                  "fisher_p": 2.634982648418377e-21,
+                  "precision": 54.37,
+                  "recall": 39.07
+                },
+                "fisher_z": {
+                  "edges": 290,
+                  "hits": 149,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.4965,
+                  "fisher_p": 5.319448971736423e-19,
+                  "precision": 51.38,
+                  "recall": 40.71
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 263,
+                  "hits": 13,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.0745,
+                  "fisher_p": 0.0037394425601997034,
+                  "precision": 4.94,
+                  "recall": 44.83
+                },
+                "fisher_z": {
+                  "edges": 290,
+                  "hits": 13,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.6956,
+                  "fisher_p": 0.009143219370042784,
+                  "precision": 4.48,
+                  "recall": 44.83
+                }
+              }
+            },
+            {
+              "seed": 5042,
+              "edges_nb": 241,
+              "edges_fz": 262,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 241,
+                  "hits": 46,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.508,
+                  "fisher_p": 8.058821323523573e-09,
+                  "precision": 19.09,
+                  "recall": 42.59
+                },
+                "fisher_z": {
+                  "edges": 262,
+                  "hits": 52,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.0105,
+                  "fisher_p": 6.987449752854378e-11,
+                  "precision": 19.85,
+                  "recall": 48.15
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 241,
+                  "hits": 134,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.0593,
+                  "fisher_p": 5.88479372799496e-21,
+                  "precision": 55.6,
+                  "recall": 36.61
+                },
+                "fisher_z": {
+                  "edges": 262,
+                  "hits": 146,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.2507,
+                  "fisher_p": 2.2066844438509503e-23,
+                  "precision": 55.73,
+                  "recall": 39.89
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 241,
+                  "hits": 12,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 2.9807,
+                  "fisher_p": 0.005488452973560979,
+                  "precision": 4.98,
+                  "recall": 41.38
+                },
+                "fisher_z": {
+                  "edges": 262,
+                  "hits": 15,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.1165,
+                  "fisher_p": 0.0002589305388796597,
+                  "precision": 5.73,
+                  "recall": 51.72
+                }
+              }
+            },
+            {
+              "seed": 6042,
+              "edges_nb": 216,
+              "edges_fz": 224,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 216,
+                  "hits": 46,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.133,
+                  "fisher_p": 1.386618111730206e-10,
+                  "precision": 21.3,
+                  "recall": 42.59
+                },
+                "fisher_z": {
+                  "edges": 224,
+                  "hits": 46,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.9139,
+                  "fisher_p": 5.510637482436596e-10,
+                  "precision": 20.54,
+                  "recall": 42.59
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 216,
+                  "hits": 125,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.3774,
+                  "fisher_p": 1.7731400647471115e-21,
+                  "precision": 57.87,
+                  "recall": 34.15
+                },
+                "fisher_z": {
+                  "edges": 224,
+                  "hits": 126,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.0768,
+                  "fisher_p": 4.0736847226348237e-20,
+                  "precision": 56.25,
+                  "recall": 34.43
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 216,
+                  "hits": 13,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.9744,
+                  "fisher_p": 0.0005368540118190587,
+                  "precision": 6.02,
+                  "recall": 44.83
+                },
+                "fisher_z": {
+                  "edges": 224,
+                  "hits": 13,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.793,
+                  "fisher_p": 0.0007781978850930221,
+                  "precision": 5.8,
+                  "recall": 44.83
+                }
+              }
+            },
+            {
+              "seed": 7042,
+              "edges_nb": 255,
+              "edges_fz": 281,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 255,
+                  "hits": 50,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.8352,
+                  "fisher_p": 3.587200214395496e-10,
+                  "precision": 19.61,
+                  "recall": 46.3
+                },
+                "fisher_z": {
+                  "edges": 281,
+                  "hits": 54,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 3.9207,
+                  "fisher_p": 8.940986535898792e-11,
+                  "precision": 19.22,
+                  "recall": 50.0
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 255,
+                  "hits": 134,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.5228,
+                  "fisher_p": 7.213006247356794e-18,
+                  "precision": 52.55,
+                  "recall": 36.61
+                },
+                "fisher_z": {
+                  "edges": 281,
+                  "hits": 143,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.3503,
+                  "fisher_p": 1.5312467371583714e-17,
+                  "precision": 50.89,
+                  "recall": 39.07
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 255,
+                  "hits": 13,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.203,
+                  "fisher_p": 0.002790228790323294,
+                  "precision": 5.1,
+                  "recall": 44.83
+                },
+                "fisher_z": {
+                  "edges": 281,
+                  "hits": 14,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.2474,
+                  "fisher_p": 0.0021525587608519905,
+                  "precision": 4.98,
+                  "recall": 48.28
+                }
+              }
+            },
+            {
+              "seed": 8042,
+              "edges_nb": 284,
+              "edges_fz": 320,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 284,
+                  "hits": 56,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.1991,
+                  "fisher_p": 8.58355880272791e-12,
+                  "precision": 19.72,
+                  "recall": 51.85
+                },
+                "fisher_z": {
+                  "edges": 320,
+                  "hits": 60,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.1202,
+                  "fisher_p": 8.462369036479978e-12,
+                  "precision": 18.75,
+                  "recall": 55.56
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 284,
+                  "hits": 155,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.157,
+                  "fisher_p": 8.568001649366631e-24,
+                  "precision": 54.58,
+                  "recall": 42.35
+                },
+                "fisher_z": {
+                  "edges": 320,
+                  "hits": 167,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.8724,
+                  "fisher_p": 4.890308094739193e-23,
+                  "precision": 52.19,
+                  "recall": 45.63
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 284,
+                  "hits": 15,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.6922,
+                  "fisher_p": 0.0006676634591037715,
+                  "precision": 5.28,
+                  "recall": 51.72
+                },
+                "fisher_z": {
+                  "edges": 320,
+                  "hits": 15,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.13,
+                  "fisher_p": 0.002548222200252218,
+                  "precision": 4.69,
+                  "recall": 51.72
+                }
+              }
+            },
+            {
+              "seed": 9042,
+              "edges_nb": 263,
+              "edges_fz": 279,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 263,
+                  "hits": 53,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.162,
+                  "fisher_p": 1.9938355741213927e-11,
+                  "precision": 20.15,
+                  "recall": 49.07
+                },
+                "fisher_z": {
+                  "edges": 279,
+                  "hits": 55,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.137,
+                  "fisher_p": 1.5954132339281122e-11,
+                  "precision": 19.71,
+                  "recall": 50.93
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 263,
+                  "hits": 140,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.7067,
+                  "fisher_p": 1.49839601756126e-19,
+                  "precision": 53.23,
+                  "recall": 38.25
+                },
+                "fisher_z": {
+                  "edges": 279,
+                  "hits": 145,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.5498,
+                  "fisher_p": 5.107795052621992e-19,
+                  "precision": 51.97,
+                  "recall": 39.62
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 263,
+                  "hits": 15,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.0956,
+                  "fisher_p": 0.00027097351623606055,
+                  "precision": 5.7,
+                  "recall": 51.72
+                },
+                "fisher_z": {
+                  "edges": 279,
+                  "hits": 16,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.3662,
+                  "fisher_p": 0.00012945503303640464,
+                  "precision": 5.73,
+                  "recall": 55.17
+                }
+              }
+            }
+          ],
+          "fdr05_lfc025_nb": {
+            "or_mean": 3.9096,
+            "or_sd": 0.3683,
+            "hit_mean": 50.2,
+            "n_or": 10
+          },
+          "fdr05_lfc025_fisher_z": {
+            "or_mean": 3.8264,
+            "or_sd": 0.3104,
+            "hit_mean": 52.6,
+            "n_or": 10
+          },
+          "fdr05_lfc010_nb": {
+            "or_mean": 3.9424,
+            "or_sd": 0.332,
+            "hit_mean": 138.6,
+            "n_or": 10
+          },
+          "fdr05_lfc010_fisher_z": {
+            "or_mean": 3.7611,
+            "or_sd": 0.3108,
+            "hit_mean": 146.1,
+            "n_or": 10
+          },
+          "fdr05_lfc050_nb": {
+            "or_mean": 3.5287,
+            "or_sd": 0.6835,
+            "hit_mean": 13.5,
+            "n_or": 10
+          },
+          "fdr05_lfc050_fisher_z": {
+            "or_mean": 3.5498,
+            "or_sd": 0.6875,
+            "hit_mean": 14.3,
+            "n_or": 10
+          },
+          "paired_wilcoxon_lfc025": {
+            "median_diff": 0.0647,
+            "win_rate": 0.7,
+            "p": 0.4921875
+          }
+        },
+        "3000": {
+          "n": 3000,
+          "reps": 10,
+          "runs": [
+            {
+              "seed": 42,
+              "edges_nb": 264,
+              "edges_fz": 267,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 264,
+                  "hits": 58,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 5.1299,
+                  "fisher_p": 1.086275634305614e-14,
+                  "precision": 21.97,
+                  "recall": 53.7
+                },
+                "fisher_z": {
+                  "edges": 267,
+                  "hits": 58,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 5.0396,
+                  "fisher_p": 1.9431778609924104e-14,
+                  "precision": 21.72,
+                  "recall": 53.7
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 264,
+                  "hits": 156,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 5.1656,
+                  "fisher_p": 1.4009455297281435e-29,
+                  "precision": 59.09,
+                  "recall": 42.62
+                },
+                "fisher_z": {
+                  "edges": 267,
+                  "hits": 158,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 5.2267,
+                  "fisher_p": 3.623171156702903e-30,
+                  "precision": 59.18,
+                  "recall": 43.17
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 264,
+                  "hits": 17,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 5.443,
+                  "fisher_p": 1.2189712373226292e-05,
+                  "precision": 6.44,
+                  "recall": 58.62
+                },
+                "fisher_z": {
+                  "edges": 267,
+                  "hits": 17,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 5.3607,
+                  "fisher_p": 1.4353820113905707e-05,
+                  "precision": 6.37,
+                  "recall": 58.62
+                }
+              }
+            },
+            {
+              "seed": 1042,
+              "edges_nb": 262,
+              "edges_fz": 266,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 262,
+                  "hits": 52,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.0105,
+                  "fisher_p": 6.987449752854378e-11,
+                  "precision": 19.85,
+                  "recall": 48.15
+                },
+                "fisher_z": {
+                  "edges": 266,
+                  "hits": 53,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.0898,
+                  "fisher_p": 3.2804449716609e-11,
+                  "precision": 19.92,
+                  "recall": 49.07
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 262,
+                  "hits": 143,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 3.9876,
+                  "fisher_p": 1.5596013631421752e-21,
+                  "precision": 54.58,
+                  "recall": 39.07
+                },
+                "fisher_z": {
+                  "edges": 266,
+                  "hits": 146,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.0869,
+                  "fisher_p": 1.961239546295957e-22,
+                  "precision": 54.89,
+                  "recall": 39.89
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 262,
+                  "hits": 14,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.5677,
+                  "fisher_p": 0.0010320896851605925,
+                  "precision": 5.34,
+                  "recall": 48.28
+                },
+                "fisher_z": {
+                  "edges": 266,
+                  "hits": 14,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.4963,
+                  "fisher_p": 0.001212582965487642,
+                  "precision": 5.26,
+                  "recall": 48.28
+                }
+              }
+            },
+            {
+              "seed": 2042,
+              "edges_nb": 253,
+              "edges_fz": 255,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 253,
+                  "hits": 59,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 5.7287,
+                  "fisher_p": 2.093053604335871e-16,
+                  "precision": 23.32,
+                  "recall": 54.63
+                },
+                "fisher_z": {
+                  "edges": 255,
+                  "hits": 59,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 5.658,
+                  "fisher_p": 3.2063693115848566e-16,
+                  "precision": 23.14,
+                  "recall": 54.63
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 253,
+                  "hits": 152,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 5.3306,
+                  "fisher_p": 7.680346112998316e-30,
+                  "precision": 60.08,
+                  "recall": 41.53
+                },
+                "fisher_z": {
+                  "edges": 255,
+                  "hits": 153,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 5.331,
+                  "fisher_p": 5.4784832894415e-30,
+                  "precision": 60.0,
+                  "recall": 41.8
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 253,
+                  "hits": 15,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.3127,
+                  "fisher_p": 0.00017008435111519926,
+                  "precision": 5.93,
+                  "recall": 51.72
+                },
+                "fisher_z": {
+                  "edges": 255,
+                  "hits": 15,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.2679,
+                  "fisher_p": 0.00018706399375013503,
+                  "precision": 5.88,
+                  "recall": 51.72
+                }
+              }
+            },
+            {
+              "seed": 3042,
+              "edges_nb": 261,
+              "edges_fz": 265,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 261,
+                  "hits": 60,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 5.6965,
+                  "fisher_p": 1.9982333497631504e-16,
+                  "precision": 22.99,
+                  "recall": 55.56
+                },
+                "fisher_z": {
+                  "edges": 265,
+                  "hits": 60,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 5.561,
+                  "fisher_p": 4.600664375216351e-16,
+                  "precision": 22.64,
+                  "recall": 55.56
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 261,
+                  "hits": 151,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.7822,
+                  "fisher_p": 6.504448922878185e-27,
+                  "precision": 57.85,
+                  "recall": 41.26
+                },
+                "fisher_z": {
+                  "edges": 265,
+                  "hits": 152,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.6891,
+                  "fisher_p": 1.547526876571609e-26,
+                  "precision": 57.36,
+                  "recall": 41.53
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 261,
+                  "hits": 16,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.7774,
+                  "fisher_p": 5.4075549242996725e-05,
+                  "precision": 6.13,
+                  "recall": 55.17
+                },
+                "fisher_z": {
+                  "edges": 265,
+                  "hits": 16,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.6809,
+                  "fisher_p": 6.610686325612067e-05,
+                  "precision": 6.04,
+                  "recall": 55.17
+                }
+              }
+            },
+            {
+              "seed": 4042,
+              "edges_nb": 231,
+              "edges_fz": 229,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 231,
+                  "hits": 55,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 5.5483,
+                  "fisher_p": 1.8581779838679062e-15,
+                  "precision": 23.81,
+                  "recall": 50.93
+                },
+                "fisher_z": {
+                  "edges": 229,
+                  "hits": 53,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 5.1522,
+                  "fisher_p": 3.522379703354174e-14,
+                  "precision": 23.14,
+                  "recall": 49.07
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 231,
+                  "hits": 142,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 5.4846,
+                  "fisher_p": 4.923692885142652e-29,
+                  "precision": 61.47,
+                  "recall": 38.8
+                },
+                "fisher_z": {
+                  "edges": 229,
+                  "hits": 140,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 5.3595,
+                  "fisher_p": 3.634578966909803e-28,
+                  "precision": 61.14,
+                  "recall": 38.25
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 231,
+                  "hits": 13,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.6451,
+                  "fisher_p": 0.001060853418987006,
+                  "precision": 5.63,
+                  "recall": 44.83
+                },
+                "fisher_z": {
+                  "edges": 229,
+                  "hits": 13,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.6863,
+                  "fisher_p": 0.0009723111763968265,
+                  "precision": 5.68,
+                  "recall": 44.83
+                }
+              }
+            },
+            {
+              "seed": 5042,
+              "edges_nb": 273,
+              "edges_fz": 279,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 273,
+                  "hits": 56,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.4665,
+                  "fisher_p": 1.334650866369729e-12,
+                  "precision": 20.51,
+                  "recall": 51.85
+                },
+                "fisher_z": {
+                  "edges": 279,
+                  "hits": 56,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.3174,
+                  "fisher_p": 3.73660653286746e-12,
+                  "precision": 20.07,
+                  "recall": 51.85
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 273,
+                  "hits": 156,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.7111,
+                  "fisher_p": 3.7927944572415234e-27,
+                  "precision": 57.14,
+                  "recall": 42.62
+                },
+                "fisher_z": {
+                  "edges": 279,
+                  "hits": 157,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.538,
+                  "fisher_p": 2.7876020826729886e-26,
+                  "precision": 56.27,
+                  "recall": 42.9
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 273,
+                  "hits": 14,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.3766,
+                  "fisher_p": 0.001594255682531126,
+                  "precision": 5.13,
+                  "recall": 48.28
+                },
+                "fisher_z": {
+                  "edges": 279,
+                  "hits": 14,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.279,
+                  "fisher_p": 0.0019993195850048404,
+                  "precision": 5.02,
+                  "recall": 48.28
+                }
+              }
+            },
+            {
+              "seed": 6042,
+              "edges_nb": 258,
+              "edges_fz": 260,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 258,
+                  "hits": 54,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.4755,
+                  "fisher_p": 1.9253278557911737e-12,
+                  "precision": 20.93,
+                  "recall": 50.0
+                },
+                "fisher_z": {
+                  "edges": 260,
+                  "hits": 53,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.2363,
+                  "fisher_p": 1.2008542563147541e-11,
+                  "precision": 20.38,
+                  "recall": 49.07
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 258,
+                  "hits": 155,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 5.3918,
+                  "fisher_p": 1.4174552654502936e-30,
+                  "precision": 60.08,
+                  "recall": 42.35
+                },
+                "fisher_z": {
+                  "edges": 260,
+                  "hits": 153,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 5.0483,
+                  "fisher_p": 1.4350598549230547e-28,
+                  "precision": 58.85,
+                  "recall": 41.8
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 258,
+                  "hits": 15,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.2019,
+                  "fisher_p": 0.00021535247565800138,
+                  "precision": 5.81,
+                  "recall": 51.72
+                },
+                "fisher_z": {
+                  "edges": 260,
+                  "hits": 15,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.1589,
+                  "fisher_p": 0.00023625444131400997,
+                  "precision": 5.77,
+                  "recall": 51.72
+                }
+              }
+            },
+            {
+              "seed": 7042,
+              "edges_nb": 262,
+              "edges_fz": 263,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 262,
+                  "hits": 61,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 5.9147,
+                  "fisher_p": 4.241718491399262e-17,
+                  "precision": 23.28,
+                  "recall": 56.48
+                },
+                "fisher_z": {
+                  "edges": 263,
+                  "hits": 60,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 5.6281,
+                  "fisher_p": 3.0391287741387623e-16,
+                  "precision": 22.81,
+                  "recall": 55.56
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 262,
+                  "hits": 152,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.8364,
+                  "fisher_p": 2.493337158851085e-27,
+                  "precision": 58.02,
+                  "recall": 41.53
+                },
+                "fisher_z": {
+                  "edges": 263,
+                  "hits": 152,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.7864,
+                  "fisher_p": 4.6070950818923195e-27,
+                  "precision": 57.79,
+                  "recall": 41.53
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 262,
+                  "hits": 18,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 6.3845,
+                  "fisher_p": 1.8241962151474424e-06,
+                  "precision": 6.87,
+                  "recall": 62.07
+                },
+                "fisher_z": {
+                  "edges": 263,
+                  "hits": 18,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 6.3518,
+                  "fisher_p": 1.9374987815843945e-06,
+                  "precision": 6.84,
+                  "recall": 62.07
+                }
+              }
+            },
+            {
+              "seed": 8042,
+              "edges_nb": 263,
+              "edges_fz": 273,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 263,
+                  "hits": 57,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.9426,
+                  "fisher_p": 4.541092244929263e-14,
+                  "precision": 21.67,
+                  "recall": 52.78
+                },
+                "fisher_z": {
+                  "edges": 273,
+                  "hits": 60,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 5.3052,
+                  "fisher_p": 2.3090899978603665e-15,
+                  "precision": 21.98,
+                  "recall": 55.56
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 263,
+                  "hits": 154,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.9983,
+                  "fisher_p": 1.916299143688597e-28,
+                  "precision": 58.56,
+                  "recall": 42.08
+                },
+                "fisher_z": {
+                  "edges": 273,
+                  "hits": 161,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 5.2381,
+                  "fisher_p": 1.2403046635983078e-30,
+                  "precision": 58.97,
+                  "recall": 43.99
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 263,
+                  "hits": 14,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.5497,
+                  "fisher_p": 0.0010748833653410877,
+                  "precision": 5.32,
+                  "recall": 48.28
+                },
+                "fisher_z": {
+                  "edges": 273,
+                  "hits": 15,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.8953,
+                  "fisher_p": 0.0004214512032798193,
+                  "precision": 5.49,
+                  "recall": 51.72
+                }
+              }
+            },
+            {
+              "seed": 9042,
+              "edges_nb": 233,
+              "edges_fz": 236,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 233,
+                  "hits": 54,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 5.2402,
+                  "fisher_p": 1.5455041248759847e-14,
+                  "precision": 23.18,
+                  "recall": 50.0
+                },
+                "fisher_z": {
+                  "edges": 236,
+                  "hits": 55,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 5.3664,
+                  "fisher_p": 5.430088674476811e-15,
+                  "precision": 23.31,
+                  "recall": 50.93
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 233,
+                  "hits": 138,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.8676,
+                  "fisher_p": 1.3409237709543936e-25,
+                  "precision": 59.23,
+                  "recall": 37.7
+                },
+                "fisher_z": {
+                  "edges": 236,
+                  "hits": 138,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 4.7001,
+                  "fisher_p": 8.78235784321545e-25,
+                  "precision": 58.47,
+                  "recall": 37.7
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 233,
+                  "hits": 14,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.1638,
+                  "fisher_p": 0.0002858489717176904,
+                  "precision": 6.01,
+                  "recall": 48.28
+                },
+                "fisher_z": {
+                  "edges": 236,
+                  "hits": 14,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 4.0949,
+                  "fisher_p": 0.00032978766186341407,
+                  "precision": 5.93,
+                  "recall": 48.28
+                }
+              }
+            }
+          ],
+          "fdr05_lfc025_nb": {
+            "or_mean": 5.1153,
+            "or_sd": 0.6357,
+            "hit_mean": 56.6,
+            "n_or": 10
+          },
+          "fdr05_lfc025_fisher_z": {
+            "or_mean": 5.0354,
+            "or_sd": 0.6018,
+            "hit_mean": 56.7,
+            "n_or": 10
+          },
+          "fdr05_lfc010_nb": {
+            "or_mean": 4.9556,
+            "or_sd": 0.4353,
+            "hit_mean": 149.9,
+            "n_or": 10
+          },
+          "fdr05_lfc010_fisher_z": {
+            "or_mean": 4.9004,
+            "or_sd": 0.4122,
+            "hit_mean": 151.0,
+            "n_or": 10
+          },
+          "fdr05_lfc050_nb": {
+            "or_mean": 4.3422,
+            "or_sd": 0.9586,
+            "hit_mean": 15.0,
+            "n_or": 10
+          },
+          "fdr05_lfc050_fisher_z": {
+            "or_mean": 4.3272,
+            "or_sd": 0.9288,
+            "hit_mean": 15.1,
+            "n_or": 10
+          },
+          "paired_wilcoxon_lfc025": {
+            "median_diff": 0.1129,
+            "win_rate": 0.7,
+            "p": 0.232421875
+          }
+        },
+        "11855": {
+          "n": 11855,
+          "reps": 1,
+          "runs": [
+            {
+              "seed": 42,
+              "edges_nb": 256,
+              "edges_fz": 256,
+              "fdr05_lfc025": {
+                "nb": {
+                  "edges": 256,
+                  "hits": 56,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.9377,
+                  "fisher_p": 5.907591461000915e-14,
+                  "precision": 21.88,
+                  "recall": 51.85
+                },
+                "fisher_z": {
+                  "edges": 256,
+                  "hits": 56,
+                  "gold": 108,
+                  "pairs": 1225,
+                  "odds_ratio": 4.9377,
+                  "fisher_p": 5.907591461000915e-14,
+                  "precision": 21.88,
+                  "recall": 51.85
+                }
+              },
+              "fdr05_lfc010": {
+                "nb": {
+                  "edges": 256,
+                  "hits": 152,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 5.1564,
+                  "fisher_p": 5.565281493504835e-29,
+                  "precision": 59.38,
+                  "recall": 41.53
+                },
+                "fisher_z": {
+                  "edges": 256,
+                  "hits": 152,
+                  "gold": 366,
+                  "pairs": 1225,
+                  "odds_ratio": 5.1564,
+                  "fisher_p": 5.565281493504835e-29,
+                  "precision": 59.38,
+                  "recall": 41.53
+                }
+              },
+              "fdr05_lfc050": {
+                "nb": {
+                  "edges": 256,
+                  "hits": 14,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.6793,
+                  "fisher_p": 0.0008049474097460946,
+                  "precision": 5.47,
+                  "recall": 48.28
+                },
+                "fisher_z": {
+                  "edges": 256,
+                  "hits": 14,
+                  "gold": 29,
+                  "pairs": 1225,
+                  "odds_ratio": 3.6793,
+                  "fisher_p": 0.0008049474097460946,
+                  "precision": 5.47,
+                  "recall": 48.28
+                }
+              }
+            }
+          ],
+          "fdr05_lfc025_nb": {
+            "or_mean": 4.9377,
+            "or_sd": 0.0,
+            "hit_mean": 56.0,
+            "n_or": 1
+          },
+          "fdr05_lfc025_fisher_z": {
+            "or_mean": 4.9377,
+            "or_sd": 0.0,
+            "hit_mean": 56.0,
+            "n_or": 1
+          },
+          "fdr05_lfc010_nb": {
+            "or_mean": 5.1564,
+            "or_sd": 0.0,
+            "hit_mean": 152.0,
+            "n_or": 1
+          },
+          "fdr05_lfc010_fisher_z": {
+            "or_mean": 5.1564,
+            "or_sd": 0.0,
+            "hit_mean": 152.0,
+            "n_or": 1
+          },
+          "fdr05_lfc050_nb": {
+            "or_mean": 3.6793,
+            "or_sd": 0.0,
+            "hit_mean": 14.0,
+            "n_or": 1
+          },
+          "fdr05_lfc050_fisher_z": {
+            "or_mean": 3.6793,
+            "or_sd": 0.0,
+            "hit_mean": 14.0,
+            "n_or": 1
+          }
+        }
+      },
+      "null": {
+        "fdr05_lfc025_nb": {
+          "mean": 20.32,
+          "sd": 3.99,
+          "p_ge": 0.0,
+          "n_null": 2000
+        },
+        "fdr05_lfc025_fisher_z": {
+          "mean": 20.32,
+          "sd": 3.99,
+          "p_ge": 0.0,
+          "n_null": 2000
+        },
+        "fdr05_lfc010_nb": {
+          "mean": 69.06,
+          "sd": 6.48,
+          "p_ge": 0.0,
+          "n_null": 2000
+        },
+        "fdr05_lfc010_fisher_z": {
+          "mean": 69.06,
+          "sd": 6.48,
+          "p_ge": 0.0,
+          "n_null": 2000
+        },
+        "fdr05_lfc050_nb": {
+          "mean": 5.47,
+          "sd": 2.11,
+          "p_ge": 0.0,
+          "n_null": 2000
+        },
+        "fdr05_lfc050_fisher_z": {
+          "mean": 5.47,
+          "sd": 2.11,
+          "p_ge": 0.0,
+          "n_null": 2000
+        }
+      },
+      "scoring_fdr05_lfc025": {
+        "nb": {
+          "edges": 256,
+          "hits": 56,
+          "gold": 108,
+          "pairs": 1225,
+          "odds_ratio": 4.9377,
+          "fisher_p": 5.907591461000915e-14,
+          "precision": 21.88,
+          "recall": 51.85
+        },
+        "fisher_z": {
+          "edges": 256,
+          "hits": 56,
+          "gold": 108,
+          "pairs": 1225,
+          "odds_ratio": 4.9377,
+          "fisher_p": 5.907591461000915e-14,
+          "precision": 21.88,
+          "recall": 51.85
+        }
+      },
+      "scoring_fdr05_lfc010": {
+        "nb": {
+          "edges": 256,
+          "hits": 152,
+          "gold": 366,
+          "pairs": 1225,
+          "odds_ratio": 5.1564,
+          "fisher_p": 5.565281493504835e-29,
+          "precision": 59.38,
+          "recall": 41.53
+        },
+        "fisher_z": {
+          "edges": 256,
+          "hits": 152,
+          "gold": 366,
+          "pairs": 1225,
+          "odds_ratio": 5.1564,
+          "fisher_p": 5.565281493504835e-29,
+          "precision": 59.38,
+          "recall": 41.53
+        }
+      },
+      "scoring_fdr05_lfc050": {
+        "nb": {
+          "edges": 256,
+          "hits": 14,
+          "gold": 29,
+          "pairs": 1225,
+          "odds_ratio": 3.6793,
+          "fisher_p": 0.0008049474097460946,
+          "precision": 5.47,
+          "recall": 48.28
+        },
+        "fisher_z": {
+          "edges": 256,
+          "hits": 14,
+          "gold": 29,
+          "pairs": 1225,
+          "odds_ratio": 3.6793,
+          "fisher_p": 0.0008049474097460946,
+          "precision": 5.47,
+          "recall": 48.28
+        }
+      }
+    }
+  }
+}
